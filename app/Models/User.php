@@ -46,4 +46,26 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function courses() {
+        return $this->belongsToMany(Course::class, 'course_students');
+    }
+
+    public function subcribe_transactions() {
+        return $this->hasMany(SubcribeTransaction::class);
+    }
+    
+    public function hasActiveSubscription() {
+        $latestSubcription= $this->subcribe_transactions() 
+        ->where('is_paid', true) 
+        ->latest('updated_at')
+        ->first();
+        
+        if(!$latestSubcription) {
+        return false;
+        }
+        $subcriptionEndDate = Carbon::parse($latestSubcription->subcription_start_date)->addMonths(1);
+        return Carbon::now()->lessThanOrEqualTo ($subcriptionEndDate); // true = dia berlangganan
+        
+    }
 }

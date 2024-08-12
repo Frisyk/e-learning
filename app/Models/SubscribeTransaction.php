@@ -15,7 +15,7 @@ class SubscribeTransaction extends Model
         'is_paid',
         'user_id',
         'proof',
-        'subcription_start_date'
+        'subscription_start_date'
     ];
 
     public function user() {

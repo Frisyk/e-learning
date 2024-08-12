@@ -3,13 +3,16 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
-    use HasFactory, Notifiable, HasRole;
+    use HasFactory, Notifiable, HasRoles;
 
     /**
      * The attributes that are mass assignable.
@@ -51,21 +54,21 @@ class User extends Authenticatable
         return $this->belongsToMany(Course::class, 'course_students');
     }
 
-    public function subcribe_transactions() {
-        return $this->hasMany(SubcribeTransaction::class);
+    public function subscribe_transactions() {
+        return $this->hasMany(SubscribeTransaction::class);
     }
     
     public function hasActiveSubscription() {
-        $latestSubcription= $this->subcribe_transactions() 
+        $latestSubscription= $this->subscribe_transactions() 
         ->where('is_paid', true) 
         ->latest('updated_at')
         ->first();
         
-        if(!$latestSubcription) {
+        if(!$latestSubscription) {
         return false;
         }
-        $subcriptionEndDate = Carbon::parse($latestSubcription->subcription_start_date)->addMonths(1);
-        return Carbon::now()->lessThanOrEqualTo ($subcriptionEndDate); // true = dia berlangganan
+        $subscriptionEndDate = Carbon::parse($latestSubscription->subscription_start_date)->addMonths(1);
+        return Carbon::now()->lessThanOrEqualTo ($subscriptionEndDate); // true = dia berlangganan
         
     }
 }

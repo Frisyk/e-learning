@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unSignedBigInteger('total_amout');
             $table->boolean('is_paid');
-            $table->date('subcription_start_date')->nullable();
+            $table->date('subscription_start_date')->nullable();
             $table->string('proof');
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->softDeletes();

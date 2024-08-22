@@ -56,7 +56,7 @@ Route::middleware('auth')->group(function () {
         Route::resource('course_videos', CourseVideoController::class)
         ->middleware('role:owner|teacher');
 
-    });
+    }); 
 });
 
 require __DIR__.'/auth.php';

@@ -6,13 +6,11 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class StoreSubscribeTransactionRequest extends FormRequest
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     */
-    // public function authorize(): bool
-    // {
-    //     return $this->user()->hasAnyRole(['owner']);
-    // }
+    public function authorize(): bool
+    {
+        return $this->user()->hasAnyRole(['student']);
+    }
+
 
     /**
      * Get the validation rules that apply to the request.
@@ -20,6 +18,7 @@ class StoreSubscribeTransactionRequest extends FormRequest
      * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
      */
     public function rules(): array
+
 {
     return [
         'proof' => ['required', 'image', 'mimes:png,jpg,jpeg'], // Validates that the proof is an image file of type png, jpg, or jpeg.
@@ -31,4 +30,3 @@ class StoreSubscribeTransactionRequest extends FormRequest
     ];
 }
 
-}

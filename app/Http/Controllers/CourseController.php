@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Course;
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class CourseController extends Controller
 {
@@ -13,7 +14,21 @@ class CourseController extends Controller
      */
     public function index()
     {
-        //
+        //mendapatkan seluruh data kelas  dan menampilkannya
+        // dapat diakses oleh teacher dan owner
+        // hanya menampilkan data kelas yang dimiliki oleh teacher saat itu
+
+        $user = Auth::user();
+        $query = Course::with(['category', 'teacher', 'students'])->orderByDesc('id');
+
+        if ($user->hasRole('teacher')){
+            $query->whereHas('teacher', function ($query) use ($user){
+                $query->where('user_id', $user->id);
+            });
+
+            $courses = $query->paginate(10);
+            return view ('admin.courses.index', compact('courses'));
+        }
     }
 
     /**
@@ -22,6 +37,8 @@ class CourseController extends Controller
     public function create()
     {
         //
+        $categories = Category::all();
+       return view ('admin.courses.create', compact('categories'));
     }
 
     /**

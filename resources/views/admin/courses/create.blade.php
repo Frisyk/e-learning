@@ -33,26 +33,6 @@
                     </div>
 
                     <div class="mt-4">
-                        <x-input-label for="teacher" :value="__('teacher')" />
-                        <x-text-input id="teacher" class="block mt-1 w-full" type="text" name="teacher_id" :value="old('teacher')" required autofocus autocomplete="teacher" />
-                        <x-input-error :messages="$errors->get('teacher')" class="mt-2" />
-                    </div>
-
-                    <div class="mt-4">
-                        <x-input-label for="teacher" :value="__('teacher')" />
-                        
-                        <select name="teacher_id" id="teacher_id" class="py-3 rounded-lg pl-3 w-full border border-slate-300">
-                            <option value="">Choose item</option>
-                            @forelse($teachers as $teacher)
-                                <option value="{{$teacher->id}}">{{$teacher->name}}</option>
-                            @empty
-                            @endforelse
-                        </select>
-
-                        <x-input-error :messages="$errors->get('category')" class="mt-2" />
-                    </div>
-
-                    <div class="mt-4">
                         <x-input-label for="category" :value="__('category')" />
                         
                         <select name="category_id" id="category_id" class="py-3 rounded-lg pl-3 w-full border border-slate-300">

@@ -75,7 +75,7 @@ class CourseController extends Controller
 
             if(!empty($validated['course_keypoints'])){
                 foreach($validated['course_keypoints'] as $keypointText){
-                    $course->keypoints()->create([
+                    $course->course_keypoints()->create([
                         'name' => $keypointText,
                     ]);
                 }

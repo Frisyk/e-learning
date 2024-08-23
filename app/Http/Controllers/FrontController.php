@@ -34,27 +34,37 @@ class FrontController extends Controller
     public function checkout(){
         return view('front.checkout');
     }
-    public function checkout_store(StoreSubscribeTransactionRequest $request){
+
+    public function checkout_store(StoreSubscribeTransactionRequest $request)
+    {
         $user = Auth::user();
-        if($user->hasActiveSubscription()) {
+    
+        // Check if the user already has an active subscription
+        if ($user->hasActiveSubscription()) {
             return redirect()->route('front.index');
         }
-
+ 
+    
         DB::transaction(function () use ($request, $user) {
-
+            // Validate the request data
             $validated = $request->validated();
-            if($request->hasFile('proof')){
-                $proofPath = $request->file('proof')->store('proof', 'public');
+    
+            // Handle the proof file upload
+            if ($request->hasFile('proof')) {
+                $proofPath = $request->file('proof')->store('proofs', 'public');
                 $validated['proof'] = $proofPath;
             } 
+    
+            // Set additional fields
             $validated['user_id'] = $user->id;
-            $validated['total_amount'] = 429000;
-            $validated['is_paid'] = false;
-
-
-            $transaction = SubscribeTransaction::create($validated);
+            $validated['total_amount'] = 429000; // Set the total amount
+            $validated['is_paid'] = false; // Set the payment status as unpaid
+    
+            // Create the transaction in the database
+            SubscribeTransaction::create($validated);
         });
-
+    
+        // Redirect to the front index page after successful transaction
         return redirect()->route('dashboard');
     }
 

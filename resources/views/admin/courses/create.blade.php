@@ -17,7 +17,7 @@
                     @endforeach
                 @endif
                 
-                <form method="POST" action="#" enctype="multipart/form-data">
+                <form method="POST" action="{{ route('admin.courses.store') }}" enctype="multipart/form-data">
                     @csrf
 
                     <div>
@@ -30,6 +30,12 @@
                         <x-input-label for="thumbnail" :value="__('thumbnail')" />
                         <x-text-input id="thumbnail" class="block mt-1 w-full" type="file" name="thumbnail" required autofocus autocomplete="thumbnail" />
                         <x-input-error :messages="$errors->get('thumbnail')" class="mt-2" />
+                    </div>
+
+                    <div class="mt-4">
+                        <x-input-label for="path_trailer" :value="__('path_trailer')" />
+                        <x-text-input id="path_trailer" class="block mt-1 w-full" type="file" name="path_trailer" required autofocus autocomplete="path_trailer" />
+                        <x-input-error :messages="$errors->get('path_trailer')" class="mt-2" />
                     </div>
 
                     <div class="mt-4">

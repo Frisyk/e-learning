@@ -32,9 +32,9 @@ class CourseController extends Controller
                 $query->where('user_id', $user->id);
             });
 
-            $courses = $query->paginate(10);
-            return view ('admin.courses.index', compact('courses'));
         }
+        $courses = $query->paginate(10);
+        return view ('admin.courses.index', compact('courses'));
     }
 
     /**

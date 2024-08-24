@@ -67,7 +67,7 @@ class SubscribeTransactionController extends Controller
             
         });
 
-        return redirect()->route('admin.subscribe_transactions.show' , $subscribeTransaction);
+        return redirect()->route('admin.transactions.show' , $subscribeTransaction);
     }
 
     /**

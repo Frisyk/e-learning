@@ -50,7 +50,7 @@
                     </div>
                 </div>
                 <hr class="my-5">
-                @if ($transaction->user->hasActiveSubscription())
+                @if (!$transaction->user->hasActiveSubscription())
 
                 <form action="{{ route('admin.transactions.update', $transaction) }}" method="POST">
                     @csrf

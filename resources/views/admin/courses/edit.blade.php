@@ -17,7 +17,7 @@
                     @endforeach
                 @endif
                 
-                <form method="POST" action="{{ route('admin.courses.update') }}" enctype="multipart/form-data">
+                <form method="POST" action="{{ route('admin.courses.update', $course) }}" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
                     <div>
@@ -35,7 +35,7 @@
 
                     <div class="mt-4">
                         <x-input-label for="path_trailer" :value="__('path_trailer')" />
-                        <x-text-input id="path_trailer" class="block mt-1 w-full" type="file" name="path_trailer" value="{{ $course->path_trailer }}" required autofocus autocomplete="path_trailer" />
+                        <x-text-input id="path_trailer" class="block mt-1 w-full" type="text" name="path_trailer" value="{{ $course->path_trailer }}" required autofocus autocomplete="path_trailer" />
                         <x-input-error :messages="$errors->get('path_trailer')" class="mt-2" />
                     </div>
 

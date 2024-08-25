@@ -23,7 +23,7 @@
                         <h3 class="text-indigo-950 text-xl font-bold">{{ $course->students->count() }}</h3>
                     </div>
                     <div class="flex flex-row items-center gap-x-3">
-                        <a href="{{ route('admin.course.edit', $course) }}" class="font-bold py-4 px-6 bg-indigo-700 text-white rounded-full">
+                        <a href="{{ route('admin.courses.edit', $course) }}" class="font-bold py-4 px-6 bg-indigo-700 text-white rounded-full">
                             Edit Course
                         </a>
                         <form action="#" method="POST">
@@ -60,7 +60,7 @@
 
                     
                     <div class="flex flex-row items-center gap-x-3">
-                        <a href="{{ route('admin.course_videos.edit') }}" class="font-bold py-4 px-6 bg-indigo-700 text-white rounded-full">
+                        <a href="{{ route('admin.course_videos.edit', $video) }}" class="font-bold py-4 px-6 bg-indigo-700 text-white rounded-full">
                             Edit Video
                         </a>
                         <form action="{{ route('admin.course_videos.destroy', $video) }}" method="POST">

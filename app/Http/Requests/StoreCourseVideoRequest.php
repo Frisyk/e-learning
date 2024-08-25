@@ -24,7 +24,7 @@ class StoreCourseVideoRequest extends FormRequest
         return [
             //
             'name' => 'required|string|max:255',
-            'path_trailer' => 'required|string|max:255',
+            'path_video' => 'required|string|max:255',
         ];
     }
 }

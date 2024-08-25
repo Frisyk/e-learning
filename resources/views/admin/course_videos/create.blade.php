@@ -33,7 +33,7 @@
 
                 <hr class="my-5">
                 
-                <form method="POST" action="{{ roure('admin.course.add_video.save', $course->id) }}" enctype="multipart/form-data">
+                <form method="POST" action="{{ route('admin.course.add_video.save', $course->id) }}" enctype="multipart/form-data">
                     @csrf
 
                     <div>

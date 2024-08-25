@@ -21,12 +21,14 @@
                 <li>
                     <a href="{{route('front.pricing')}}" class="font-semibold">Pricing</a>
                 </li>
-                <!-- <li>
+                {{-- <!-- <li>
                     <a href="" class="font-semibold">Benefits</a>
-                </li>
+                </li> --}}
+                @role('teacher|owner')
                 <li>
-                    <a href="" class="font-semibold">Stories</a>
-                </li> -->
+                    <a href="{{route('dashboard')}}" class="font-semibold">Dashboard</a>
+                </li>
+                @endrole
             </ul>
             @auth
                 

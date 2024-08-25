@@ -39,10 +39,10 @@ class SubscribeTransactionController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(SubscribeTransaction $subscribeTransaction)
+    public function show(SubscribeTransaction $transaction)
     {
         //
-        return view('admin.transactions.show', compact('subscribeTransaction'));
+        return view('admin.transactions.show', compact('transaction'));
     }
 
     /**
@@ -56,18 +56,18 @@ class SubscribeTransactionController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, SubscribeTransaction $subscribeTransaction)
+    public function update(Request $request, SubscribeTransaction $transaction)
     {
         //
-        DB::transaction(function () use ($subscribeTransaction){
-            $subscribeTransaction->update([
+        DB::transaction(function () use ($transaction){
+            $transaction->update([
                 'is_paid' => true,
                 'subscription_start_date' => Carbon::now()
             ]);
             
         });
 
-        return redirect()->route('admin.transactions.show' , $subscribeTransaction);
+        return redirect()->route('admin.transactions.show' , compact('transaction'));
     }
 
     /**

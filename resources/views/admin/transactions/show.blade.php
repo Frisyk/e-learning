@@ -21,9 +21,9 @@
                     <div class="flex flex-col gap-y-10">    
                         <div>
                             <p class="text-slate-500 text-sm">Total Amount</p>
-                            <h3 class="text-indigo-950 text-xl font-bold">Rp {{ $subscribeTransaction->total_amount }}</h3>
+                            <h3 class="text-indigo-950 text-xl font-bold">Rp {{ $transaction->total_amount }}</h3>
                         </div>
-                        @if ($subscribeTransaction->is_paid)
+                        @if ($transaction->is_paid)
                         <span class="w-fit text-sm font-bold py-2 px-3 rounded-full bg-green-500 text-white">
                             Active
                         </span>
@@ -34,29 +34,35 @@
                         @endif
                         <div>
                             <p class="text-slate-500 text-sm">Checkout Date</p>
-                            <h3 class="text-indigo-950 text-xl font-bold">{{ $subscribeTransaction->created_at }}</h3>
+                            <h3 class="text-indigo-950 text-xl font-bold">{{ $transaction->created_at }}</h3>
                         </div>
                         <div>
                             <p class="text-slate-500 text-sm">Subscription Start At</p>
-                            <h3 class="text-indigo-950 text-xl font-bold">{{ $subscribeTransaction->subscription_start_date }}</h3>
+                            <h3 class="text-indigo-950 text-xl font-bold">{{ $transaction->subscription_start_date }}</h3>
                         </div>
                         <div class="">
                             <p class="text-slate-500 text-sm">Student</p>
-                            <h3 class="text-indigo-950 text-xl font-bold">{{ $subscribeTransaction->user->name }}</h3>
+                            <h3 class="text-indigo-950 text-xl font-bold">{{ $transaction->user->name }}</h3>
                         </div>
                     </div>
                     <div>
-                        <img src="{{ Storage::url($subscribeTransaction->proof) }}" alt="{{ Storage::url($subscribeTransaction->proof) }}">
+                        <img src="{{ Storage::url($transaction->proof) }}" alt="{{ Storage::url($transaction->proof) }}">
                     </div>
                 </div>
                 <hr class="my-5">
-                <form action="{{ route('admin.subscribe_transactions.update' , $subscribeTransaction) }}" method="POST">
+                @if ($transaction->user->hasActiveSubscription())
+
+                <form action="{{ route('admin.transactions.update', $transaction) }}" method="POST">
                     @csrf
-                    @method('PUT')
+                    @method('PUT') <!-- PUT digunakan untuk update data -->
                     <button type="submit" class="font-bold py-4 px-6 bg-indigo-700 text-white rounded-full">
                         Approve Transaction
                     </button>
                 </form>
+            
+            @endif
+            
+                
             </div>
         </div>
     </div>

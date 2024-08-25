@@ -46,6 +46,10 @@ Route::middleware('auth')->group(function () {
         Route::resource('transactions', SubscribeTransactionController::class)
         ->middleware('role:owner');
 
+        Route::get('admin/transactions/{id}/edit', [SubscribeTransactionController::class, 'edit'])->name('admin.transactions.edit');
+        Route::put('admin/transactions/{id}', [SubscribeTransactionController::class, 'update'])->name('admin.transactions.update');
+
+
         Route::get('/add/video/{course:id}', [CourseVideoController::class, 'create'])
         ->middleware('role:owner|teacher')
         ->name('course.add_video');

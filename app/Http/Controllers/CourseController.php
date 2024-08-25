@@ -60,7 +60,7 @@ class CourseController extends Controller
         }
 
         DB::transaction(function () use ($request, $teacher) {
-
+            
             $validated = $request->validated();
             if($request->hasFile('thumbnail')){
                 $thumbnailPath = $request->file('thumbnail')->store('thumbnails', 'public');

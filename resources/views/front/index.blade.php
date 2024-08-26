@@ -69,7 +69,7 @@
     </section>
 
 
-        <section id="Zero-to-Success" class=" mx-auto flex flex-col py-[70px] px-[50px] gap-[30px] bg-[#F5F8FA]">
+        <section id="Zero-to-Success" class=" mx-auto flex flex-col py-[70px] px-[50px] gap-[30px] bg-white">
             <div class="flex flex-col gap-[30px] items-center text-center">
                 
                 <div class="flex flex-col">
@@ -111,9 +111,9 @@
         </section>
         
        
-    <section id="courses" class="w-4/5 p-6 mx-auto mt-20 gap-[30px] bg-[#F5F8FA] rounded-[32px]">
-        <h1 class="mx-10 font-bold text-4xl leading-relaxed">Explore Class</h1>
-        <h1 class="mx-10 text-[#6D7786] my-4 text-lg -tracking-[2%]">Tentukan Kelas Pilihanmu dan Mulai Belajar</h1>
+    <section id="courses" class="w-4/5 p-6 mx-auto mt-20 gap-[30px] bg-slate-950 rounded-[32px]">
+        <h1 class="text-white text-center mx-10 font-bold text-4xl leading-relaxed">Explore Class</h1>
+        <h1 class="mx-10 text-[#6D7786] text-center my-4 text-lg -tracking-[2%]">Tentukan Kelas Pilihanmu dan Mulai Belajar</h1>
         <div class="relative px-10 py-5">
             <button class="btn-prev absolute rotate-180 -left-[52px] top-[216px]">
                 <img src="assets/icon/arrow-right.svg" alt="icon">

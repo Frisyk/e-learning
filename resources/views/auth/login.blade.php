@@ -58,7 +58,7 @@
 <body>
     
 <div class="relative py-3 sm:max-w-xs sm:mx-auto">
-    <div class="min-h-96 px-8 py-6 mt-4 text-left bg-white dark:bg-gray-900 rounded-xl shadow-lg">
+    <div class="min-h-96 px-8 py-6 md:mt-48 mt-20 text-left dark:text-white bg-white dark:bg-gray-900 rounded-xl md:shadow-lg">
       <div class="flex flex-col justify-center items-center h-full select-none">
         <div class="flex flex-col items-center justify-center gap-2 mb-8">
           <div class="w-8 h-8 bg-gray-700 rounded-full">

@@ -8,11 +8,12 @@
     <!-- CSS -->
     @vite('resources/css/app.css')
     <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+    <title>BelajarIn | Home</title>
 </head>
 <body class="text-black font-poppins scroll-smooth">
     <nav class="flex justify-between border-b border-blue-900 bg-slate-950 items-center p-6">
         <a href="">
-            <h1 class="font-bold text-2xl text-white ml-5">BelajarLah.</h1>
+            <h1 class="font-bold text-2xl text-white ml-5">BelajarIn.</h1>
         </a>
         <ul class="flex items-center gap-5 text-white">
             <li>
@@ -66,35 +67,50 @@
         <img src="assets/background/hero.png" class="w-1/2 bottom-0 mt-40" alt="hero banner">
 
     </section>
-    <section id="categories" class="w-4/5 mx-auto flex flex-col p-[70px_50px] gap-[30px]">
-        <div class="flex flex-col gap-[30px]">
-            <div class="gradient-badge w-fit p-[8px_16px] rounded-full border border-[#FED6AD] flex items-center gap-[6px]">
-                <div>
-                    <img src="assets/icon/medal-star.svg" alt="icon">
-                </div>
-                <p class="font-medium text-sm text-[#FF6129]">Top Categories</p>
-            </div>
-            <div class="flex flex-col">
-                <h2 class="font-bold text-4xl leading-relaxed">Browse Categories</h2>
-                <p class="text-[#6D7786] text-lg -tracking-[2%]">Cari dan Pilih Kategori Yang Kamu Inginkan</p>
-            </div>
-        </div>
-        <div class="flex flex-wrap gap-[30px]">
-            @forelse ($categories as $category)
-                <a href="{{ route('front.category', $category->slug) }}" class="card flex items-center p-4 gap-3 ring-1 ring-[#DADEE4] rounded-2xl hover:ring-2 hover:ring-[#FF6129] transition-all duration-300">
-                    <div class="w-[70px] h-[70px] flex shrink-0">
-                        <img src="{{ Storage::url($category->icon) }}" class="object-contain" alt="{{ $category->name }}">
-                    </div>
-                    <p class="font-bold text-lg">{{ $category->name }}</p>
-                </a>
-            @empty
-                <p>No categories available.</p>
-            @endforelse
 
-            
-        </div>
+
+        <section id="Zero-to-Success" class=" mx-auto flex flex-col py-[70px] px-[50px] gap-[30px] bg-[#F5F8FA]">
+            <div class="flex flex-col gap-[30px] items-center text-center">
+                
+                <div class="flex flex-col">
+                    <h2 class="font-bold text-[40px] leading-[60px]">Browse Categories</h2>
+                    <p class="text-[#6D7786] text-lg -tracking-[2%]">Cari dan Pilih Kategori Yang Kamu Inginkan</p>
+                </div>
+            </div>
+            <div class="testi w-full overflow-hidden flex flex-col gap-6 relative">
+                <div class="fade-overlay absolute z-10 h-full w-[50px] bg-gradient-to-r from-[#F5F8FA] to-[#F5F8FA00]"></div>
+                <div class="fade-overlay absolute right-0 z-10 h-full w-[50px] bg-gradient-to-r from-[#F5F8FA00] to-[#F5F8FA]"></div>
+        
+                <div class="group/slider flex flex-nowrap w-max items-center">
+                    <div class="logo-container animate-[slideToR_30s_linear_infinite] group-hover/slider:pause-animate flex gap-6 pl-6 items-center flex-nowrap">
+                        <div class="flex flex-wrap py-5 translate-x-0 gap-[30px]">
+                            @forelse ($categories as $category)
+                                <a href="{{ route('front.category', $category->slug) }}" class="card flex items-center p-4 gap-3 ring-1 ring-[#DADEE4] rounded-2xl hover:ring-2 hover:ring-[#FF6129] transition-all duration-300">
+                                    <div class="w-[70px] h-[70px] flex shrink-0">
+                                        <img src="{{ Storage::url($category->icon) }}" class="object-contain" alt="{{ $category->name }}">
+                                    </div>
+                                    <p class="font-bold text-lg">{{ $category->name }}</p>
+                                </a>
+                            @empty
+                                <p>No categories available.</p>
+                            @endforelse            
+                            @forelse ($categories as $category)
+                                <a href="{{ route('front.category', $category->slug) }}" class="card flex items-center p-4 gap-3 ring-1 ring-[#DADEE4] rounded-2xl hover:ring-2 hover:ring-[#FF6129] transition-all duration-300">
+                                    <div class="w-[70px] h-[70px] flex shrink-0">
+                                        <img src="{{ Storage::url($category->icon) }}" class="object-contain" alt="{{ $category->name }}">
+                                    </div>
+                                    <p class="font-bold text-lg">{{ $category->name }}</p>
+                                </a>
+                            @empty
+                                <p>No categories available.</p>
+                            @endforelse            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
        
-    </section>
     <section id="courses" class="w-4/5 p-6 mx-auto gap-[30px] bg-[#F5F8FA] rounded-[32px]">
         <h1 class="mx-10 font-bold text-4xl leading-relaxed">Explore Class</h1>
         <h1 class="mx-10 text-[#6D7786] my-4 text-lg -tracking-[2%]">Tentukan Kelas Pilihanmu dan Mulai Belajar</h1>
@@ -107,7 +123,7 @@
             </button>
             <div id="course-slider" class="w-full h-full">
                 @forelse ($courses as $course )  
-                <div class="course-card w-1/3 px-4 pb-8 mt-2">
+                <div class="course-card w-1/4 px-4 pb-8 mt-2">
                     <div class="flex flex-col bg-white rounded-[16px] overflow-hidden shadow-lg transition-all duration-300 hover:shadow-xl">
                         <a href="{{ route('front.details', $course->slug) }}" class="block relative h-[200px]">
                             <img src="{{ Storage::url($course->thumbnail) }}" class="w-full h-full object-cover" alt="thumbnail">
@@ -215,220 +231,7 @@
         <div class="testi w-full overflow-hidden flex flex-col gap-6 relative">
             <div class="fade-overlay absolute z-10 h-full w-[50px] bg-gradient-to-r from-[#F5F8FA] to-[#F5F8FA00]"></div>
             <div class="fade-overlay absolute right-0 z-10 h-full w-[50px] bg-gradient-to-r from-[#F5F8FA00] to-[#F5F8FA]"></div>
-            <div class="group/slider flex flex-nowrap w-max items-center">
-                <div class="testi-container animate-[slideToL_50s_linear_infinite] group-hover/slider:pause-animate flex gap-6 pl-6 items-center flex-nowrap">
-                    <div class="test-card w-[300px] flex flex-col h-full bg-white rounded-xl gap-3 p-5">
-                        <div class="flex items-center gap-3">
-                            <div class="w-8 h-8 flex shrink-0 rounded-full overflow-hidden">
-                                <img src="assets/photo/photo4.png" class="w-full h-full object-cover" alt="photo">
-                            </div>
-                            <p class="font-semibold">Shayna</p>
-                        </div>
-                        <p class="text-sm text-[#475466]">Alqowy has helped me to grow from zero to perfect career, thank you!</p>
-                        <div class="flex gap-[2px]">
-                            <div>
-                                <img src="assets/icon/star.svg" alt="star">
-                            </div>
-                            <div>
-                                <img src="assets/icon/star.svg" alt="star">
-                            </div>
-                            <div>
-                                <img src="assets/icon/star.svg" alt="star">
-                            </div>
-                            <div>
-                                <img src="assets/icon/star.svg" alt="star">
-                            </div>
-                            <div>
-                                <img src="assets/icon/star.svg" alt="star">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="test-card w-[300px] flex flex-col h-full bg-white rounded-xl gap-3 p-5">
-                        <div class="flex items-center gap-3">
-                            <div class="w-8 h-8 flex shrink-0 rounded-full overflow-hidden">
-                                <img src="assets/photo/photo4.png" class="w-full h-full object-cover" alt="photo">
-                            </div>
-                            <p class="font-semibold">Shayna</p>
-                        </div>
-                        <p class="text-sm text-[#475466]">Alqowy has helped me to grow from zero to perfect career, thank you!</p>
-                        <div class="flex gap-[2px]">
-                            <div>
-                                <img src="assets/icon/star.svg" alt="star">
-                            </div>
-                            <div>
-                                <img src="assets/icon/star.svg" alt="star">
-                            </div>
-                            <div>
-                                <img src="assets/icon/star.svg" alt="star">
-                            </div>
-                            <div>
-                                <img src="assets/icon/star.svg" alt="star">
-                            </div>
-                            <div>
-                                <img src="assets/icon/star.svg" alt="star">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="test-card w-[300px] flex flex-col h-full bg-white rounded-xl gap-3 p-5">
-                        <div class="flex items-center gap-3">
-                            <div class="w-8 h-8 flex shrink-0 rounded-full overflow-hidden">
-                                <img src="assets/photo/photo4.png" class="w-full h-full object-cover" alt="photo">
-                            </div>
-                            <p class="font-semibold">Shayna</p>
-                        </div>
-                        <p class="text-sm text-[#475466]">Alqowy has helped me to grow from zero to perfect career, thank you!</p>
-                        <div class="flex gap-[2px]">
-                            <div>
-                                <img src="assets/icon/star.svg" alt="star">
-                            </div>
-                            <div>
-                                <img src="assets/icon/star.svg" alt="star">
-                            </div>
-                            <div>
-                                <img src="assets/icon/star.svg" alt="star">
-                            </div>
-                            <div>
-                                <img src="assets/icon/star.svg" alt="star">
-                            </div>
-                            <div>
-                                <img src="assets/icon/star.svg" alt="star">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="test-card w-[300px] flex flex-col h-full bg-white rounded-xl gap-3 p-5">
-                        <div class="flex items-center gap-3">
-                            <div class="w-8 h-8 flex shrink-0 rounded-full overflow-hidden">
-                                <img src="assets/photo/photo4.png" class="w-full h-full object-cover" alt="photo">
-                            </div>
-                            <p class="font-semibold">Shayna</p>
-                        </div>
-                        <p class="text-sm text-[#475466]">Alqowy has helped me to grow from zero to perfect career, thank you!</p>
-                        <div class="flex gap-[2px]">
-                            <div>
-                                <img src="assets/icon/star.svg" alt="star">
-                            </div>
-                            <div>
-                                <img src="assets/icon/star.svg" alt="star">
-                            </div>
-                            <div>
-                                <img src="assets/icon/star.svg" alt="star">
-                            </div>
-                            <div>
-                                <img src="assets/icon/star.svg" alt="star">
-                            </div>
-                            <div>
-                                <img src="assets/icon/star.svg" alt="star">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="logo-container animate-[slideToL_50s_linear_infinite] group-hover/slider:pause-animate flex gap-6 pl-6 items-center flex-nowrap ">
-                    <div class="test-card w-[300px] flex flex-col h-full bg-white rounded-xl gap-3 p-5">
-                        <div class="flex items-center gap-3">
-                            <div class="w-8 h-8 flex shrink-0 rounded-full overflow-hidden">
-                                <img src="assets/photo/photo4.png" class="w-full h-full object-cover" alt="photo">
-                            </div>
-                            <p class="font-semibold">Shayna</p>
-                        </div>
-                        <p class="text-sm text-[#475466]">Alqowy has helped me to grow from zero to perfect career, thank you!</p>
-                        <div class="flex gap-[2px]">
-                            <div>
-                                <img src="assets/icon/star.svg" alt="star">
-                            </div>
-                            <div>
-                                <img src="assets/icon/star.svg" alt="star">
-                            </div>
-                            <div>
-                                <img src="assets/icon/star.svg" alt="star">
-                            </div>
-                            <div>
-                                <img src="assets/icon/star.svg" alt="star">
-                            </div>
-                            <div>
-                                <img src="assets/icon/star.svg" alt="star">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="test-card w-[300px] flex flex-col h-full bg-white rounded-xl gap-3 p-5">
-                    <div class="flex items-center gap-3">
-                        <div class="w-8 h-8 flex shrink-0 rounded-full overflow-hidden">
-                            <img src="assets/photo/photo4.png" class="w-full h-full object-cover" alt="photo">
-                        </div>
-                        <p class="font-semibold">Shayna</p>
-                    </div>
-                    <p class="text-sm text-[#475466]">Alqowy has helped me to grow from zero to perfect career, thank you!</p>
-                    <div class="flex gap-[2px]">
-                        <div>
-                            <img src="assets/icon/star.svg" alt="star">
-                        </div>
-                        <div>
-                            <img src="assets/icon/star.svg" alt="star">
-                        </div>
-                        <div>
-                            <img src="assets/icon/star.svg" alt="star">
-                        </div>
-                        <div>
-                            <img src="assets/icon/star.svg" alt="star">
-                        </div>
-                        <div>
-                            <img src="assets/icon/star.svg" alt="star">
-                        </div>
-                    </div>
-                    </div>
-                    <div class="test-card w-[300px] flex flex-col h-full bg-white rounded-xl gap-3 p-5">
-                    <div class="flex items-center gap-3">
-                        <div class="w-8 h-8 flex shrink-0 rounded-full overflow-hidden">
-                            <img src="assets/photo/photo4.png" class="w-full h-full object-cover" alt="photo">
-                        </div>
-                        <p class="font-semibold">Shayna</p>
-                    </div>
-                    <p class="text-sm text-[#475466]">Alqowy has helped me to grow from zero to perfect career, thank you!</p>
-                    <div class="flex gap-[2px]">
-                        <div>
-                            <img src="assets/icon/star.svg" alt="star">
-                        </div>
-                        <div>
-                            <img src="assets/icon/star.svg" alt="star">
-                        </div>
-                        <div>
-                            <img src="assets/icon/star.svg" alt="star">
-                        </div>
-                        <div>
-                            <img src="assets/icon/star.svg" alt="star">
-                        </div>
-                        <div>
-                            <img src="assets/icon/star.svg" alt="star">
-                        </div>
-                    </div>
-                    </div>
-                    <div class="test-card w-[300px] flex flex-col h-full bg-white rounded-xl gap-3 p-5">
-                    <div class="flex items-center gap-3">
-                        <div class="w-8 h-8 flex shrink-0 rounded-full overflow-hidden">
-                            <img src="assets/photo/photo4.png" class="w-full h-full object-cover" alt="photo">
-                        </div>
-                        <p class="font-semibold">Shayna</p>
-                    </div>
-                    <p class="text-sm text-[#475466]">Alqowy has helped me to grow from zero to perfect career, thank you!</p>
-                    <div class="flex gap-[2px]">
-                        <div>
-                            <img src="assets/icon/star.svg" alt="star">
-                        </div>
-                        <div>
-                            <img src="assets/icon/star.svg" alt="star">
-                        </div>
-                        <div>
-                            <img src="assets/icon/star.svg" alt="star">
-                        </div>
-                        <div>
-                            <img src="assets/icon/star.svg" alt="star">
-                        </div>
-                        <div>
-                            <img src="assets/icon/star.svg" alt="star">
-                        </div>
-                    </div>
-                    </div>
-                </div>
-            </div>
+
             <div class="group/slider flex flex-nowrap w-max items-center">
                 <div class="logo-container animate-[slideToR_50s_linear_infinite] group-hover/slider:pause-animate flex gap-6 pl-6 items-center flex-nowrap">
                     <div class="test-card w-[300px] flex flex-col h-full bg-white rounded-xl gap-3 p-5">
@@ -439,23 +242,6 @@
                         <p class="font-semibold">Shayna</p>
                     </div>
                     <p class="text-sm text-[#475466]">Alqowy has helped me to grow from zero to perfect career, thank you!</p>
-                    <div class="flex gap-[2px]">
-                        <div>
-                            <img src="assets/icon/star.svg" alt="star">
-                        </div>
-                        <div>
-                            <img src="assets/icon/star.svg" alt="star">
-                        </div>
-                        <div>
-                            <img src="assets/icon/star.svg" alt="star">
-                        </div>
-                        <div>
-                            <img src="assets/icon/star.svg" alt="star">
-                        </div>
-                        <div>
-                            <img src="assets/icon/star.svg" alt="star">
-                        </div>
-                    </div>
                     </div>
                     <div class="test-card w-[300px] flex flex-col h-full bg-white rounded-xl gap-3 p-5">
                         <div class="flex items-center gap-3">
@@ -465,23 +251,6 @@
                             <p class="font-semibold">Shayna</p>
                         </div>
                         <p class="text-sm text-[#475466]">Alqowy has helped me to grow from zero to perfect career, thank you!</p>
-                        <div class="flex gap-[2px]">
-                            <div>
-                                <img src="assets/icon/star.svg" alt="star">
-                            </div>
-                            <div>
-                                <img src="assets/icon/star.svg" alt="star">
-                            </div>
-                            <div>
-                                <img src="assets/icon/star.svg" alt="star">
-                            </div>
-                            <div>
-                                <img src="assets/icon/star.svg" alt="star">
-                            </div>
-                            <div>
-                                <img src="assets/icon/star.svg" alt="star">
-                            </div>
-                        </div>
                     </div>
                     <div class="test-card w-[300px] flex flex-col h-full bg-white rounded-xl gap-3 p-5">
                         <div class="flex items-center gap-3">
@@ -491,23 +260,6 @@
                             <p class="font-semibold">Shayna</p>
                         </div>
                         <p class="text-sm text-[#475466]">Alqowy has helped me to grow from zero to perfect career, thank you!</p>
-                        <div class="flex gap-[2px]">
-                            <div>
-                                <img src="assets/icon/star.svg" alt="star">
-                            </div>
-                            <div>
-                                <img src="assets/icon/star.svg" alt="star">
-                            </div>
-                            <div>
-                                <img src="assets/icon/star.svg" alt="star">
-                            </div>
-                            <div>
-                                <img src="assets/icon/star.svg" alt="star">
-                            </div>
-                            <div>
-                                <img src="assets/icon/star.svg" alt="star">
-                            </div>
-                        </div>
                     </div>
                     <div class="test-card w-[300px] flex flex-col h-full bg-white rounded-xl gap-3 p-5">
                         <div class="flex items-center gap-3">
@@ -517,23 +269,6 @@
                             <p class="font-semibold">Shayna</p>
                         </div>
                         <p class="text-sm text-[#475466]">Alqowy has helped me to grow from zero to perfect career, thank you!</p>
-                        <div class="flex gap-[2px]">
-                            <div>
-                                <img src="assets/icon/star.svg" alt="star">
-                            </div>
-                            <div>
-                                <img src="assets/icon/star.svg" alt="star">
-                            </div>
-                            <div>
-                                <img src="assets/icon/star.svg" alt="star">
-                            </div>
-                            <div>
-                                <img src="assets/icon/star.svg" alt="star">
-                            </div>
-                            <div>
-                                <img src="assets/icon/star.svg" alt="star">
-                            </div>
-                        </div>
                     </div>
                 </div>
                 <div class="logo-container animate-[slideToR_50s_linear_infinite] group-hover/slider:pause-animate flex gap-6 pl-6 items-center flex-nowrap ">
@@ -545,23 +280,6 @@
                             <p class="font-semibold">Shayna</p>
                         </div>
                         <p class="text-sm text-[#475466]">Alqowy has helped me to grow from zero to perfect career, thank you!</p>
-                        <div class="flex gap-[2px]">
-                            <div>
-                                <img src="assets/icon/star.svg" alt="star">
-                            </div>
-                            <div>
-                                <img src="assets/icon/star.svg" alt="star">
-                            </div>
-                            <div>
-                                <img src="assets/icon/star.svg" alt="star">
-                            </div>
-                            <div>
-                                <img src="assets/icon/star.svg" alt="star">
-                            </div>
-                            <div>
-                                <img src="assets/icon/star.svg" alt="star">
-                            </div>
-                        </div>
                     </div>
                     <div class="test-card w-[300px] flex flex-col h-full bg-white rounded-xl gap-3 p-5">
                         <div class="flex items-center gap-3">
@@ -571,23 +289,6 @@
                             <p class="font-semibold">Shayna</p>
                         </div>
                         <p class="text-sm text-[#475466]">Alqowy has helped me to grow from zero to perfect career, thank you!</p>
-                        <div class="flex gap-[2px]">
-                            <div>
-                                <img src="assets/icon/star.svg" alt="star">
-                            </div>
-                            <div>
-                                <img src="assets/icon/star.svg" alt="star">
-                            </div>
-                            <div>
-                                <img src="assets/icon/star.svg" alt="star">
-                            </div>
-                            <div>
-                                <img src="assets/icon/star.svg" alt="star">
-                            </div>
-                            <div>
-                                <img src="assets/icon/star.svg" alt="star">
-                            </div>
-                        </div>
                     </div>
                     <div class="test-card w-[300px] flex flex-col h-full bg-white rounded-xl gap-3 p-5">
                         <div class="flex items-center gap-3">
@@ -597,23 +298,6 @@
                             <p class="font-semibold">Shayna</p>
                         </div>
                         <p class="text-sm text-[#475466]">Alqowy has helped me to grow from zero to perfect career, thank you!</p>
-                        <div class="flex gap-[2px]">
-                            <div>
-                                <img src="assets/icon/star.svg" alt="star">
-                            </div>
-                            <div>
-                                <img src="assets/icon/star.svg" alt="star">
-                            </div>
-                            <div>
-                                <img src="assets/icon/star.svg" alt="star">
-                            </div>
-                            <div>
-                                <img src="assets/icon/star.svg" alt="star">
-                            </div>
-                            <div>
-                                <img src="assets/icon/star.svg" alt="star">
-                            </div>
-                        </div>
                     </div>
                     <div class="test-card w-[300px] flex flex-col h-full bg-white rounded-xl gap-3 p-5">
                         <div class="flex items-center gap-3">
@@ -623,23 +307,6 @@
                             <p class="font-semibold">Shayna</p>
                         </div>
                         <p class="text-sm text-[#475466]">Alqowy has helped me to grow from zero to perfect career, thank you!</p>
-                        <div class="flex gap-[2px]">
-                            <div>
-                                <img src="assets/icon/star.svg" alt="star">
-                            </div>
-                            <div>
-                                <img src="assets/icon/star.svg" alt="star">
-                            </div>
-                            <div>
-                                <img src="assets/icon/star.svg" alt="star">
-                            </div>
-                            <div>
-                                <img src="assets/icon/star.svg" alt="star">
-                            </div>
-                            <div>
-                                <img src="assets/icon/star.svg" alt="star">
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>

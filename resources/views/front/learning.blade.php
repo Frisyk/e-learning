@@ -17,21 +17,32 @@
 </head>
 <body class="text-black font-poppins pt-10 pb-[50px]">
     <div style="background-image: url('{{asset('assets/background/Hero-Banner.png')}}')" id="hero-section" class="max-w-[1200px] mx-auto w-full h-[393px] flex flex-col gap-10 pb-[50px] bg-center bg-no-repeat bg-cover rounded-[32px] overflow-hidden absolute transform -translate-x-1/2 left-1/2">
-        <nav class="flex justify-between items-center pt-6 px-[50px]">
-            <a href="index.html">
-                <img src="{{asset('assets/logo/logo.svg')}}" alt="logo">
+        <nav class="flex justify-between border-b border-blue-900 bg-slate-950 items-center p-6">
+            <a href="">
+                <h1 class="font-bold text-2xl text-white ml-5">BelajarIn.</h1>
             </a>
-            <ul class="flex items-center gap-[30px] text-white">
-            <li>
+            <ul class="flex items-center gap-5 text-white">
+                <li>
                     <a href="{{route('front.index')}}" class="font-semibold">Home</a>
                 </li>
                 <li>
-                    <a href="{{route('front.pricing')}}" class="font-semibold">Pricing</a>
+                    <a href="#courses" class="font-semibold">Courses</a>
+                </li>
+                <li>
+                    <a href="#categories" class="font-semibold">Category</a>
+                </li>
+                @role('teacher|owner')
+                <li>
+                    <a href="{{route('dashboard')}}" class="font-semibold">Dashboard</a>
+                </li>
+                @endrole
+                <li>
+                    <a href="{{route('front.pricing')}}" class="font-semibold">Donation</a>
                 </li>
             </ul>
             @auth
                 
-            <div class="flex gap-[10px] items-center">
+            <div class="flex gap-[10px] items-center mr-5">
                 <div class="flex flex-col items-end justify-center">
                     <p class="font-semibold text-white">Hi, {{Auth::user()->name}}</p>
                     @if (Auth::user()->hasActiveSubscription())

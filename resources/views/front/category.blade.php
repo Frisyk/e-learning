@@ -12,9 +12,9 @@
     <div id="hero-section" class="max-w-[1200px] mx-auto w-full flex flex-col gap-10 bg-center bg-no-repeat bg-cover md:rounded-[32px] overflow-hidden">  
         <nav class="flex justify-between border-b border-blue-900 bg-slate-950 items-center p-6">
             <a href="">
-                <h1 class="font-bold text-lg md:text-2xl text-white ml-5">BelajarLah.</h1>
+                <h1 class="font-bold text-2xl text-white ml-5">BelajarIn.</h1>
             </a>
-            <ul class="md:flex items-center gap-5 hidden text-white">
+            <ul class="flex items-center gap-5 text-white">
                 <li>
                     <a href="{{route('front.index')}}" class="font-semibold">Home</a>
                 </li>
@@ -44,7 +44,7 @@
                     @endif
                 </div>
                 <a href="{{route('dashboard')}}">
-                    <div class="md:w-[56px] md:h-[56px] w-10 h-10 overflow-hidden rounded-full flex shrink-0">
+                    <div class="w-[56px] h-[56px] overflow-hidden rounded-full flex shrink-0">
                         <img src="{{Storage::url(Auth::user()->avatar)}}" class="w-full h-full object-cover" alt="photo">
                     </div>
                 </a>
@@ -53,7 +53,7 @@
             @guest
             <div class="flex gap-[10px] items-center">
                 <a href="{{route('register')}}" class="text-white font-semibold rounded-[30px] p-[16px_32px] ring-1 ring-white transition-all duration-300 hover:ring-2 hover:ring-[#FF6129]">Sign Up</a>
-                <a href="{{route('login')}}" class="text-white font-semibold rounded-[30px] p-[16px_32px] bg-[#FF6129] transition-all duration-300 hover:shadow-[0_10px_20px_0_#FF612980] hidden md:block">Sign In</a>
+                <a href="{{route('login')}}" class="text-white font-semibold rounded-[30px] p-[16px_32px] bg-[#FF6129] transition-all duration-300 hover:shadow-[0_10px_20px_0_#FF612980]">Sign In</a>
             </div>
             @endguest
         </nav>

@@ -75,7 +75,7 @@
                     allow="autoplay"
                 ></iframe>
             </div>
-            <div class="video-player-sidebar flex flex-col shrink-0 w-[330px] h-[470px] bg-[#F5F8FA] rounded-[20px] p-5 gap-5 pb-0 overflow-y-scroll no-scrollbar">
+            <div class="video-player-sidebar  flex flex-col shrink-0 w-[330px] h-[470px] bg-[#F5F8FA] rounded-[20px] p-5 gap-5 pb-0 overflow-y-scroll no-scrollbar">
                 <p class="font-bold text-lg text-black">{{$course->course_videos->count()}} Lessons</p>
                 <div class="flex flex-col gap-3">
                     <div class="group p-[12px_16px] flex items-center gap-[10px] bg-[#E9EFF3] rounded-full hover:bg-[#3525B3] transition-all duration-300">
@@ -110,7 +110,7 @@
             </div>
         </div>
     </section>
-    <section id="Video-Resources" class="flex flex-col mt-5">
+    <section id="Video-Resources" class="flex flex-col my-20">
         <div class="max-w-[1100px] w-full mx-auto flex flex-col gap-3">
             <h1 class="title font-extrabold text-[30px] leading-[45px]">{{$course->name}}</h1>
             <div class="flex items-center gap-5">
@@ -179,11 +179,68 @@
         </div>
     </section>
   
-    <footer class="mx-auto flex flex-col pt-[70px] gap-[50px] bg-[#F5F8FA] rounded-[32px]">
+    <footer class="max-w-[1200px] mx-auto flex flex-col py-20 mb-10 px-[100px] gap-[50px] bg-slate-950 text-white rounded-[32px]">
         <div class="flex justify-between">
-            
-        <div class="w-full h-[51px]  text-center flex items-end border-t border-[#E7EEF2]">
-            <p class="mx-auto text-sm text-[#6D7786] -tracking-[2%]">All Rights Reserved BelajarLah. <br> 2024</p>
+            <a href="">
+                <h1 class="text-2xl font-bold">BelajarIn.</h1>
+            </a>
+            <div class="flex flex-col gap-5">
+                <p class="font-semibold text-lg">Products</p>
+                <ul class="flex flex-col gap-[14px]">
+                    <li>
+                        <a href="" class="text-[#6D7786]">Online Courses</a>
+                    </li>
+                    <li>
+                        <a href="" class="text-[#6D7786]">Career Guidance</a>
+                    </li>
+                    <li>
+                        <a href="" class="text-[#6D7786]">Expert Handbook</a>
+                    </li>
+                    <li>
+                        <a href="" class="text-[#6D7786]">Interview Simulations</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="flex flex-col gap-5">
+                <p class="font-semibold text-lg">Company</p>
+                <ul class="flex flex-col gap-[14px]">
+                    <li>
+                        <a href="" class="text-[#6D7786]">About Us</a>
+                    </li>
+                    <li>
+                        <a href="" class="text-[#6D7786]">Media Press</a>
+                    </li>
+                    <li class="flex items-center gap-[10px]">
+                        <a href="" class="text-[#6D7786]">Careers</a>
+                        <div class="gradient-badge w-fit p-[6px_10px] rounded-full border border-[#FED6AD] flex items-center">
+                            <p class="font-medium text-xs text-blue-800">We’re Hiring</p>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="" class="text-[#6D7786]">Developer APIs</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="flex flex-col gap-5">
+                <p class="font-semibold text-lg">Resources</p>
+                <ul class="flex flex-col gap-[14px]">
+                    <li>
+                        <a href="" class="text-[#6D7786]">Blog</a>
+                    </li>
+                    <li>
+                        <a href="" class="text-[#6D7786]">FAQ</a>
+                    </li>
+                    <li>
+                        <a href="" class="text-[#6D7786]">Help Center</a>
+                    </li>
+                    <li>
+                        <a href="" class="text-[#6D7786]">Terms & Conditions</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="w-full h-[51px] flex items-end border-t border-[#E7EEF2]">
+            <p class="mx-auto text-sm text-center text-[#6D7786] -tracking-[2%]">All Rights Reserved BelajarIn. <br> 2024</p>
         </div>
     </footer>
 

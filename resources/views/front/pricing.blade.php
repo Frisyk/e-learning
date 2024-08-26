@@ -657,12 +657,10 @@
             </div>
         </div>
     </section>
-    <footer class="max-w-[1200px] mx-auto flex flex-col pt-[70px] pb-[50px] px-[100px] gap-[50px] bg-[#F5F8FA] rounded-[32px]">
+    <footer class="max-w-[1200px] mx-auto flex flex-col py-20 mb-10 px-[100px] gap-[50px] bg-slate-950 text-white rounded-[32px]">
         <div class="flex justify-between">
             <a href="">
-                <div>
-                    <img src="assets/logo/logo-black.svg" alt="logo">
-                </div>
+                <h1 class="text-2xl font-bold">BelajarIn.</h1>
             </a>
             <div class="flex flex-col gap-5">
                 <p class="font-semibold text-lg">Products</p>
@@ -693,7 +691,7 @@
                     <li class="flex items-center gap-[10px]">
                         <a href="" class="text-[#6D7786]">Careers</a>
                         <div class="gradient-badge w-fit p-[6px_10px] rounded-full border border-[#FED6AD] flex items-center">
-                            <p class="font-medium text-xs text-[#FF6129]">We’re Hiring</p>
+                            <p class="font-medium text-xs text-blue-800">We’re Hiring</p>
                         </div>
                     </li>
                     <li>
@@ -720,7 +718,7 @@
             </div>
         </div>
         <div class="w-full h-[51px] flex items-end border-t border-[#E7EEF2]">
-            <p class="mx-auto text-sm text-[#6D7786] -tracking-[2%]">All Rights Reserved Alqowy BuildWithAngga 2024</p>
+            <p class="mx-auto text-sm text-center text-[#6D7786] -tracking-[2%]">All Rights Reserved BelajarIn. <br> 2024</p>
         </div>
     </footer>
 

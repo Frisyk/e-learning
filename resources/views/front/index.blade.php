@@ -62,7 +62,7 @@
         <div class="text flex flex-col gap-10 flex-1 pl-20 py-40">
             <h1 class="text-7xl font-bold leading-normal text-white">Temukan, Mulai, <br> dan Tekuni</h1>
             <p class="text-xl leading-relaxed text-slate-300">"Jika kamu tidak sanggup menahan lelahnya belajar maka kamu harus sanggup menahan perihnya kebodohan" - Imam Syafi'i</p>
-            <a href="#courses"><button class="text-xl font-semibold w-fit text-white p-6 px-10 rounded-full bg-blue-800">➡️Mulai Belajar</button></a>
+            <a href="#courses"><button class="text-xl font-semibold w-fit text-white p-6 px-10 rounded-full bg-blue-800 hover:shadow-[0_10px_20px_0_#FF612980]">➡️Mulai Belajar</button></a>
         </div>
         <img src="assets/background/hero.png" class="w-1/2 bottom-0 mt-40" alt="hero banner">
 
@@ -78,14 +78,14 @@
                 </div>
             </div>
             <div class="testi w-full overflow-hidden flex flex-col gap-6 relative">
-                <div class="fade-overlay absolute z-10 h-full w-[50px] bg-gradient-to-r from-[#F5F8FA] to-[#F5F8FA00]"></div>
-                <div class="fade-overlay absolute right-0 z-10 h-full w-[50px] bg-gradient-to-r from-[#F5F8FA00] to-[#F5F8FA]"></div>
+                <div class="fade-overlay absolute z-10 h-full w-[50px] bg-gradient-to-r from-white to-[#F5F8FA00]"></div>
+                <div class="fade-overlay absolute right-0 z-10 h-full w-[50px] bg-gradient-to-r from-[#F5F8FA00] to-white"></div>
         
                 <div class="group/slider flex flex-nowrap w-max items-center">
-                    <div class="logo-container animate-[slideToR_30s_linear_infinite] group-hover/slider:pause-animate flex gap-6 pl-6 items-center flex-nowrap">
+                    <div class="logo-container animate-[slideToR_20s_linear_infinite] group-hover/slider:pause-animate flex gap-6 pl-6 items-center flex-nowrap">
                         <div class="flex flex-wrap py-5 translate-x-0 gap-[30px]">
                             @forelse ($categories as $category)
-                                <a href="{{ route('front.category', $category->slug) }}" class="card flex items-center p-4 gap-3 ring-1 ring-[#DADEE4] rounded-2xl hover:ring-2 hover:ring-blue-800 transition-all duration-300">
+                                <a href="{{ route('front.category', $category->slug) }}" class="card flex items-center p-4 gap-3 ring-4 ring-[#DADEE4] rounded-2xl hover:ring-2 hover:ring-blue-800 transition-all duration-300">
                                     <div class="w-[70px] h-[70px] flex shrink-0">
                                         <img src="{{ Storage::url($category->icon) }}" class="object-contain" alt="{{ $category->name }}">
                                     </div>
@@ -95,7 +95,7 @@
                                 <p>No categories available.</p>
                             @endforelse            
                             @forelse ($categories as $category)
-                                <a href="{{ route('front.category', $category->slug) }}" class="card flex items-center p-4 gap-3 ring-1 ring-[#DADEE4] rounded-2xl hover:ring-2 hover:ring-blue-800 transition-all duration-300">
+                                <a href="{{ route('front.category', $category->slug) }}" class="card flex items-center p-4 gap-3 ring-4 ring-[#DADEE4] rounded-2xl hover:ring-2 hover:ring-blue-800 transition-all duration-300">
                                     <div class=" h-[70px] flex shrink-0">
                                         <img src="{{ Storage::url($category->icon) }}" class="object-contain" alt="{{ $category->name }}">
                                     </div>
@@ -115,11 +115,11 @@
         <h1 class="text-white text-center mx-10 font-bold text-4xl leading-relaxed">Explore Class</h1>
         <h1 class="mx-10 text-[#6D7786] text-center my-4 text-lg -tracking-[2%]">Tentukan Kelas Pilihanmu dan Mulai Belajar</h1>
         <div class="relative px-10 py-5">
-            <button class="btn-prev absolute rotate-180 -left-[52px] top-[216px]">
-                <img src="assets/icon/arrow-right.svg" alt="icon">
+            <button class="btn-prev bg-white rounded-full absolute rotate-180 -left-[52px] top-[216px]">
+                <img src="assets/icon/next.png" class='w-12 h-12' alt="icon">
             </button>
-            <button class="btn-prev absolute -right-[52px] top-[216px]">
-                <img src="assets/icon/arrow-right.svg" alt="icon">
+            <button class="btn-prev bg-white rounded-full absolute -right-[52px] top-[216px]">
+                <img src="assets/icon/next.png" class='w-12 h-12' alt="icon">
             </button>
             <div id="course-slider" class="w-full h-full">
                 @forelse ($courses as $course )  
@@ -170,12 +170,12 @@
             </div>
         </div>
     </section>
-    <section id="Pricing" class="max-w-[1200px] mx-auto flex justify-between items-center p-[70px_100px]">
+    <section id="Pricing" class="max-w-[1200px] mx-auto flex justify-between items-center p-[70px_100px] pl-0">
         <div class="relative">
-            <div class="w-[355px] h-[488px]">
-                <img src="assets/background/benefit_illustration.png" alt="icon">
+            <div class="w-[500px] h-[700px]">
+                <img src="assets/background/school.png" alt="icon">
             </div>
-            <div class="absolute w-[230px] transform -translate-y-1/2 top-1/2 left-[214px] bg-white z-10 rounded-[20px] gap-4 p-4 flex flex-col shadow-[0_17px_30px_0_#0D051D0A]">
+            <div class="absolute w-[230px] transform -translate-y-1/2 top-1/2 left-[300px] bg-white z-10 rounded-[20px] gap-4 p-4 flex flex-col shadow-[0_17px_30px_0_#0D051D0A]">
                 <p class="font-semibold">Materials</p>
                 <div class="flex gap-2 items-center">
                     <div>
@@ -315,12 +315,7 @@
     <section id="FAQ" class="max-w-[1200px] mx-auto flex flex-col py-[70px] px-[100px]">
         <div class="flex justify-between items-center">
             <div class="flex flex-col gap-[30px]">
-                <div class="gradient-badge w-fit p-[8px_16px] rounded-full border border-[#FED6AD] flex items-center gap-[6px]">
-                    <div>
-                        <img src="assets/icon/medal-star.svg" alt="icon">
-                    </div>
-                    <p class="font-medium text-sm text-blue-800">Grow Your Career</p>
-                </div>
+                
                 <div class="flex flex-col">
                     <h2 class="font-bold text-[36px] leading-[52px]">Get Your Answers</h2>
                     <p class="text-lg text-[#475466]">It’s time to upgrade skills without limits!</p>
@@ -375,7 +370,7 @@
             </div>
         </div>
     </section>
-    <footer class="max-w-[1200px] mx-auto flex flex-col pt-[70px] pb-[50px] px-[100px] gap-[50px] bg-[#F5F8FA] rounded-[32px]">
+    <footer class="max-w-[1200px] mx-auto flex flex-col py-20 mb-10 px-[100px] gap-[50px] bg-slate-950 text-white rounded-[32px]">
         <div class="flex justify-between">
             <a href="">
                 <h1 class="text-2xl font-bold">BelajarIn.</h1>

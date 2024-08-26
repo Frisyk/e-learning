@@ -14,9 +14,10 @@ class FrontController extends Controller
 {
     //
     public function index(){
-        $courses = Course::with(['category', 'teacher', 'students'])->orderBydesc('id')->get();
-
-        return view('front.index', compact('courses'));
+        $courses = Course::with(['category', 'teacher', 'students'])->orderByDesc('id')->get();
+        $categories = Category::all();
+    
+        return view('front.index', compact('courses', 'categories'));
     }
 
     public function details(Course $course){
@@ -28,7 +29,7 @@ class FrontController extends Controller
     
     public function category(Category $category){
         $courses = $category->courses()->get();
-        return view('front.category', compact('courses'));
+        return view('front.category', compact('courses', 'category'));
     }
 
     public function checkout(){

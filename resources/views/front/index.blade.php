@@ -6,90 +6,67 @@
   <link href="{{asset('css/output.css')}}" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
     <!-- CSS -->
+    @vite('resources/css/app.css')
     <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
 </head>
-<body class="text-black font-poppins pt-10 pb-[50px]">
-    <div id="hero-section" class="max-w-[1200px] mx-auto w-full flex flex-col gap-10 pb-[50px] bg-[url('assets/background/Hero-Banner.png')] bg-center bg-no-repeat bg-cover rounded-[32px] overflow-hidden">
-        <nav class="flex justify-between items-center pt-6 px-[50px]">
-            <a href="">
-                <img src="assets/logo/logo.svg" alt="logo">
+<body class="text-black font-poppins scroll-smooth">
+    <nav class="flex justify-between border-b border-blue-900 bg-slate-950 items-center p-6">
+        <a href="">
+            <h1 class="font-bold text-2xl text-white ml-5">BelajarLah.</h1>
+        </a>
+        <ul class="flex items-center gap-5 text-white">
+            <li>
+                <a href="{{route('front.index')}}" class="font-semibold">Home</a>
+            </li>
+            <li>
+                <a href="#courses" class="font-semibold">Courses</a>
+            </li>
+            <li>
+                <a href="#categories" class="font-semibold">Category</a>
+            </li>
+            @role('teacher|owner')
+            <li>
+                <a href="{{route('dashboard')}}" class="font-semibold">Dashboard</a>
+            </li>
+            @endrole
+            <li>
+                <a href="{{route('front.pricing')}}" class="font-semibold">Donation</a>
+            </li>
+        </ul>
+        @auth
+            
+        <div class="flex gap-[10px] items-center mr-5">
+            <div class="flex flex-col items-end justify-center">
+                <p class="font-semibold text-white">Hi, {{Auth::user()->name}}</p>
+                @if (Auth::user()->hasActiveSubscription())
+                    
+                <p class="p-[2px_10px] rounded-full bg-[#FF6129] font-semibold text-xs text-white text-center">PRO</p>
+                @endif
+            </div>
+            <a href="{{route('dashboard')}}">
+                <div class="w-[56px] h-[56px] overflow-hidden rounded-full flex shrink-0">
+                    <img src="{{Storage::url(Auth::user()->avatar)}}" class="w-full h-full object-cover" alt="photo">
+                </div>
             </a>
-            <ul class="flex items-center gap-[30px] text-white">
-                <li>
-                    <a href="{{route('front.index')}}" class="font-semibold">Home</a>
-                </li>
-                <li>
-                    <a href="{{route('front.pricing')}}" class="font-semibold">Pricing</a>
-                </li>
-                {{-- <!-- <li>
-                    <a href="" class="font-semibold">Benefits</a>
-                </li> --}}
-                @role('teacher|owner')
-                <li>
-                    <a href="{{route('dashboard')}}" class="font-semibold">Dashboard</a>
-                </li>
-                @endrole
-            </ul>
-            @auth
-                
-            <div class="flex gap-[10px] items-center">
-                <div class="flex flex-col items-end justify-center">
-                    <p class="font-semibold text-white">Hi, {{Auth::user()->name}}</p>
-                    @if (Auth::user()->hasActiveSubscription())
-                        
-                    <p class="p-[2px_10px] rounded-full bg-[#FF6129] font-semibold text-xs text-white text-center">PRO</p>
-                    @endif
-                </div>
-                <a href="{{route('dashboard')}}">
-                    <div class="w-[56px] h-[56px] overflow-hidden rounded-full flex shrink-0">
-                        <img src="{{Storage::url(Auth::user()->avatar)}}" class="w-full h-full object-cover" alt="photo">
-                    </div>
-                </a>
-            </div>
-            @endauth
-            @guest
-            <div class="flex gap-[10px] items-center">
-                <a href="{{route('register')}}" class="text-white font-semibold rounded-[30px] p-[16px_32px] ring-1 ring-white transition-all duration-300 hover:ring-2 hover:ring-[#FF6129]">Sign Up</a>
-                <a href="{{route('login')}}" class="text-white font-semibold rounded-[30px] p-[16px_32px] bg-[#FF6129] transition-all duration-300 hover:shadow-[0_10px_20px_0_#FF612980]">Sign In</a>
-            </div>
-            @endguest
-        </nav>
-        <div class="flex flex-col items-center gap-[30px]">
-            <div class="w-fit flex items-center gap-3 p-2 pr-6 rounded-full bg-[#FFFFFF1F] border border-[#3477FF24]">
-                <div class="w-[100px] h-[48px] flex shrink-0">
-                    <img src="assets/icon/avatar-group.png" class="object-contain" alt="icon">
-                </div>
-                <p class="font-semibold text-sm text-white">Join 3 million users</p>
-            </div>
-            <div class="flex flex-col gap-[10px]">
-                <h1 class="font-semibold text-[80px] leading-[82px] text-center gradient-text-hero">Build Future Career.</h1>
-                <p class="text-center text-xl leading-[36px] text-[#F5F8FA]">Alqowy provides high quality online courses for you to grow <br>
-                    your skills and build outstanding portfolio to tackle job interviews</p>
-            </div>
-            <div class="flex gap-6 w-fit">
-                <a href="" class="text-white font-semibold rounded-[30px] p-[16px_32px] bg-[#FF6129] transition-all duration-300 hover:shadow-[0_10px_20px_0_#FF612980]">Explore Courses</a>
-                <a href="" class="text-white font-semibold rounded-[30px] p-[16px_32px] ring-1 ring-white transition-all duration-300 hover:ring-2 hover:ring-[#FF6129]">Career Guidance</a>
-            </div>
         </div>
-        <div class="flex gap-[70px] items-center justify-center">
-            <div>
-                <img src="assets/icon/logo-55.svg" alt="icon">
-            </div>
-            <div>
-                <img src="assets/icon/logo.svg" alt="icon">
-            </div>
-            <div>
-                <img src="assets/icon/logo-54.svg" alt="icon">
-            </div>
-            <div>
-                <img src="assets/icon/logo.svg" alt="icon">
-            </div>
-            <div>
-                <img src="assets/icon/logo-52.svg" alt="icon">
-            </div>
+        @endauth
+        @guest
+        <div class="flex gap-[10px] items-center">
+            <a href="{{route('register')}}" class="text-white font-semibold rounded-[30px] p-[16px_32px] ring-1 ring-white transition-all duration-300 hover:ring-2 hover:ring-[#FF6129]">Sign Up</a>
+            <a href="{{route('login')}}" class="text-white font-semibold rounded-[30px] p-[16px_32px] bg-[#FF6129] transition-all duration-300 hover:shadow-[0_10px_20px_0_#FF612980]">Sign In</a>
         </div>
-    </div>
-    <section id="Top-Categories" class="max-w-[1200px] mx-auto flex flex-col p-[70px_50px] gap-[30px]">
+        @endguest
+    </nav>
+    <section class="bg-slate-950 flex w-full">
+        <div class="text flex flex-col gap-10 flex-1 pl-20 py-40">
+            <h1 class="text-7xl font-bold leading-normal text-white">Temukan, Mulai, <br> dan Tekuni</h1>
+            <p class="text-xl leading-relaxed text-slate-300">"Jika kamu tidak sanggup menahan lelahnya belajar maka kamu harus sanggup menahan perihnya kebodohan" - Imam Syafi'i</p>
+            <a href="#courses"><button class="text-xl font-semibold w-fit text-white p-6 px-10 rounded-full bg-blue-800">➡️Mulai Belajar</button></a>
+        </div>
+        <img src="assets/background/hero.png" class="w-1/2 bottom-0 mt-40" alt="hero banner">
+
+    </section>
+    <section id="categories" class="w-4/5 mx-auto flex flex-col p-[70px_50px] gap-[30px]">
         <div class="flex flex-col gap-[30px]">
             <div class="gradient-badge w-fit p-[8px_16px] rounded-full border border-[#FED6AD] flex items-center gap-[6px]">
                 <div>
@@ -98,119 +75,78 @@
                 <p class="font-medium text-sm text-[#FF6129]">Top Categories</p>
             </div>
             <div class="flex flex-col">
-                <h2 class="font-bold text-[40px] leading-[60px]">Browse Courses</h2>
-                <p class="text-[#6D7786] text-lg -tracking-[2%]">Catching up the on demand skills and high paying career this year</p>
+                <h2 class="font-bold text-4xl leading-relaxed">Browse Categories</h2>
+                <p class="text-[#6D7786] text-lg -tracking-[2%]">Cari dan Pilih Kategori Yang Kamu Inginkan</p>
             </div>
         </div>
-        <div class="grid grid-cols-4 gap-[30px]">
-            <a href="{{route('front.category', 'bismillah')}}" class="card flex items-center p-4 gap-3 ring-1 ring-[#DADEE4] rounded-2xl hover:ring-2 hover:ring-[#FF6129] transition-all duration-300">
-                <div class="w-[70px] h-[70px] flex shrink-0">
-                    <img src="assets/icon/Web Development 1.svg" class="object-contain" alt="icon">
-                </div>
-                <p class="font-bold text-lg">Software Development</p>
-            </a>
-            <a href="category.html" class="card flex items-center p-4 gap-3 ring-1 ring-[#DADEE4] rounded-2xl hover:ring-2 hover:ring-[#FF6129] transition-all duration-300">
-                <div class="w-[70px] h-[70px] flex shrink-0">
-                    <img src="assets/icon/Web Development 1-1.svg" class="object-contain" alt="icon">
-                </div>
-                <p class="font-bold text-lg">Digital Marketing</p>
-            </a>
-            <a href="category.html" class="card flex items-center p-4 gap-3 ring-1 ring-[#DADEE4] rounded-2xl hover:ring-2 hover:ring-[#FF6129] transition-all duration-300">
-                <div class="w-[70px] h-[70px] flex shrink-0">
-                    <img src="assets/icon/Web Development 1-2.svg" class="object-contain" alt="icon">
-                </div>
-                <p class="font-bold text-lg">Business Intelligence</p>
-            </a>
-            <a href="category.html" class="card flex items-center p-4 gap-3 ring-1 ring-[#DADEE4] rounded-2xl hover:ring-2 hover:ring-[#FF6129] transition-all duration-300">
-                <div class="w-[70px] h-[70px] flex shrink-0">
-                    <img src="assets/icon/Web Development 1-3.svg" class="object-contain" alt="icon">
-                </div>
-                <p class="font-bold text-lg">Freelancing Journey</p>
-            </a>
+        <div class="flex flex-wrap gap-[30px]">
+            @forelse ($categories as $category)
+                <a href="{{ route('front.category', $category->slug) }}" class="card flex items-center p-4 gap-3 ring-1 ring-[#DADEE4] rounded-2xl hover:ring-2 hover:ring-[#FF6129] transition-all duration-300">
+                    <div class="w-[70px] h-[70px] flex shrink-0">
+                        <img src="{{ Storage::url($category->icon) }}" class="object-contain" alt="{{ $category->name }}">
+                    </div>
+                    <p class="font-bold text-lg">{{ $category->name }}</p>
+                </a>
+            @empty
+                <p>No categories available.</p>
+            @endforelse
+
+            
         </div>
-        <div class="grid grid-cols-3 gap-[30px]">
-            <a href="category.html" class="card flex items-center p-4 gap-3 ring-1 ring-[#DADEE4] rounded-2xl hover:ring-2 hover:ring-[#FF6129] transition-all duration-300">
-                <div class="w-[70px] h-[70px] flex shrink-0">
-                    <img src="assets/icon/Web Development 1-1.svg" class="object-contain" alt="icon">
-                </div>
-                <p class="font-bold text-lg">Product & Customer Data Analytics</p>
-            </a>
-            <a href="category.html" class="card flex items-center p-4 gap-3 ring-1 ring-[#DADEE4] rounded-2xl hover:ring-2 hover:ring-[#FF6129] transition-all duration-300">
-                <div class="w-[70px] h-[70px] flex shrink-0">
-                    <img src="assets/icon/Web Development 1-4.svg" class="object-contain" alt="icon">
-                </div>
-                <p class="font-bold text-lg">UX Design <br> Copywriting</p>
-            </a>
-            <a href="category.html" class="card flex items-center p-4 gap-3 ring-1 ring-[#DADEE4] rounded-2xl hover:ring-2 hover:ring-[#FF6129] transition-all duration-300">
-                <div class="w-[70px] h-[70px] flex shrink-0">
-                    <img src="assets/icon/Web Development 1.svg" class="object-contain" alt="icon">
-                </div>
-                <p class="font-bold text-lg">Software Quality Assurance</p>
-            </a>
-        </div>
+       
     </section>
-    <section id="Popular-Courses" class="max-w-[1200px] mx-auto flex flex-col p-[70px_82px_0px] gap-[30px] bg-[#F5F8FA] rounded-[32px]">
-        <div class="flex flex-col gap-[30px] items-center text-center">
-            <div class="gradient-badge w-fit p-[8px_16px] rounded-full border border-[#FED6AD] flex items-center gap-[6px]">
-                <div>
-                    <img src="assets/icon/medal-star.svg" alt="icon">
-                </div>
-                <p class="font-medium text-sm text-[#FF6129]">Popular Courses</p>
-            </div>
-            <div class="flex flex-col">
-                <h2 class="font-bold text-[40px] leading-[60px]">Don’t Missed It, Learn Now</h2>
-                <p class="text-[#6D7786] text-lg -tracking-[2%]">Catching up the on demand skills and high paying career this year</p>
-            </div>
-        </div>
-        <div class="relative">
+    <section id="courses" class="w-4/5 p-6 mx-auto gap-[30px] bg-[#F5F8FA] rounded-[32px]">
+        <h1 class="mx-10 font-bold text-4xl leading-relaxed">Explore Class</h1>
+        <h1 class="mx-10 text-[#6D7786] my-4 text-lg -tracking-[2%]">Tentukan Kelas Pilihanmu dan Mulai Belajar</h1>
+        <div class="relative px-10 py-5">
             <button class="btn-prev absolute rotate-180 -left-[52px] top-[216px]">
                 <img src="assets/icon/arrow-right.svg" alt="icon">
             </button>
             <button class="btn-prev absolute -right-[52px] top-[216px]">
                 <img src="assets/icon/arrow-right.svg" alt="icon">
             </button>
-            <div id="course-slider" class="w-full">
+            <div id="course-slider" class="w-full h-full">
                 @forelse ($courses as $course )  
-                <div class="course-card w-1/3 px-3 pb-[70px] mt-[2px]">
-                    <div class="flex flex-col rounded-t-[12px] rounded-b-[24px] gap-[32px] bg-white w-full pb-[10px] overflow-hidden transition-all duration-300 hover:ring-2 hover:ring-[#FF6129]">
-                        <a href="{{route('front.details', $course->slug)}}" class="thumbnail w-full h-[200px] shrink-0 rounded-[10px] overflow-hidden">
-                            <img src="{{Storage::url($course->thumbnail)}}" class="w-full h-full object-cover" alt="thumbnail">
+                <div class="course-card w-1/3 px-4 pb-8 mt-2">
+                    <div class="flex flex-col bg-white rounded-[16px] overflow-hidden shadow-lg transition-all duration-300 hover:shadow-xl">
+                        <a href="{{ route('front.details', $course->slug) }}" class="block relative h-[200px]">
+                            <img src="{{ Storage::url($course->thumbnail) }}" class="w-full h-full object-cover" alt="thumbnail">
                         </a>
-                        <div class="flex flex-col px-4 gap-[10px]">
-                            <a href="{{route('front.details', $course->slug)}}" class="font-semibold text-lg line-clamp-2 hover:line-clamp-none min-h-[56px]">{{$course->name}}</a>
-                            <div class="flex justify-between items-center">
-                                <div class="flex items-center gap-[2px]">
-                                    <div>
-                                        <img src="assets/icon/star.svg" alt="star">
-                                    </div>
-                                    <div>
-                                        <img src="assets/icon/star.svg" alt="star">
-                                    </div>
-                                    <div>
-                                        <img src="assets/icon/star.svg" alt="star">
-                                    </div>
-                                    <div>
-                                        <img src="assets/icon/star.svg" alt="star">
-                                    </div>
-                                    <div>
-                                        <img src="assets/icon/star.svg" alt="star">
-                                    </div>
-                                </div>
-                                <!-- <p class="text-right text-[#6D7786]">{{$course->students->count()}}students</p> -->
+                        <div class="p-4">
+                            <div class="flex items-center mb-2">
+                                <span class="text-xs font-semibold text-pink-500 bg-pink-100 rounded-full px-2 py-1">{{$course->category->name}}</span>
                             </div>
-                            <div class="flex items-center gap-2">
-                                <div class="w-8 h-8 flex shrink-0 rounded-full overflow-hidden">
-                                    <img src="{{Storage::url($course->teacher->user->avatar)}}" class="w-full h-full object-cover" alt="icon">
+                            <a href="{{ route('front.details', $course->slug) }}" class="font-semibold text-lg text-gray-900 line-clamp-2 hover:line-clamp-none">
+                                {{$course->name}}
+                            </a>
+                            <div class="mt-4">
+                                <div class="h-2 bg-gray-200 rounded-full">
+                                    <div class="h-2 bg-purple-500 rounded-full" style="width: 100%;"></div>
                                 </div>
-                                <div class="flex flex-col">
-                                    <p class="font-semibold">{{$course->teacher->user->name}}</p>
-                                    <p class="text-[#6D7786]">{{$course->teacher->user->occupation}}</p>
+                            </div>
+                            <div class="flex items-center mt-4">
+                                <div class="flex items-center -space-x-2">
+                                    @forelse ($course->students as $student )
+                                    <img src="{{ Storage::url($student->user->avatar) }}" class="w-8 h-8 rounded-full border-2 border-white" alt="student">
+                                    <span class="text-xs font-medium text-gray-600 pl-2">+124</span>
+                                    @empty    
+                                    @endforelse
+                                </div>
+                                <div class="flex items-center gap-4">
+                                    <div class="flex flex-col">
+                                    
+                                    <p>Teacher</p>
+                                    <p class='text-lg font-semibold capitalize'>{{$course->teacher->user->name}}</p>
+                                    
+                                    </div>
+
+                                        <img src="{{Storage::url($course->teacher->user->avatar)}}" alt="" class="rounded-full object-cover w-10 h-10">
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                @empty
+                @empty                
                 <p>Belum ada data kelas terbaru</p>
                     
                 @endforelse

@@ -146,10 +146,6 @@
         </div>
         <div class="max-w-[1100px] w-full mx-auto mt-10 tablink-container flex gap-3 px-4 sm:p-0 no-scrollbar overflow-x-scroll">
             <div class="tablink font-semibold text-lg h-[47px] transition-all duration-300 cursor-pointer hover:text-[#FF6129]" onclick="openPage('About', this)"  id="defaultOpen">About</div>
-            <div class="tablink font-semibold text-lg h-[47px] transition-all duration-300 cursor-pointer hover:text-[#FF6129]" onclick="openPage('Resources', this)">Resources</div>
-            <div class="tablink font-semibold text-lg h-[47px] transition-all duration-300 cursor-pointer hover:text-[#FF6129]" onclick="openPage('Reviews', this)">Reviews</div>
-            <div class="tablink font-semibold text-lg h-[47px] transition-all duration-300 cursor-pointer hover:text-[#FF6129]" onclick="openPage('Discussions', this)">Discussions</div>
-            <div class="tablink font-semibold text-lg h-[47px] transition-all duration-300 cursor-pointer hover:text-[#FF6129]" onclick="openPage('Rewards', this)">Rewards</div>
         </div>
         <div class="bg-[#F5F8FA] py-[50px]">
             <div class="max-w-[1100px] w-full mx-auto flex flex-col gap-[70px]">
@@ -178,38 +174,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div id="Resources" class="tabcontent hidden">
-                            <div class="flex flex-col gap-5 w-[700px] shrink-0">
-                                <h3 class="font-bold text-2xl">Resources</h3>
-                                <p class="font-medium leading-[30px]">
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt eos et accusantium quia exercitationem reiciendis? Doloribus, voluptate natus voluptas deserunt aliquam nesciunt blanditiis ipsum porro hic! Iusto maxime ullam soluta.
-                                </p>
-                            </div>
-                        </div>
-                        <div id="Reviews" class="tabcontent hidden">
-                            <div class="flex flex-col gap-5 w-[700px] shrink-0">
-                                <h3 class="font-bold text-2xl">Reviews</h3>
-                                <p class="font-medium leading-[30px]">
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt eos et accusantium quia exercitationem reiciendis? Doloribus, voluptate natus voluptas deserunt aliquam nesciunt blanditiis ipsum porro hic! Iusto maxime ullam soluta.
-                                </p>                        
-                            </div>
-                        </div>
-                        <div id="Discussions" class="tabcontent hidden">
-                            <div class="flex flex-col gap-5 w-[700px] shrink-0">
-                                <h3 class="font-bold text-2xl">Discussions</h3>
-                                <p class="font-medium leading-[30px]">
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt eos et accusantium quia exercitationem reiciendis? Doloribus, voluptate natus voluptas deserunt aliquam nesciunt blanditiis ipsum porro hic! Iusto maxime ullam soluta.
-                                </p>                        
-                            </div>
-                        </div>
-                        <div id="Rewards" class="tabcontent hidden">
-                            <div class="flex flex-col gap-5 w-[700px] shrink-0">
-                                <h3 class="font-bold text-2xl">Rewards</h3>
-                                <p class="font-medium leading-[30px]">
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt eos et accusantium quia exercitationem reiciendis? Doloribus, voluptate natus voluptas deserunt aliquam nesciunt blanditiis ipsum porro hic! Iusto maxime ullam soluta.
-                                </p>                        
-                            </div>
-                        </div>
+                       
                     </div>
                     <div class="mentor-sidebar flex flex-col gap-[30px] w-full">
                         <div class="mentor-info bg-white flex flex-col gap-4 rounded-2xl p-5">

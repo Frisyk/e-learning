@@ -70,13 +70,24 @@ class FrontController extends Controller
         return redirect()->route('dashboard');
     }
 
-    public function learning(Course $course, CourseVideo $courseVideoId){
+
+    public function learning(Course $course, $courseVideoId){
         $user = Auth::user();
+
+        // Check if the user has an active subscription
         if(!$user->hasActiveSubscription()){
             return redirect()->route('front.pricing');
         }
+    
+        // Retrieve the CourseVideo by its ID
         $video = $course->course_videos->firstWhere('id', $courseVideoId);
+    
+        // Sync the course with the user's courses
         $user->courses()->syncWithoutDetaching($course->id);
+    
+        // Debug to see the video details    
+        // Return the view with the course and video
         return view('front.learning', compact('course', 'video'));
     }
+    
 }

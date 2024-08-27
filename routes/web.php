@@ -30,7 +30,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/checkout/store', [FrontController::class, 'checkout_store'])->name('front.checkout.store')
     ->middleware('role:student');
 
-    Route::get('learning/{course}/courseVideoId}', [FrontController::class, 'learning'])->name('front.learning')
+    Route::get('learning/{course}/{courseVideoId}', [FrontController::class, 'learning'])->name('front.learning')
     ->middleware('role:student|teacher|owner');
 
     Route::prefix('admin')->name('admin.')->group(function () {

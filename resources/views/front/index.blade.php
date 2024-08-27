@@ -58,7 +58,7 @@
         </div>
         @endguest
     </nav>
-    <ul class="flex md:hidden items-center justify-center bg-slate-950 mx-auto py-5 text-center w-full  gap-5 text-white">
+    <ul class="flex md:hidden items-center justify-center bg-[#011C40] mx-auto py-5 text-center w-full  gap-5 text-white">
         <li>
             <a href="{{route('front.index')}}" class="font-semibold">Home</a>
         </li>
@@ -77,7 +77,7 @@
             <a href="{{route('front.pricing')}}" class="font-semibold">Donation</a>
         </li>
     </ul>
-    <section class="bg-slate-950 flex-col md:flex-row flex w-full">
+    <section class="bg-[#011c40] flex-col md:flex-row flex w-full">
         <div class="text flex flex-col gap-10 flex-1 p-6 md:pl-20 md:py-40">
             <h1 class="text-7xl font-bold leading-normal text-white">Temukan, Mulai, <br> dan Tekuni</h1>
             <p class="text-xl leading-relaxed text-slate-300">"Jika kamu tidak sanggup menahan lelahnya belajar maka kamu harus sanggup menahan perihnya kebodohan" - Imam Syafi'i</p>
@@ -161,17 +161,25 @@
                             </div>
                             <div class="flex items-center mt-4">
                                 <div class="flex items-center -space-x-2">
-                                    @forelse ($course->students as $student )
-                                    <img src="{{ Storage::url($student->user->avatar) }}" class="w-8 h-8 rounded-full border-2 border-white" alt="student">
-                                    <span class="text-xs font-medium text-gray-600 pl-2">+124</span>
-                                    @empty    
+                                    @php
+                                        $students = $course->students->sortByDesc('created_at')->take(3);
+                                    @endphp
+                                
+                                    @forelse ($students as $student)
+                                        @if ($student->avatar)
+                                            <img src="{{ Storage::url($student->avatar) }}" class="w-8 h-8 rounded-full border-2 border-white" alt="student">
+                                        @endif
+                                    @empty
+                                        <span class="text-[6px] font-medium text-gray-600 pl-2">No students available</span>
                                     @endforelse
                                 </div>
-                                <div class="flex items-center gap-4">
+                                
+                                
+                                <div class="flex items-center gap-2 ml-auto">
                                     <div class="flex flex-col">
                                     
-                                    <p>Teacher</p>
-                                    <p class='text-lg font-semibold capitalize'>{{$course->teacher->user->name}}</p>
+                                        <p class="text-xs">Teacher</p>
+                                        <p class='text-sm font-semibold capitalize'>{{$course->teacher->user->name}}</p>
                                     
                                     </div>
 

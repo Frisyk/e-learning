@@ -33,16 +33,16 @@
     <link href="{{ asset('css/output.css') }}" rel="stylesheet">
     @vite('resources/css/app.css')
 </head>
-<body>
+<body class="bg-slate-200">
     
-<div class="relative py-3 sm:max-w-xs sm:mx-auto">
-    <div class="min-h-96 px-8 py-6 mt-4 text-left bg-white dark:bg-gray-900 rounded-xl shadow-lg">
+<div class="relative py-3 sm:max-w-sm sm:mx-auto">
+    <div class="min-h-96 px-8 py-6 mt-40 text-left bg-[#011c40] dark:bg-gray-900 rounded-xl shadow-lg">
       <div class="flex flex-col justify-center items-center h-full select-none">
         <div class="flex flex-col items-center justify-center gap-2 mb-8">
           <div class="w-8 h-8 bg-gray-700 rounded-full">
             <img src="" alt="">
           </div>
-          <p class="m-0 text-[16px] font-semibold dark:text-white">
+          <p class="m-0 text-[16px] font-semibold text-white dark:text-white">
             Forgot your Password?
           </p>
           <span class="m-0 text-xs max-w-[90%] text-center text-[#8B8E98]">

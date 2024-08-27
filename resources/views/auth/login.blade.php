@@ -27,7 +27,7 @@
         <!-- Remember Me -->
         <div class="block mt-4">
             <label for="remember_me" class="inline-flex items-center">
-                <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:ring-indigo-500" name="remember">
+                <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-white shadow-sm focus:ring-indigo-500" name="remember">
                 <span class="ms-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
             </label>
         </div>
@@ -55,16 +55,17 @@
     <link href="{{asset('css/output.css')}}" rel="stylesheet">
     @vite('resources/css/app.css')
 </head>
-<body>
+<body class="bg-slate-200">
     
-<div class="relative py-3 sm:max-w-xs sm:mx-auto">
-    <div class="min-h-96 px-8 py-6 md:mt-48 mt-20 text-left dark:text-white bg-white dark:bg-gray-900 rounded-xl md:shadow-lg">
+  
+<div class="relative py-3 sm:max-w-sm sm:mx-auto ">
+    <div class="min-h-96 px-8 py-6 md:mt-38 mt-20 text-left dark:text-white bg-[#011c40] dark:bg-gray-900 rounded-xl md:shadow-lg">
       <div class="flex flex-col justify-center items-center h-full select-none">
         <div class="flex flex-col items-center justify-center gap-2 mb-8">
           <div class="w-8 h-8 bg-gray-700 rounded-full">
             <img src="" alt="">
           </div>
-          <p class="m-0 text-[16px] font-semibold dark:text-white">
+          <p class="m-0 text-[16px] font-semibold dark:text-white text-white">
             Login to your Account
           </p>
           <span class="m-0 text-xs max-w-[90%] text-center text-[#8B8E98]">
@@ -95,14 +96,14 @@
           <!-- Remember Me -->
           <div class="block mt-4">
             <label for="remember_me" class="inline-flex items-center">
-              <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:ring-indigo-500" name="remember">
+              <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-white shadow-sm focus:ring-indigo-500" name="remember">
               <span class="ms-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
             </label>
           </div>
   
           <div class="flex items-center justify-end mt-4">
             @if (Route::has('password.request'))
-              <a href="{{ route('password.request') }}" class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+              <a href="{{ route('password.request') }}" class="underline text-sm text-white hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                 {{ __('Forgot your password?') }}
               </a>
             @endif
@@ -117,7 +118,7 @@
         
         <!-- Link to Register -->
         <div class="mt-4 text-center">
-          <span class="text-sm text-gray-600 dark:text-gray-400">Don't have an account?</span>
+          <span class="text-sm text-white dark:text-gray-400">Don't have an account?</span>
           <a href="{{ route('register') }}" class="text-sm text-blue-500 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-600 underline">
             {{ __('Sign up') }}
           </a>

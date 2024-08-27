@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreSubscribeTransactionRequest;
 use App\Models\Category;
 use App\Models\Course;
+use App\Models\CourseVideo;
 use App\Models\SubscribeTransaction;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -69,7 +70,7 @@ class FrontController extends Controller
         return redirect()->route('dashboard');
     }
 
-    public function learning(Course $course, $courseVideoId){
+    public function learning(Course $course, CourseVideo $courseVideoId){
         $user = Auth::user();
         if(!$user->hasActiveSubscription()){
             return redirect()->route('front.pricing');

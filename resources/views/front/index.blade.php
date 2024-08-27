@@ -15,15 +15,15 @@
         <a href="">
             <h1 class="font-bold text-2xl text-white ml-5">BelajarIn.</h1>
         </a>
-        <ul class="flex items-center gap-5 text-white">
+        <ul class="md:flex items-center hidden gap-5 text-white">
             <li>
                 <a href="{{route('front.index')}}" class="font-semibold">Home</a>
             </li>
             <li>
-                <a href="#courses" class="font-semibold">Courses</a>
+                <a href="{{route('front.index')}}#courses" class="font-semibold">Courses</a>
             </li>
             <li>
-                <a href="#categories" class="font-semibold">Category</a>
+                <a href="{{route('front.index')}}#categories" class="font-semibold">Category</a>
             </li>
             @role('teacher|owner')
             <li>
@@ -58,13 +58,32 @@
         </div>
         @endguest
     </nav>
-    <section class="bg-slate-950 flex w-full">
-        <div class="text flex flex-col gap-10 flex-1 pl-20 py-40">
+    <ul class="flex md:hidden items-center justify-center bg-slate-950 mx-auto py-5 text-center w-full  gap-5 text-white">
+        <li>
+            <a href="{{route('front.index')}}" class="font-semibold">Home</a>
+        </li>
+        <li>
+            <a href="#courses" class="font-semibold">Courses</a>
+        </li>
+        <li>
+            <a href="#categories" class="font-semibold">Category</a>
+        </li>
+        @role('teacher|owner')
+        <li>
+            <a href="{{route('dashboard')}}" class="font-semibold">Dashboard</a>
+        </li>
+        @endrole
+        <li>
+            <a href="{{route('front.pricing')}}" class="font-semibold">Donation</a>
+        </li>
+    </ul>
+    <section class="bg-slate-950 flex-col md:flex-row flex w-full">
+        <div class="text flex flex-col gap-10 flex-1 p-6 md:pl-20 md:py-40">
             <h1 class="text-7xl font-bold leading-normal text-white">Temukan, Mulai, <br> dan Tekuni</h1>
             <p class="text-xl leading-relaxed text-slate-300">"Jika kamu tidak sanggup menahan lelahnya belajar maka kamu harus sanggup menahan perihnya kebodohan" - Imam Syafi'i</p>
             <a href="#courses"><button class="text-xl font-semibold w-fit text-white p-6 px-10 rounded-full bg-blue-800 hover:shadow-[0_10px_20px_0_#FF612980]">➡️Mulai Belajar</button></a>
         </div>
-        <img src="assets/background/hero.png" class="w-1/2 bottom-0 mt-40" alt="hero banner">
+        <img src="assets/background/hero.png" class="md:w-1/2 bottom-0 md:mt-40" alt="hero banner">
 
     </section>
 
@@ -111,19 +130,19 @@
         </section>
         
        
-    <section id="courses" class="w-4/5 p-6 mx-auto mt-20 gap-[30px] bg-slate-950 rounded-[32px]">
+    <section id="courses" class="md:w-4/5 md:p-6 p-2 mx-auto mt-20 gap-[30px] bg-slate-950 md:rounded-[32px]">
         <h1 class="text-white text-center mx-10 font-bold text-4xl leading-relaxed">Explore Class</h1>
         <h1 class="mx-10 text-[#6D7786] text-center my-4 text-lg -tracking-[2%]">Tentukan Kelas Pilihanmu dan Mulai Belajar</h1>
-        <div class="relative px-10 py-5">
-            <button class="btn-prev bg-white rounded-full absolute rotate-180 -left-[52px] top-[216px]">
+        <div class="relative md:px-10 px-4 py-5">
+            <button class="btn-prev bg-white rounded-full absolute rotate-180 md:-left-[52px] -left-2 z-10 top-[216px]">
                 <img src="assets/icon/next.png" class='w-12 h-12' alt="icon">
             </button>
-            <button class="btn-prev bg-white rounded-full absolute -right-[52px] top-[216px]">
+            <button class="btn-prev bg-white rounded-full absolute md:-right-[52px] -right-2 z-10 top-[216px]">
                 <img src="assets/icon/next.png" class='w-12 h-12' alt="icon">
             </button>
             <div id="course-slider" class="w-full h-full">
                 @forelse ($courses as $course )  
-                <div class="course-card w-1/4 px-4 pb-8 mt-2">
+                <div class="course-card md:w-1/4 px-4 pb-8 mt-2">
                     <div class="flex flex-col bg-white rounded-[16px] overflow-hidden shadow-lg transition-all duration-300 hover:shadow-xl">
                         <a href="{{ route('front.details', $course->slug) }}" class="block relative h-[200px]">
                             <img src="{{ Storage::url($course->thumbnail) }}" class="w-full h-full object-cover" alt="thumbnail">

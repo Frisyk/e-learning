@@ -14,15 +14,15 @@
             <a href="">
                 <h1 class="font-bold text-2xl text-white ml-5">BelajarIn.</h1>
             </a>
-            <ul class="flex items-center gap-5 text-white">
+            <ul class="md:flex items-center hidden gap-5 text-white">
                 <li>
                     <a href="{{route('front.index')}}" class="font-semibold">Home</a>
                 </li>
                 <li>
-                    <a href="#courses" class="font-semibold">Courses</a>
+                    <a href="{{route('front.index')}}#courses" class="font-semibold">Courses</a>
                 </li>
                 <li>
-                    <a href="#categories" class="font-semibold">Category</a>
+                    <a href="{{route('front.index')}}#categories" class="font-semibold">Category</a>
                 </li>
                 @role('teacher|owner')
                 <li>
@@ -40,7 +40,7 @@
                     <p class="font-semibold text-white">Hi, {{Auth::user()->name}}</p>
                     @if (Auth::user()->hasActiveSubscription())
                         
-                    <p class="p-[2px_10px] rounded-full bg-[#FF6129] font-semibold text-xs text-white text-center">PRO</p>
+                    <p class="p-[2px_10px] rounded-full bg-blue-800 font-semibold text-xs text-white text-center">PRO</p>
                     @endif
                 </div>
                 <a href="{{route('dashboard')}}">
@@ -52,8 +52,8 @@
             @endauth
             @guest
             <div class="flex gap-[10px] items-center">
-                <a href="{{route('register')}}" class="text-white font-semibold rounded-[30px] p-[16px_32px] ring-1 ring-white transition-all duration-300 hover:ring-2 hover:ring-[#FF6129]">Sign Up</a>
-                <a href="{{route('login')}}" class="text-white font-semibold rounded-[30px] p-[16px_32px] bg-[#FF6129] transition-all duration-300 hover:shadow-[0_10px_20px_0_#FF612980]">Sign In</a>
+                <a href="{{route('register')}}" class="text-white font-semibold rounded-[30px] p-[16px_32px] ring-1 ring-white transition-all duration-300 hover:ring-2 hover:ring-blue-800">Sign Up</a>
+                <a href="{{route('login')}}" class="text-white font-semibold rounded-[30px] p-[16px_32px] bg-blue-800 transition-all duration-300 hover:shadow-[0_10px_20px_0_#FF612980]">Sign In</a>
             </div>
             @endguest
         </nav>

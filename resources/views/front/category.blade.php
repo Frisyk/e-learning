@@ -10,7 +10,7 @@
 </head>
 <body class="text-black font-poppins md:pt-10 pb-[50px] scroll-smooth">
     <div id="hero-section" class="max-w-[1200px] mx-auto w-full flex flex-col gap-10 bg-center bg-no-repeat bg-cover md:rounded-[32px] overflow-hidden">  
-        <nav class="flex justify-between border-b border-blue-900 bg-slate-950 items-center p-6">
+        <nav class="flex justify-between border-b border-blue-900 bg-[#011c40] items-center p-6">
             <a href="">
                 <h1 class="font-bold text-2xl text-white ml-5">BelajarIn.</h1>
             </a>
@@ -40,7 +40,7 @@
                     <p class="font-semibold text-white">Hi, {{Auth::user()->name}}</p>
                     @if (Auth::user()->hasActiveSubscription())
                         
-                    <p class="p-[2px_10px] rounded-full bg-blue-800 font-semibold text-xs text-white text-center">PRO</p>
+                    <p class="p-[2px_10px] rounded-full bg-[#f24822] font-semibold text-xs text-white text-center">PRO</p>
                     @endif
                 </div>
                 <a href="{{route('dashboard')}}">
@@ -104,7 +104,7 @@
         
     </section>
 
-    <footer class="max-w-[1200px] mx-auto flex flex-col py-20 mb-10 px-[100px] gap-[50px] bg-slate-950 text-white rounded-[32px]">
+    <footer class="max-w-[1200px] mx-auto flex flex-col py-20 mb-10 px-[100px] gap-[50px] bg-[#011c40] text-white rounded-[32px]">
         <div class="flex justify-between">
             <a href="">
                 <h1 class="text-2xl font-bold">BelajarIn.</h1>

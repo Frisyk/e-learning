@@ -75,13 +75,13 @@
     <link href="{{asset('css/output.css')}}" rel="stylesheet">
     @vite('resources/css/app.css')
 </head>
-<body>
-    <div class="relative py-3 sm:max-w-xs sm:mx-auto">
-        <div class="min-h-96 px-8 py-6 mt-4 text-left bg-white dark:bg-gray-900 rounded-xl shadow-lg">
+<body class="bg-slate-200">
+    <div class="relative py-3 sm:max-w-sm sm:mx-auto">
+        <div class="min-h-96 px-8 py-6 mt-4 text-left bg-[#011c40] dark:bg-gray-900 rounded-xl shadow-lg">
           <div class="flex flex-col justify-center items-center h-full select-none">
             <div class="flex flex-col items-center justify-center gap-2 mb-8">
               <div class="w-8 h-8 bg-gray-700 rounded-full"></div>
-              <p class="m-0 text-[16px] font-semibold dark:text-white">
+              <p class="m-0 text-[16px] font-semibold text-white dark:text-white">
                 Register your Account
               </p>
               <span class="m-0 text-xs max-w-[90%] text-center text-[#8B8E98]">
@@ -119,7 +119,7 @@
               <!-- Avatar -->
               <div class="w-full flex flex-col gap-2">
                 <label for="avatar" class="font-semibold text-xs text-gray-400">Avatar</label>
-                <input id="avatar" type="file" name="avatar" class="border rounded-lg px-3 py-2 text-sm w-full outline-none dark:border-gray-500 dark:bg-gray-900" :value="old('avatar')" required autocomplete="avatar">
+                <input id="avatar" type="file" name="avatar" class="border rounded-lg px-3 py-2 text-sm w-full outline-none dark:border-gray-500 dark:bg-gray-900 text-white" :value="old('avatar')" required autocomplete="avatar">
                 <x-input-error :messages="$errors->get('avatar')" class="mt-2" />
               </div>
               
@@ -138,7 +138,7 @@
               </div>
       
               <div class="flex items-center justify-end mt-4">
-                <a href="{{ route('login') }}" class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                <a href="{{ route('login') }}" class="underline text-sm text-white hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                   {{ __('Already registered?') }}
                 </a>
               </div>

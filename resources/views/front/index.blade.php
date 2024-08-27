@@ -11,7 +11,7 @@
     <title>BelajarIn | Home</title>
 </head>
 <body class="text-black font-poppins scroll-smooth">
-    <nav class="flex justify-between border-b border-blue-900 bg-slate-950 items-center p-6">
+    <nav class="flex justify-between border-b border-blue-900 bg-[#011C40] items-center p-6">
         <a href="">
             <h1 class="font-bold text-2xl text-white ml-5">BelajarIn.</h1>
         </a>
@@ -130,7 +130,7 @@
         </section>
         
        
-    <section id="courses" class="md:w-4/5 md:p-6 p-2 mx-auto mt-20 gap-[30px] bg-slate-950 md:rounded-[32px]">
+    <section id="courses" class="md:w-4/5 md:p-6 p-2 mx-auto mt-20 gap-[30px] bg-[#011c40] md:rounded-[32px]">
         <h1 class="text-white text-center mx-10 font-bold text-4xl leading-relaxed">Explore Class</h1>
         <h1 class="mx-10 text-[#6D7786] text-center my-4 text-lg -tracking-[2%]">Tentukan Kelas Pilihanmu dan Mulai Belajar</h1>
         <div class="relative md:px-10 px-4 py-5">
@@ -149,14 +149,14 @@
                         </a>
                         <div class="p-4">
                             <div class="flex items-center mb-2">
-                                <span class="text-xs font-semibold text-white bg-[#3FA2F6] rounded-full px-2 py-1">{{$course->category->name}}</span>
+                                <span class="text-xs font-semibold text-white bg-[#1D64F2] rounded-full px-2 py-1">{{$course->category->name}}</span>
                             </div>
                             <a href="{{ route('front.details', $course->slug) }}" class="font-semibold text-lg text-gray-900 line-clamp-2 hover:line-clamp-none">
                                 {{$course->name}}
                             </a>
                             <div class="mt-4">
                                 <div class="h-2 bg-gray-200 rounded-full">
-                                    <div class="h-2 bg-[#FF8343] rounded-full" style="width: 100%;"></div>
+                                    <div class="h-2 bg-[#F24822] rounded-full" style="width: 100%;"></div>
                                 </div>
                             </div>
                             <div class="flex items-center mt-4">
@@ -234,7 +234,7 @@
             {{-- <a href="" class="text-white font-semibold rounded-[30px] p-[16px_32px] bg-blue-800 transition-all duration-300 hover:shadow-[0_10px_20px_0_#FF612980] w-fit">Check Pricing</a> --}}
         </div>
     </section>
-    <section id="Zero-to-Success" class="max-w-[1200px] mx-auto flex flex-col py-[70px] px-[50px] gap-[30px] bg-slate-950 rounded-[32px]">
+    <section id="Zero-to-Success" class="max-w-[1200px] mx-auto flex flex-col py-[70px] px-[50px] gap-[30px] bg-[#011c40] rounded-[32px]">
         <div class="flex flex-col gap-[30px] items-center text-center">
             <div class="bg-blue-50 w-fit p-[8px_16px] rounded-full border border-blue-800 flex items-center gap-[6px]">
                 <div>
@@ -248,8 +248,8 @@
             </div>
         </div>
         <div class="testi w-full overflow-hidden flex flex-col gap-6 relative">
-            <div class="fade-overlay absolute z-10 h-full w-[50px] bg-gradient-to-r from-slate-950 to-[#F5F8FA00]"></div>
-            <div class="fade-overlay absolute right-0 z-10 h-full w-[50px] bg-gradient-to-r from-[#F5F8FA00] to-slate-950"></div>
+            <div class="fade-overlay absolute z-10 h-full w-[50px] bg-gradient-to-r from-[#] to-[#F5F8FA00]"></div>
+            <div class="fade-overlay absolute right-0 z-10 h-full w-[50px] bg-gradient-to-r from-[#F5F8FA00] to-[#]"></div>
 
             <div class="group/slider flex flex-nowrap w-max items-center">
                 <div class="logo-container animate-[slideToR_50s_linear_infinite] group-hover/slider:pause-animate flex gap-6 pl-6 items-center flex-nowrap">
@@ -389,7 +389,7 @@
             </div>
         </div>
     </section>
-    <footer class="max-w-[1200px] mx-auto flex flex-col py-20 mb-10 px-[100px] gap-[50px] bg-slate-950 text-white rounded-[32px]">
+    <footer class="max-w-[1200px] mx-auto flex flex-col py-20 mb-10 px-[100px] gap-[50px] bg-[#011c40] text-white rounded-[32px]">
         <div class="flex justify-between">
             <a href="">
                 <h1 class="text-2xl font-bold">BelajarIn.</h1>

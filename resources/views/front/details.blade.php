@@ -17,7 +17,7 @@
 </head>
 <body class="text-black font-poppins pt-10 pb-[50px]">
     <div id="hero-section" class="max-w-[1200px] mx-auto w-full flex flex-col gap-10 bg-center bg-no-repeat bg-cover md:rounded-[32px] overflow-hidden">  
-        <nav class="flex justify-between border-b border-blue-900 bg-slate-950 items-center p-6">
+        <nav class="flex justify-between border-b border-blue-900 bg-[#011C40] items-center p-6">
             <a href="">
                 <h1 class="font-bold text-2xl text-white ml-5">BelajarIn.</h1>
             </a>
@@ -59,8 +59,8 @@
             @endauth
             @guest
             <div class="flex gap-[10px] items-center">
-                <a href="{{route('register')}}" class="text-white font-semibold rounded-[30px] p-[16px_32px] ring-1 ring-white transition-all duration-300 hover:ring-2 hover:ring-blue-800">Sign Up</a>
-                <a href="{{route('login')}}" class="text-white font-semibold rounded-[30px] p-[16px_32px] bg-blue-800 transition-all duration-300 hover:shadow-[0_10px_20px_0_#FF612980]">Sign In</a>
+                <a href="{{route('register')}}" class="text-white font-semibold rounded-[30px] p-[16px_32px] ring-1 ring-white transition-all duration-300 hover:ring-2 hover:ring-[#f24822]">Sign Up</a>
+                <a href="{{route('login')}}" class="text-white font-semibold rounded-[30px] p-[16px_32px] bg-[#f24822] transition-all duration-300 hover:shadow-[0_10px_20px_0_#FF612980]">Sign In</a>
             </div>
             @endguest
         </nav>
@@ -75,10 +75,10 @@
                     allow="autoplay"
                 ></iframe>
             </div>
-            <div class="video-player-sidebar  flex flex-col shrink-0 w-[330px] h-[470px] bg-[#F5F8FA] rounded-[20px] p-5 gap-5 pb-0 overflow-y-scroll no-scrollbar">
+            <div class="video-player-sidebar  flex flex-col shrink-0 w-[330px] h-[470px] bg-[#1243A6] rounded-[20px] p-5 gap-5 pb-0 overflow-y-scroll no-scrollbar">
                 <p class="font-bold text-lg text-black">{{$course->course_videos->count()}} Lessons</p>
                 <div class="flex flex-col gap-3">
-                    <div class="group p-[12px_16px] flex items-center gap-[10px] bg-[#E9EFF3] rounded-full hover:bg-[#3525B3] transition-all duration-300">
+                    <div class="group p-[12px_16px] flex items-center gap-[10px] bg-[#E9EFF3] rounded-full hover:bg-[#1D64F2] transition-all duration-300">
                         <div class="text-black group-hover:text-white transition-all duration-300">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M11.97 2C6.44997 2 1.96997 6.48 1.96997 12C1.96997 17.52 6.44997 22 11.97 22C17.49 22 21.97 17.52 21.97 12C21.97 6.48 17.5 2 11.97 2ZM14.97 14.23L12.07 15.9C11.71 16.11 11.31 16.21 10.92 16.21C10.52 16.21 10.13 16.11 9.76997 15.9C9.04997 15.48 8.61997 14.74 8.61997 13.9V10.55C8.61997 9.72 9.04997 8.97 9.76997 8.55C10.49 8.13 11.35 8.13 12.08 8.55L14.98 10.22C15.7 10.64 16.13 11.38 16.13 12.22C16.13 13.06 15.7 13.81 14.97 14.23Z" fill="currentColor"/>
@@ -124,9 +124,9 @@
             </div>
         </div>
         <div class="max-w-[1100px] w-full mx-auto mt-10 tablink-container flex gap-3 px-4 sm:p-0 no-scrollbar overflow-x-scroll">
-            <div class="tablink font-semibold text-lg h-[47px] transition-all duration-300 cursor-pointer hover:text-[#FF6129]" onclick="openPage('About', this)"  id="defaultOpen">About</div>
+            <div class="tablink font-semibold text-lg h-[47px] transition-all duration-300 cursor-pointer hover:text-[#f24822]" onclick="openPage('About', this)"  id="defaultOpen">About</div>
         </div>
-        <div class="bg-[#F5F8FA] py-[50px]">
+        <div class="bg-white py-[50px]">
             <div class="max-w-[1100px] w-full mx-auto flex flex-col gap-[70px]">
                 <div class="flex gap-[50px]">
                     <div class="tabs-container w-[700px] flex shrink-0">
@@ -156,19 +156,19 @@
                     
                     </div>
                     <div class="mentor-sidebar flex flex-col gap-[30px] w-full">
-                        <div class="mentor-info bg-white flex flex-col gap-4 rounded-2xl p-5">
-                            <p class="font-bold text-lg text-left w-full">Teacher</p>
+                        <div class="mentor-info bg-[#1243A6] flex flex-col gap-4 rounded-2xl p-5">
+                            <p class="font-bold text-lg text-left w-full text-white">Teacher</p>
                             <div class="flex items-center justify-between w-full">
                                 <div class="flex items-center gap-3">
                                     <a href="" class="w-[50px] h-[50px] flex shrink-0 rounded-full overflow-hidden">
                                         <img src="{{Storage::url($course->teacher->user->avatar)}}" class="w-full h-full object-cover" alt="photo">
                                     </a>
                                     <div class="flex flex-col gap-[2px]">
-                                        <a href="" class="font-semibold">{{$course->teacher->user->name}}</a>
-                                        <p class="text-sm text-[#6D7786]">{{$course->teacher->user->occupation}}</p>
+                                        <a href="" class="font-semibold text-white">{{$course->teacher->user->name}}</a>
+                                        <p class="text-sm text-[#a4a8b0]">{{$course->teacher->user->occupation}}</p>
                                     </div>
                                 </div>
-                                <a href="" class="p-[4px_12px] rounded-full bg-[#FF6129] font-semibold text-xs text-white text-center">Follow</a>
+                                <a href="" class="p-[4px_12px] rounded-full bg-[#f24822] font-semibold text-xs text-white text-center">Follow</a>
                             </div>
                         </div>
                         
@@ -179,7 +179,7 @@
         </div>
     </section>
   
-    <footer class="max-w-[1200px] mx-auto flex flex-col py-20 mb-10 px-[100px] gap-[50px] bg-slate-950 text-white rounded-[32px]">
+    <footer class="max-w-[1200px] mx-auto flex flex-col py-20 mb-10 px-[100px] gap-[50px] bg-[#011C40] text-white rounded-[32px]">
         <div class="flex justify-between">
             <a href="">
                 <h1 class="text-2xl font-bold">BelajarIn.</h1>

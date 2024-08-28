@@ -11,8 +11,8 @@
     <title>Langganan | BelajarIn.</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css" />
 </head>
-<body class="text-black font-poppins">
-    <nav class="flex justify-between border-b border-blue-900 bg-slate-950 items-center p-6">
+<body class="text-black font-poppins h-screen">
+    <nav class="flex justify-between border-b border-blue-900 bg-[#011C40] items-center p-6">
         <a href="">
             <h1 class="font-bold text-2xl text-white ml-5">BelajarIn.</h1>
         </a>
@@ -36,10 +36,12 @@
             </li>
         </ul>
         @auth
+            
         <div class="flex gap-[10px] items-center mr-5">
             <div class="flex flex-col items-end justify-center">
                 <p class="font-semibold text-white">Hi, {{Auth::user()->name}}</p>
                 @if (Auth::user()->hasActiveSubscription())
+                    
                 <p class="p-[2px_10px] rounded-full bg-blue-800 font-semibold text-xs text-white text-center">PRO</p>
                 @endif
             </div>
@@ -57,10 +59,29 @@
         </div>
         @endguest
     </nav>
+    <ul class="flex md:hidden items-center justify-center bg-[#011C40] mx-auto py-5 text-center w-full  gap-5 text-white">
+        <li>
+            <a href="{{route('front.index')}}" class="font-semibold">Home</a>
+        </li>
+        <li>
+            <a href="{{route('front.index')}}#courses" class="font-semibold">Courses</a>
+        </li>
+        <li>
+            <a href="{{route('front.index')}}#categories" class="font-semibold">Category</a>
+        </li>
+        @role('teacher|owner')
+        <li>
+            <a href="{{route('dashboard')}}" class="font-semibold">Dashboard</a>
+        </li>
+        @endrole
+        <li>
+            <a href="{{route('front.pricing')}}" class="font-semibold">Donation</a>
+        </li>
+    </ul>
 
-    <div id="hero-section" class="flex flex-col items-center gap-10 pb-[50px]">
-        <div class="bg-white p-8 rounded-3xl md:shadow-lg w-full max-w-lg mx-auto">
-            @if (!$user->hasActiveSubscription())
+<div class="flex items-center justify-center md:mt-10">
+        <div class="bg-white p-8 rounded-3xl md:shadow-lg w-full max-w-lg">
+            @if ($user == null || !$user->hasActiveSubscription())
             <div id="subs" class="flex flex-col gap-8">
                 <div class="text-center">
                     <p class="font-semibold text-4xl leading-tight mb-4">Langganan</p>

@@ -63,10 +63,10 @@
             <a href="{{route('front.index')}}" class="font-semibold">Home</a>
         </li>
         <li>
-            <a href="#courses" class="font-semibold">Courses</a>
+            <a href="{{route('front.index')}}#courses" class="font-semibold">Courses</a>
         </li>
         <li>
-            <a href="#categories" class="font-semibold">Category</a>
+            <a href="{{route('front.index')}}#categories" class="font-semibold">Category</a>
         </li>
         @role('teacher|owner')
         <li>
@@ -397,8 +397,8 @@
             </div>
         </div>
     </section>
-    <footer class="max-w-[1200px] mx-auto flex flex-col py-20 mb-10 px-[100px] gap-[50px] bg-[#011c40] text-white rounded-[32px]">
-        <div class="flex justify-between">
+    <footer class="max-w-[1200px] mx-auto flex flex-col py-20 md:mb-10 px-10 md:px-[100px] gap-[50px] bg-[#011C40] text-white md:rounded-[32px]">
+        <div class="flex flex-col gap-5 md:flex-row justify-between">
             <a href="">
                 <h1 class="text-2xl font-bold">BelajarIn.</h1>
             </a>
@@ -458,7 +458,7 @@
             </div>
         </div>
         <div class="w-full h-[51px] flex items-end border-t border-[#E7EEF2]">
-            <p class="mx-auto text-sm text-center text-[#6D7786] -tracking-[2%]">All Rights Reserved BelajarIn. <br> 2024</p>
+            <p class="mx-auto text-sm text-center text-[#6D7786] -tracking-[2%]">All Rights Reserved <span class="font-bold text-gray-300">BelajarIn.</span><br> 2024</p>
         </div>
     </footer>
 

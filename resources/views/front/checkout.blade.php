@@ -9,7 +9,7 @@
   <!-- CSS -->
   <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
 </head>
-<body class="text-black font-poppins pb-10">
+<body class="text-black bg-[#ECF7FF] font-poppins pb-10">
   <nav class="flex justify-between border-b border-blue-900 bg-[#011C40] items-center p-6">
     <a href="">
         <h1 class="font-bold text-2xl text-white ml-5">BelajarIn.</h1>
@@ -76,7 +76,7 @@
         <a href="{{route('front.pricing')}}" class="font-semibold">Donation</a>
     </li>
 </ul>
-  <div id="checkout-section" class=" md:w-1/3 mx-auto mb-6 flex flex-col items-center bg-white rounded-2xl md:shadow-lg p-6">
+  <div id="checkout-section" class=" md:w-1/3 mx-auto my-6 flex flex-col items-center bg-white rounded-2xl md:shadow-lg p-6">
     <div class="flex flex-col gap-5 items-center mb-6">
       <div class="gradient-badge w-fit p-[8px_16px] rounded-full border border-[#FED6AD] flex items-center gap-[6px]">
         <div>

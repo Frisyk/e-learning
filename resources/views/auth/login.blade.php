@@ -55,10 +55,10 @@
     <link href="{{asset('css/output.css')}}" rel="stylesheet">
     @vite('resources/css/app.css')
 </head>
-<body class="bg-slate-200">
+<body class="bg-[#ECF7FF] ">
     
   
-<div class="relative py-3 sm:max-w-sm sm:mx-auto ">
+<div class="relative bg-[#ECF7FF] py-3 sm:max-w-sm sm:mx-auto ">
     <div class="min-h-96 px-8 py-6 md:mt-38 mt-20 text-left dark:text-white bg-[#011c40] dark:bg-gray-900 rounded-xl md:shadow-lg">
       <div class="flex flex-col justify-center items-center h-full select-none">
         <div class="flex flex-col items-center justify-center gap-2 mb-8">

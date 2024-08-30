@@ -11,7 +11,7 @@
     <title>Langganan | BelajarIn.</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css" />
 </head>
-<body class="text-black font-poppins h-screen">
+<body class="text-black bg-[#ECF7FF] font-poppins h-screen">
     <nav class="flex justify-between border-b border-blue-900 bg-[#011C40] items-center p-6">
         <a href="">
             <h1 class="font-bold text-2xl text-white ml-5">BelajarIn.</h1>

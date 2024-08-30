@@ -9,7 +9,7 @@
 
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 </head>
-<body class="text-black font-poppins md:pb-[50px] scroll-smooth">
+<body class="text-black bg-[#ECF7FF] font-poppins md:pb-[50px] scroll-smooth">
     <nav class="flex justify-between border-b border-blue-900 bg-[#011C40] items-center p-6">
         <a href="">
             <h1 class="font-bold text-2xl text-white ml-5">BelajarIn.</h1>

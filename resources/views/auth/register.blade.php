@@ -75,7 +75,7 @@
     <link href="{{asset('css/output.css')}}" rel="stylesheet">
     @vite('resources/css/app.css')
 </head>
-<body class="bg-slate-200">
+<body class="bg-[#ECF7FF]">
     <div class="relative py-3 sm:max-w-sm sm:mx-auto">
         <div class="min-h-96 px-8 py-6 mt-4 text-left bg-[#011c40] dark:bg-gray-900 rounded-xl shadow-lg">
           <div class="flex flex-col justify-center items-center h-full select-none">

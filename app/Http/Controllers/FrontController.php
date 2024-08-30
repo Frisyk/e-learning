@@ -25,7 +25,8 @@ class FrontController extends Controller
         return view('front.details', compact('course'));
     }
     public function pricing(){
-        return view('front.pricing');
+        $user = Auth::user();
+        return view('front.pricing', compact('user'));
     }
     
     public function category(Category $category){

@@ -35,7 +35,7 @@
 
     </style>
 </head>
-<body class="text-black font-poppins scroll-smooth">
+<body class="text-black bg-[#ECF7FF] font-poppins scroll-smooth">
 <nav class="flex justify-between border-b border-blue-900 bg-[#011C40] items-center p-6">
     <a href="">
         <h1 class="font-bold text-2xl text-white ml-5 transition-transform duration-300 ease-in-out hover:scale-110">
@@ -106,12 +106,12 @@
         </a>
     </li>
     <li>
-        <a href="#courses" class="font-semibold transition-colors duration-300 ease-in-out hover:text-blue-400">
+        <a href="{{route('front.index')}}#courses" class="font-semibold transition-colors duration-300 ease-in-out hover:text-blue-400">
             Kursus
         </a>
     </li>
     <li>
-        <a href="#categories" class="font-semibold transition-colors duration-300 ease-in-out hover:text-blue-400">
+        <a href="{{route('front.index')}}#categories" class="font-semibold transition-colors duration-300 ease-in-out hover:text-blue-400">
             Kategori
         </a>
     </li>
@@ -457,8 +457,8 @@
             </div>
         </div>
     </section>
-    <footer class="max-w-[1200px] mx-auto flex flex-col py-20 mb-10 px-[100px] gap-[50px] bg-[#011c40] text-white rounded-[32px]">
-        <div class="flex justify-between">
+    <footer class="max-w-[1200px] mx-auto flex flex-col py-20 md:mb-10 px-10 md:px-[100px] gap-[50px] bg-[#011C40] text-white md:rounded-[32px]">
+        <div class="flex flex-col gap-5 md:flex-row justify-between">
             <a href="">
                 <h1 class="text-2xl font-bold">BelajarIn.</h1>
             </a>
@@ -518,7 +518,7 @@
             </div>
         </div>
         <div class="w-full h-[51px] flex items-end border-t border-[#E7EEF2]">
-            <p class="mx-auto text-sm text-center text-[#6D7786] -tracking-[2%]">All Rights Reserved BelajarIn. <br> 2024</p>
+            <p class="mx-auto text-sm text-center text-[#6D7786] -tracking-[2%]">All Rights Reserved <span class="font-bold text-gray-300">BelajarIn.</span><br> 2024</p>
         </div>
     </footer>
 

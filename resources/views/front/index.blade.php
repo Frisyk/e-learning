@@ -49,13 +49,13 @@
             </a>
         </li>
         <li>
-            <a href="{{route('front.index')}}#courses" class="font-semibold transition-colors duration-300 ease-in-out hover:text-blue-400">
-                Kursus
+            <a href="{{route('front.index')}}#categories" class="font-semibold transition-colors duration-300 ease-in-out hover:text-blue-400">
+                Kategori
             </a>
         </li>
         <li>
-            <a href="{{route('front.index')}}#categories" class="font-semibold transition-colors duration-300 ease-in-out hover:text-blue-400">
-                Kategori
+            <a href="{{route('front.index')}}#courses" class="font-semibold transition-colors duration-300 ease-in-out hover:text-blue-400">
+                Kursus
             </a>
         </li>
         @role('teacher|owner')
@@ -106,13 +106,13 @@
         </a>
     </li>
     <li>
-        <a href="{{route('front.index')}}#courses" class="font-semibold transition-colors duration-300 ease-in-out hover:text-blue-400">
-            Kursus
+        <a href="{{route('front.index')}}#categories" class="font-semibold transition-colors duration-300 ease-in-out hover:text-blue-400">
+            Kategori
         </a>
     </li>
     <li>
-        <a href="{{route('front.index')}}#categories" class="font-semibold transition-colors duration-300 ease-in-out hover:text-blue-400">
-            Kategori
+        <a href="{{route('front.index')}}#courses" class="font-semibold transition-colors duration-300 ease-in-out hover:text-blue-400">
+            Kursus
         </a>
     </li>
     @role('teacher|owner')

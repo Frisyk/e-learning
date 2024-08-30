@@ -67,7 +67,7 @@
         @endrole
         <li>
             <a href="{{route('front.pricing')}}" class="font-semibold transition-colors duration-300 ease-in-out hover:text-blue-400">
-                Donasi
+                Langganan
             </a>
         </li>
     </ul>
@@ -124,7 +124,7 @@
     @endrole
     <li>
         <a href="{{route('front.pricing')}}" class="font-semibold transition-colors duration-300 ease-in-out hover:text-blue-400">
-            Donasi
+            Langganan
         </a>
     </li>
 </ul>
@@ -145,50 +145,47 @@
     </div>
     <img src="assets/background/hero.png" class="md:w-1/2 bottom-0 md:mt-40" alt="hero banner">
 </section>
+<section id="categories" class=" mx-auto flex flex-col py-[70px] px-[50px] gap-[30px] ">
+    <div class="flex flex-col gap-[30px] items-center text-center">
+        
+        <div class="flex flex-col">
+            <h2 class="font-bold text-[40px] leading-[60px]">Pilih Kategori</h2>
+            <p class="text-[#6D7786] text-lg -tracking-[2%]">Cari dan Pilih Kategori Yang Kamu Inginkan</p>
+        </div>
+    </div>
+    <div class="testi w-full overflow-hidden flex flex-col gap-6 relative">
+        <div class="fade-overlay absolute z-10 h-full w-[50px] bg-gradient-to-r from-[#ECF7FF] to-[#ECF7FF00]"></div>
+        <div class="fade-overlay absolute right-0 z-10 h-full w-[50px] bg-gradient-to-r from-[#ECF7FF00] to-[#ECF7FF]"></div>
 
-
-
-        <section id="Zero-to-Success" class=" mx-auto flex flex-col py-[70px] px-[50px] gap-[30px] bg-white">
-            <div class="flex flex-col gap-[30px] items-center text-center">
-                
-                <div class="flex flex-col">
-                    <h2 class="font-bold text-[40px] leading-[60px]">Pilih Kategori</h2>
-                    <p class="text-[#6D7786] text-lg -tracking-[2%]">Cari dan Pilih Kategori Yang Kamu Inginkan</p>
+        <div class="group/slider flex flex-nowrap w-max items-center">
+            <div class="logo-container animate-[slideToR_20s_linear_infinite] group-hover/slider:pause-animate flex gap-6 pl-6 items-center flex-nowrap">
+                <div class="flex flex-wrap py-5 translate-x-0 gap-[30px]">
+                    @forelse ($categories as $category)
+                        <a href="{{ route('front.category', $category->slug) }}" class="card flex items-center p-4 gap-3 ring-4 ring-[#DADEE4] rounded-2xl hover:ring-2 hover:ring-blue-800 transition-all duration-300">
+                            <div class="w-[70px] h-[70px] flex shrink-0">
+                                <img src="{{ Storage::url($category->icon) }}" class="object-contain" alt="{{ $category->name }}">
+                            </div>
+                            <p class="font-bold text-lg">{{ $category->name }}</p>
+                        </a>
+                    @empty
+                        <p>Tidak Ada Kategori Tersedia.</p>
+                    @endforelse            
+                    @forelse ($categories as $category)
+                        <a href="{{ route('front.category', $category->slug) }}" class="card flex items-center p-4 gap-3 ring-4 ring-[#DADEE4] rounded-2xl hover:ring-2 hover:ring-blue-800 transition-all duration-300">
+                            <div class=" h-[70px] flex shrink-0">
+                                <img src="{{ Storage::url($category->icon) }}" class="object-contain" alt="{{ $category->name }}">
+                            </div>
+                            <p class="font-bold text-lg">{{ $category->name }}</p>
+                        </a>
+                    @empty
+                        <p>Tidak Ada Kategori Tersedia.</p>
+                    @endforelse            
                 </div>
             </div>
-            <div class="testi w-full overflow-hidden flex flex-col gap-6 relative">
-                <div class="fade-overlay absolute z-10 h-full w-[50px] bg-gradient-to-r from-white to-[#F5F8FA00]"></div>
-                <div class="fade-overlay absolute right-0 z-10 h-full w-[50px] bg-gradient-to-r from-[#F5F8FA00] to-white"></div>
-        
-                <div class="group/slider flex flex-nowrap w-max items-center">
-                    <div class="logo-container animate-[slideToR_20s_linear_infinite] group-hover/slider:pause-animate flex gap-6 pl-6 items-center flex-nowrap">
-                        <div class="flex flex-wrap py-5 translate-x-0 gap-[30px]">
-                            @forelse ($categories as $category)
-                                <a href="{{ route('front.category', $category->slug) }}" class="card flex items-center p-4 gap-3 ring-4 ring-[#DADEE4] rounded-2xl hover:ring-2 hover:ring-blue-800 transition-all duration-300">
-                                    <div class="w-[70px] h-[70px] flex shrink-0">
-                                        <img src="{{ Storage::url($category->icon) }}" class="object-contain" alt="{{ $category->name }}">
-                                    </div>
-                                    <p class="font-bold text-lg">{{ $category->name }}</p>
-                                </a>
-                            @empty
-                                <p>Tidak Ada Kategori Tersedia.</p>
-                            @endforelse            
-                            @forelse ($categories as $category)
-                                <a href="{{ route('front.category', $category->slug) }}" class="card flex items-center p-4 gap-3 ring-4 ring-[#DADEE4] rounded-2xl hover:ring-2 hover:ring-blue-800 transition-all duration-300">
-                                    <div class=" h-[70px] flex shrink-0">
-                                        <img src="{{ Storage::url($category->icon) }}" class="object-contain" alt="{{ $category->name }}">
-                                    </div>
-                                    <p class="font-bold text-lg">{{ $category->name }}</p>
-                                </a>
-                            @empty
-                                <p>Tidak Ada Kategori Tersedia.</p>
-                            @endforelse            
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
+        </div>
+    </div>
+</section>
+
        
     <section id="courses" class="md:w-4/5 md:p-6 p-2 mx-auto mt-20 gap-[30px] bg-[#011c40] md:rounded-[32px]">
         <h1 class="text-white text-center mx-10 font-bold text-4xl leading-relaxed">Jelajahi Kelas</h1>
@@ -257,51 +254,42 @@
             </div>
         </div>
     </section>
-    <section id="Pricing" class="max-w-[1200px] mx-auto flex justify-between items-center p-[70px_100px] pl-0">
-        <div class="relative">
-            <div class="w-[500px] h-[700px]">
-                <img src="assets/background/school.png" alt="icon">
+<section id="Pricing" class="max-w-[1200px] mx-auto flex flex-col md:flex-row justify-between items-center p-8 md:p-[70px_100px]">
+    <div class="relative mb-8 md:mb-0">
+        <div class="w-full md:w-[500px] md:h-[700px]">
+            <img src="assets/background/school.png" alt="icon" class="w-full h-full object-cover">
+        </div>
+        <div class="absolute transform -translate-y-1/2 top-1/2 left-1/2 md:left-[300px] bg-white z-10 rounded-2xl p-4 flex flex-col gap-4 shadow-lg w-[90%] max-w-[230px]">
+            <p class="font-semibold text-lg">Materials</p>
+            <div class="flex items-center gap-2">
+                <img src="assets/icon/video-play.svg" alt="icon" class="w-6 h-6">
+                <p class="font-medium">Videos</p>
             </div>
-            <div class="absolute w-[230px] transform -translate-y-1/2 top-1/2 left-[300px] bg-white z-10 rounded-[20px] gap-4 p-4 flex flex-col shadow-[0_17px_30px_0_#0D051D0A]">
-                <p class="font-semibold">Materials</p>
-                <div class="flex gap-2 items-center">
-                    <div>
-                        <img src="assets/icon/video-play.svg" alt="icon">
-                    </div>
-                    <p class="font-medium">Videos</p>
-                </div>
-                <div class="flex gap-2 items-center">
-                    <div>
-                        <img src="assets/icon/note-favorite.svg" alt="icon">
-                    </div>
-                    <p class="font-medium">Handbook</p>
-                </div>
-                <div class="flex gap-2 items-center">
-                    <div>
-                        <img src="assets/icon/3dcube.svg" alt="icon">
-                    </div>
-                    <p class="font-medium">Assets</p>
-                </div>
-                <div class="flex gap-2 items-center">
-                    <div>
-                        <img src="assets/icon/award.svg" alt="icon">
-                    </div>
-                    <p class="font-medium">Certificates</p>
-                </div>
-                <div class="flex gap-2 items-center">
-                    <div>
-                        <img src="assets/icon/book.svg" alt="icon">
-                    </div>
-                    <p class="font-medium">Documentations</p>
-                </div>
+            <div class="flex items-center gap-2">
+                <img src="assets/icon/note-favorite.svg" alt="icon" class="w-6 h-6">
+                <p class="font-medium">Handbook</p>
+            </div>
+            <div class="flex items-center gap-2">
+                <img src="assets/icon/3dcube.svg" alt="icon" class="w-6 h-6">
+                <p class="font-medium">Assets</p>
+            </div>
+            <div class="flex items-center gap-2">
+                <img src="assets/icon/award.svg" alt="icon" class="w-6 h-6">
+                <p class="font-medium">Certificates</p>
+            </div>
+            <div class="flex items-center gap-2">
+                <img src="assets/icon/book.svg" alt="icon" class="w-6 h-6">
+                <p class="font-medium">Documentations</p>
             </div>
         </div>
-        <div class="flex flex-col text-left gap-[30px]">
-            <h2 class="font-bold text-[36px] leading-[52px]">Belajar Dimana Saja, <br>Dan Kapan Saja Kamu Mau</h2>
-            <p class="text-[#475466] text-lg leading-[34px]">Mengembangkan keterampilan baru akan lebih fleksibel tanpa <br> kami membantu Anda untuk mengakses semua materi kursus.</p>
-            {{-- <a href="" class="text-white font-semibold rounded-[30px] p-[16px_32px] bg-blue-800 transition-all duration-300 hover:shadow-[0_10px_20px_0_#FF612980] w-fit">Check Pricing</a> --}}
-        </div>
-    </section>
+    </div>
+    <div class="flex flex-col text-left gap-8">
+        <h2 class="font-bold text-[32px] md:text-[36px] leading-snug md:leading-[52px]">Belajar Dimana Saja,<br>Dan Kapan Saja Kamu Mau</h2>
+        <p class="text-[#475466] text-base md:text-lg leading-relaxed md:leading-[34px]">Mengembangkan keterampilan baru akan lebih fleksibel tanpa kami membantu Anda untuk mengakses semua materi kursus.</p>
+        {{-- <a href="" class="text-white font-semibold rounded-full py-4 px-8 bg-blue-800 transition-all duration-300 hover:shadow-lg w-fit">Check Pricing</a> --}}
+    </div>
+</section>
+
     <section id="Zero-to-Success" class="max-w-[1200px] mx-auto flex flex-col py-[70px] px-[50px] gap-[30px] bg-[#011c40] rounded-[32px]">
         <div class="flex flex-col gap-[30px] items-center text-center">
             <div class="bg-blue-50 w-fit p-[8px_16px] rounded-full border border-blue-800 flex items-center gap-[6px]">
@@ -399,8 +387,8 @@
             </div>
         </div>
     </section>
-    <section id="FAQ" class="max-w-[1200px] mx-auto flex flex-col py-[70px] px-[100px]">
-        <div class="flex justify-between items-center">
+    <section id="FAQ" class="md:max-w-[1200px] mx-auto flex flex-col py-[70px] md:px-[100px]">
+        <div class="flex flex-col md:flex-row justify-between items-center">
             <div class="flex flex-col gap-[30px]">
                 
                 <div class="flex flex-col">
@@ -409,7 +397,7 @@
                 </div>
                 <a href="" class="text-white font-semibold rounded-[30px] p-[16px_32px] bg-blue-800 transition-all duration-300 hover:shadow-[0_10px_20px_0_#FF612980] w-fit">Hubungi Kami</a>
             </div>
-            <div class="flex flex-col gap-[30px] w-[552px] shrink-0">
+            <div class="flex flex-col gap-[30px] md:w-[552px] shrink-0">
                 <div class="flex flex-col p-5 rounded-2xl bg-[#FFF8F4] has-[.hide]:bg-transparent border-t-4 border-blue-800 has-[.hide]:border-0 w-full">
                     <button class="accordion-button flex justify-between gap-1 items-center" data-accordion="accordion-faq-1">
                         <span class="font-semibold text-lg text-left">Apakah pemula bisa mengikuti kursus ini?</span>

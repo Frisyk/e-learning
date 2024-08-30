@@ -9,90 +9,150 @@
     @vite('resources/css/app.css')
     <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
     <title>BelajarIn | Home</title>
+    <style>
+        @keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-text {
+    opacity: 0;
+    animation: fadeInUp 1s ease forwards;
+    animation-delay: 0.3s;
+}
+
+.animate-button {
+    opacity: 0;
+    animation: fadeInUp 1s ease forwards;
+    animation-delay: 0.5s;
+}
+
+    </style>
 </head>
 <body class="text-black font-poppins scroll-smooth">
-    <nav class="flex justify-between border-b border-blue-900 bg-[#011C40] items-center p-6">
-        <a href="">
-            <h1 class="font-bold text-2xl text-white ml-5">BelajarIn.</h1>
-        </a>
-        <ul class="md:flex items-center hidden gap-5 text-white">
-            <li>
-                <a href="{{route('front.index')}}" class="font-semibold">Home</a>
-            </li>
-            <li>
-                <a href="{{route('front.index')}}#courses" class="font-semibold">Courses</a>
-            </li>
-            <li>
-                <a href="{{route('front.index')}}#categories" class="font-semibold">Category</a>
-            </li>
-            @role('teacher|owner')
-            <li>
-                <a href="{{route('dashboard')}}" class="font-semibold">Dashboard</a>
-            </li>
-            @endrole
-            <li>
-                <a href="{{route('front.pricing')}}" class="font-semibold">Donation</a>
-            </li>
-        </ul>
-        @auth
-            
-        <div class="flex gap-[10px] items-center mr-5">
-            <div class="flex flex-col items-end justify-center">
-                <p class="font-semibold text-white">Hi, {{Auth::user()->name}}</p>
-                @if (Auth::user()->hasActiveSubscription())
-                    
-                <p class="p-[2px_10px] rounded-full bg-blue-800 font-semibold text-xs text-white text-center">PRO</p>
-                @endif
-            </div>
-            <a href="{{route('dashboard')}}">
-                <div class="w-[56px] h-[56px] overflow-hidden rounded-full flex shrink-0">
-                    <img src="{{Storage::url(Auth::user()->avatar)}}" class="w-full h-full object-cover" alt="photo">
-                </div>
+<nav class="flex justify-between border-b border-blue-900 bg-[#011C40] items-center p-6">
+    <a href="">
+        <h1 class="font-bold text-2xl text-white ml-5 transition-transform duration-300 ease-in-out hover:scale-110">
+            BelajarIn.
+        </h1>
+    </a>
+    <ul class="md:flex items-center hidden gap-5 text-white">
+        <li>
+            <a href="{{route('front.index')}}" class="font-semibold transition-colors duration-300 ease-in-out hover:text-blue-400">
+                Beranda
             </a>
-        </div>
-        @endauth
-        @guest
-        <div class="flex gap-[10px] items-center">
-            <a href="{{route('register')}}" class="text-white font-semibold rounded-[30px] p-[16px_32px] ring-1 ring-white transition-all duration-300 hover:ring-2 hover:ring-blue-800">Sign Up</a>
-            <a href="{{route('login')}}" class="text-white font-semibold rounded-[30px] p-[16px_32px] bg-blue-800 transition-all duration-300 hover:shadow-[0_10px_20px_0_#FF612980]">Sign In</a>
-        </div>
-        @endguest
-    </nav>
-    <ul class="flex md:hidden items-center justify-center bg-[#011C40] mx-auto py-5 text-center w-full  gap-5 text-white">
-        <li>
-            <a href="{{route('front.index')}}" class="font-semibold">Home</a>
         </li>
         <li>
-            <a href="#courses" class="font-semibold">Courses</a>
+            <a href="{{route('front.index')}}#courses" class="font-semibold transition-colors duration-300 ease-in-out hover:text-blue-400">
+                Kursus
+            </a>
         </li>
         <li>
-            <a href="#categories" class="font-semibold">Category</a>
+            <a href="{{route('front.index')}}#categories" class="font-semibold transition-colors duration-300 ease-in-out hover:text-blue-400">
+                Kategori
+            </a>
         </li>
         @role('teacher|owner')
         <li>
-            <a href="{{route('dashboard')}}" class="font-semibold">Dashboard</a>
+            <a href="{{route('dashboard')}}" class="font-semibold transition-colors duration-300 ease-in-out hover:text-blue-400">
+                Dashboard
+            </a>
         </li>
         @endrole
         <li>
-            <a href="{{route('front.pricing')}}" class="font-semibold">Donation</a>
+            <a href="{{route('front.pricing')}}" class="font-semibold transition-colors duration-300 ease-in-out hover:text-blue-400">
+                Donasi
+            </a>
         </li>
     </ul>
-    <section class="bg-[#011c40] flex-col md:flex-row flex w-full">
-        <div class="text flex flex-col gap-10 flex-1 p-6 md:pl-20 md:py-40">
-            <h1 class="text-7xl font-bold leading-normal text-white">Temukan, Mulai, <br> dan Tekuni</h1>
-            <p class="text-xl leading-relaxed text-slate-300">"Jika kamu tidak sanggup menahan lelahnya belajar maka kamu harus sanggup menahan perihnya kebodohan" - Imam Syafi'i</p>
-            <a href="#courses"><button class="text-xl font-semibold w-fit text-white p-6 px-10 rounded-full bg-blue-800 hover:shadow-[0_10px_20px_0_#FF612980]">➡️Mulai Belajar</button></a>
+    @auth
+    <div class="flex gap-[10px] items-center mr-5">
+        <div class="flex flex-col items-end justify-center">
+            <p class="font-semibold text-white">Hi, {{Auth::user()->name}}</p>
+            @if (Auth::user()->hasActiveSubscription())
+            <p class="p-[2px_10px] rounded-full bg-blue-800 font-semibold text-xs text-white text-center transition-transform duration-300 ease-in-out hover:scale-105">
+                PRO
+            </p>
+            @endif
         </div>
-        <img src="assets/background/hero.png" class="md:w-1/2 bottom-0 md:mt-40" alt="hero banner">
+        <a href="{{route('dashboard')}}">
+            <div class="w-[56px] h-[56px] overflow-hidden rounded-full flex shrink-0 transition-transform duration-300 ease-in-out hover:scale-110">
+                <img src="{{Storage::url(Auth::user()->avatar)}}" class="w-full h-full object-cover" alt="photo">
+            </div>
+        </a>
+    </div>
+    @endauth
+    @guest
+    <div class="flex gap-[10px] items-center">
+        <a href="{{route('register')}}" class="text-white font-semibold rounded-[30px] p-[16px_32px] ring-1 ring-white transition-all duration-300 hover:ring-2 hover:ring-blue-800">
+            Sign Up
+        </a>
+        <a href="{{route('login')}}" class="text-white font-semibold rounded-[30px] p-[16px_32px] bg-blue-800 transition-all duration-300 hover:shadow-[0_10px_20px_0_#FF612980]">
+            Sign In
+        </a>
+    </div>
+    @endguest
+</nav>
+<ul class="flex md:hidden items-center justify-center bg-[#011C40] mx-auto py-5 text-center w-full gap-5 text-white">
+    <li>
+        <a href="{{route('front.index')}}" class="font-semibold transition-colors duration-300 ease-in-out hover:text-blue-400">
+            Beranda
+        </a>
+    </li>
+    <li>
+        <a href="#courses" class="font-semibold transition-colors duration-300 ease-in-out hover:text-blue-400">
+            Kursus
+        </a>
+    </li>
+    <li>
+        <a href="#categories" class="font-semibold transition-colors duration-300 ease-in-out hover:text-blue-400">
+            Kategori
+        </a>
+    </li>
+    @role('teacher|owner')
+    <li>
+        <a href="{{route('dashboard')}}" class="font-semibold transition-colors duration-300 ease-in-out hover:text-blue-400">
+            Dashboard
+        </a>
+    </li>
+    @endrole
+    <li>
+        <a href="{{route('front.pricing')}}" class="font-semibold transition-colors duration-300 ease-in-out hover:text-blue-400">
+            Donasi
+        </a>
+    </li>
+</ul>
 
-    </section>
+<section id="hero-section" class="bg-[#011c40] flex-col md:flex-row flex w-full">
+    <div class="text flex flex-col gap-10 flex-1 p-6 md:pl-20 md:py-40">
+        <h1 class="animate-text text-7xl font-bold leading-normal text-white">
+            Temukan, Mulai, <br> dan Tekuni
+        </h1>
+        <p class="animate-text text-xl leading-relaxed text-slate-300">
+            "Jika kamu tidak sanggup menahan lelahnya belajar maka kamu harus sanggup menahan perihnya kebodohan" - Imam Syafi'i
+        </p>
+        <a href="#courses">
+            <button class="animate-button text-xl font-semibold w-fit text-white p-6 px-10 rounded-full bg-blue-800 hover:shadow-[0_10px_20px_0_#FF612980]">
+                ➡️Mulai Belajar
+            </button>
+        </a>
+    </div>
+    <img src="assets/background/hero.png" class="md:w-1/2 bottom-0 md:mt-40" alt="hero banner">
+</section>
+
 
 
         <section id="Zero-to-Success" class=" mx-auto flex flex-col py-[70px] px-[50px] gap-[30px] bg-white">
             <div class="flex flex-col gap-[30px] items-center text-center">
                 
                 <div class="flex flex-col">
-                    <h2 class="font-bold text-[40px] leading-[60px]">Browse Categories</h2>
+                    <h2 class="font-bold text-[40px] leading-[60px]">Pilih Kategori</h2>
                     <p class="text-[#6D7786] text-lg -tracking-[2%]">Cari dan Pilih Kategori Yang Kamu Inginkan</p>
                 </div>
             </div>
@@ -111,7 +171,7 @@
                                     <p class="font-bold text-lg">{{ $category->name }}</p>
                                 </a>
                             @empty
-                                <p>No categories available.</p>
+                                <p>Tidak Ada Kategori Tersedia.</p>
                             @endforelse            
                             @forelse ($categories as $category)
                                 <a href="{{ route('front.category', $category->slug) }}" class="card flex items-center p-4 gap-3 ring-4 ring-[#DADEE4] rounded-2xl hover:ring-2 hover:ring-blue-800 transition-all duration-300">
@@ -121,7 +181,7 @@
                                     <p class="font-bold text-lg">{{ $category->name }}</p>
                                 </a>
                             @empty
-                                <p>No categories available.</p>
+                                <p>Tidak Ada Kategori Tersedia.</p>
                             @endforelse            
                         </div>
                     </div>
@@ -131,7 +191,7 @@
         
        
     <section id="courses" class="md:w-4/5 md:p-6 p-2 mx-auto mt-20 gap-[30px] bg-[#011c40] md:rounded-[32px]">
-        <h1 class="text-white text-center mx-10 font-bold text-4xl leading-relaxed">Explore Class</h1>
+        <h1 class="text-white text-center mx-10 font-bold text-4xl leading-relaxed">Jelajahi Kelas</h1>
         <h1 class="mx-10 text-[#6D7786] text-center my-4 text-lg -tracking-[2%]">Tentukan Kelas Pilihanmu dan Mulai Belajar</h1>
         <div class="relative md:px-10 px-4 py-5">
             <button class="btn-prev bg-white rounded-full absolute rotate-180 md:-left-[52px] -left-2 z-10 top-[216px]">
@@ -170,7 +230,7 @@
                                             <img src="{{ Storage::url($student->avatar) }}" class="w-8 h-8 rounded-full border-2 border-white" alt="student">
                                         @endif
                                     @empty
-                                        <span class="text-[6px] font-medium text-gray-600 pl-2">No students available</span>
+                                        <span class="text-[6px] font-medium text-gray-600 pl-2">Belum ada siswa</span>
                                     @endforelse
                                 </div>
                                 
@@ -178,7 +238,7 @@
                                 <div class="flex items-center gap-2 ml-auto">
                                     <div class="flex flex-col">
                                     
-                                        <p class="text-xs">Teacher</p>
+                                        <p class="text-xs">Guru</p>
                                         <p class='text-sm font-semibold capitalize'>{{$course->teacher->user->name}}</p>
                                     
                                     </div>
@@ -237,8 +297,8 @@
             </div>
         </div>
         <div class="flex flex-col text-left gap-[30px]">
-            <h2 class="font-bold text-[36px] leading-[52px]">Learn From Anywhere,<br>Anytime You Want</h2>
-            <p class="text-[#475466] text-lg leading-[34px]">Growing new skills would be more flexible without <br> limit we help you to access all course materials.</p>
+            <h2 class="font-bold text-[36px] leading-[52px]">Belajar Dimana Saja, <br>Dan Kapan Saja Kamu Mau</h2>
+            <p class="text-[#475466] text-lg leading-[34px]">Mengembangkan keterampilan baru akan lebih fleksibel tanpa <br> kami membantu Anda untuk mengakses semua materi kursus.</p>
             {{-- <a href="" class="text-white font-semibold rounded-[30px] p-[16px_32px] bg-blue-800 transition-all duration-300 hover:shadow-[0_10px_20px_0_#FF612980] w-fit">Check Pricing</a> --}}
         </div>
     </section>
@@ -248,11 +308,11 @@
                 <div>
                     <img src="assets/icon/medal-star.svg" alt="icon">
                 </div>
-                <p class="font-medium text-sm text-blue-800">Zero to Success People</p>
+                <p class="font-medium text-sm text-blue-800">Cerita Sukses</p>
             </div>
             <div class="flex flex-col">
-                <h2 class="font-bold text-[40px] leading-[60px] text-white">Happy & Success Students</h2>
-                <p class="text-[#6D7786] text-lg -tracking-[2%]">Acquiring skills and new high paying career become much easier</p>
+                <h2 class="font-bold text-[40px] leading-[60px] text-white">Siswa yang Bahagia & Sukses</h2>
+                <p class="text-[#6D7786] text-lg -tracking-[2%]">Memperoleh keterampilan dan karier baru dengan bayaran tinggi menjadi lebih mudah</p>
             </div>
         </div>
         <div class="testi w-full overflow-hidden flex flex-col gap-6 relative">
@@ -344,15 +404,15 @@
             <div class="flex flex-col gap-[30px]">
                 
                 <div class="flex flex-col">
-                    <h2 class="font-bold text-[36px] leading-[52px]">Get Your Answers</h2>
-                    <p class="text-lg text-[#475466]">It’s time to upgrade skills without limits!</p>
+                    <h2 class="font-bold text-[36px] leading-[52px]">Dapatkan Jawaban Anda</h2>
+                    <p class="text-lg text-[#475466]">Saatnya meningkatkan keterampilan tanpa batas!</p>
                 </div>
-                <a href="" class="text-white font-semibold rounded-[30px] p-[16px_32px] bg-blue-800 transition-all duration-300 hover:shadow-[0_10px_20px_0_#FF612980] w-fit">Contact Our Sales</a>
+                <a href="" class="text-white font-semibold rounded-[30px] p-[16px_32px] bg-blue-800 transition-all duration-300 hover:shadow-[0_10px_20px_0_#FF612980] w-fit">Hubungi Kami</a>
             </div>
             <div class="flex flex-col gap-[30px] w-[552px] shrink-0">
                 <div class="flex flex-col p-5 rounded-2xl bg-[#FFF8F4] has-[.hide]:bg-transparent border-t-4 border-blue-800 has-[.hide]:border-0 w-full">
                     <button class="accordion-button flex justify-between gap-1 items-center" data-accordion="accordion-faq-1">
-                        <span class="font-semibold text-lg text-left">Can beginner join the course?</span>
+                        <span class="font-semibold text-lg text-left">Apakah pemula bisa mengikuti kursus ini?</span>
                         <div class="arrow w-9 h-9 flex shrink-0">
                             <img src="assets/icon/add.svg" alt="icon">
                         </div>
@@ -363,7 +423,7 @@
                 </div>
                 <div class="flex flex-col p-5 rounded-2xl bg-[#FFF8F4] has-[.hide]:bg-transparent border-t-4 border-blue-800 has-[.hide]:border-0 w-full">
                     <button class="accordion-button flex justify-between gap-1 items-center" data-accordion="accordion-faq-2">
-                        <span class="font-semibold text-lg text-left">How long does the implementation take?</span>
+                        <span class="font-semibold text-lg text-left">Berapa lama waktu yang dibutuhkan untuk implementasi?</span>
                         <div class="arrow w-9 h-9 flex shrink-0">
                             <img src="assets/icon/add.svg" alt="icon">
                         </div>
@@ -374,7 +434,7 @@
                 </div>
                 <div class="flex flex-col p-5 rounded-2xl bg-[#FFF8F4] has-[.hide]:bg-transparent border-t-4 border-blue-800 has-[.hide]:border-0 w-full">
                     <button class="accordion-button flex justify-between gap-1 items-center" data-accordion="accordion-faq-3">
-                        <span class="font-semibold text-lg text-left">Do you provide the job-guarantee program?</span>
+                        <span class="font-semibold text-lg text-left">Apakah Anda menyediakan program jaminan pekerjaan?</span>
                         <div class="arrow w-9 h-9 flex shrink-0">
                             <img src="assets/icon/add.svg" alt="icon">
                         </div>
@@ -385,7 +445,7 @@
                 </div>
                 <div class="flex flex-col p-5 rounded-2xl bg-[#FFF8F4] has-[.hide]:bg-transparent border-t-4 border-blue-800 has-[.hide]:border-0 w-full">
                     <button class="accordion-button flex justify-between gap-1 items-center" data-accordion="accordion-faq-4">
-                        <span class="font-semibold text-lg text-left">How to issue all course certificates?</span>
+                        <span class="font-semibold text-lg text-left">Bagaimana cara menerbitkan semua sertifikat kursus?</span>
                         <div class="arrow w-9 h-9 flex shrink-0">
                             <img src="assets/icon/add.svg" alt="icon">
                         </div>
@@ -469,6 +529,23 @@
         crossorigin="anonymous"></script>
     <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
     <script src={{asset('js/main.js')}}></script>
-    
+    <script>
+        window.addEventListener('scroll', function() {
+    const section = document.getElementById('hero-section');
+    const sectionPosition = section.getBoundingClientRect().top;
+    const screenPosition = window.innerHeight / 1.2;
+
+    if (sectionPosition < screenPosition) {
+        const texts = section.querySelectorAll('.animate-text');
+        texts.forEach((text, index) => {
+            text.style.animationDelay = `${index * 0.2}s`;
+            text.classList.add('visible');
+        });
+        const button = section.querySelector('.animate-button');
+        button.classList.add('visible');
+    }
+});
+
+    </script>
 </body>
 </html>

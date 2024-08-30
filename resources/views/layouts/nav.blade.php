@@ -43,10 +43,10 @@
         @guest
         <div class="flex gap-4 items-center">
             <a href="{{ route('register') }}" class="text-white font-semibold rounded-full py-4 px-8 ring-1 ring-white transition-all duration-300 hover:ring-2 hover:ring-[#FF6129]">
-                Sign Up
+                Registrasi
             </a>
             <a href="{{ route('login') }}" class="text-white font-semibold rounded-full py-4 px-8 bg-[#FF6129] transition-all duration-300 hover:shadow-lg">
-                Sign In
+                Login
             </a>
         </div>
         @endguest

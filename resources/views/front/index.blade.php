@@ -49,13 +49,13 @@
             </a>
         </li>
         <li>
-            <a href="{{route('front.index')}}#courses" class="font-semibold transition-colors duration-300 ease-in-out hover:text-blue-400">
-                Kursus
+            <a href="{{route('front.index')}}#categories" class="font-semibold transition-colors duration-300 ease-in-out hover:text-blue-400">
+                Kategori
             </a>
         </li>
         <li>
-            <a href="{{route('front.index')}}#categories" class="font-semibold transition-colors duration-300 ease-in-out hover:text-blue-400">
-                Kategori
+            <a href="{{route('front.index')}}#courses" class="font-semibold transition-colors duration-300 ease-in-out hover:text-blue-400">
+                Kursus
             </a>
         </li>
         @role('teacher|owner')
@@ -67,7 +67,7 @@
         @endrole
         <li>
             <a href="{{route('front.pricing')}}" class="font-semibold transition-colors duration-300 ease-in-out hover:text-blue-400">
-                Donasi
+                Langganan
             </a>
         </li>
     </ul>
@@ -106,13 +106,13 @@
         </a>
     </li>
     <li>
-        <a href="{{route('front.index')}}#courses" class="font-semibold transition-colors duration-300 ease-in-out hover:text-blue-400">
-            Kursus
+        <a href="{{route('front.index')}}#categories" class="font-semibold transition-colors duration-300 ease-in-out hover:text-blue-400">
+            Kategori
         </a>
     </li>
     <li>
-        <a href="{{route('front.index')}}#categories" class="font-semibold transition-colors duration-300 ease-in-out hover:text-blue-400">
-            Kategori
+        <a href="{{route('front.index')}}#courses" class="font-semibold transition-colors duration-300 ease-in-out hover:text-blue-400">
+            Kursus
         </a>
     </li>
     @role('teacher|owner')
@@ -124,7 +124,7 @@
     @endrole
     <li>
         <a href="{{route('front.pricing')}}" class="font-semibold transition-colors duration-300 ease-in-out hover:text-blue-400">
-            Donasi
+            Langganan
         </a>
     </li>
 </ul>
@@ -148,7 +148,7 @@
 
 
 
-        <section id="Zero-to-Success" class=" mx-auto flex flex-col py-[70px] px-[50px] gap-[30px] bg-white">
+        <section id="categories" class=" mx-auto flex flex-col py-[70px] px-[50px] gap-[30px] bg-white">
             <div class="flex flex-col gap-[30px] items-center text-center">
                 
                 <div class="flex flex-col">

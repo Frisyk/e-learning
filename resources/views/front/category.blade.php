@@ -16,13 +16,13 @@
         </a>
         <ul class="md:flex items-center hidden gap-5 text-white">
             <li>
-                <a href="{{route('front.index')}}" class="font-semibold">Home</a>
+                <a href="{{route('front.index')}}" class="font-semibold">Beranda</a>
             </li>
             <li>
-                <a href="{{route('front.index')}}#courses" class="font-semibold">Courses</a>
+                <a href="{{route('front.index')}}#categories" class="font-semibold">Kategori</a>
             </li>
             <li>
-                <a href="{{route('front.index')}}#categories" class="font-semibold">Category</a>
+                <a href="{{route('front.index')}}#courses" class="font-semibold">Kursus</a>
             </li>
             @role('teacher|owner')
             <li>
@@ -30,7 +30,7 @@
             </li>
             @endrole
             <li>
-                <a href="{{route('front.pricing')}}" class="font-semibold">Donation</a>
+                <a href="{{route('front.pricing')}}" class="font-semibold">Langganan</a>
             </li>
         </ul>
         @auth
@@ -59,13 +59,13 @@
     </nav>
     <ul class="flex md:hidden items-center justify-center bg-[#011C40] mx-auto py-5 text-center w-full  gap-5 text-white">
         <li>
-            <a href="{{route('front.index')}}" class="font-semibold">Home</a>
+            <a href="{{route('front.index')}}" class="font-semibold">Beranda</a>
         </li>
         <li>
-            <a href="{{route('front.index')}}#courses" class="font-semibold">Courses</a>
+            <a href="{{route('front.index')}}#categories" class="font-semibold">Kategori</a>
         </li>
         <li>
-            <a href="{{route('front.index')}}#categories" class="font-semibold">Category</a>
+            <a href="{{route('front.index')}}#courses" class="font-semibold">Kursus</a>
         </li>
         @role('teacher|owner')
         <li>
@@ -73,7 +73,7 @@
         </li>
         @endrole
         <li>
-            <a href="{{route('front.pricing')}}" class="font-semibold">Donation</a>
+            <a href="{{route('front.pricing')}}" class="font-semibold">Langganan</a>
         </li>
     </ul>
     <section id="Top-Categories" class="max-w-[1200px] mx-auto flex flex-col py-[70px] px-4 md:px-[100px] gap-[30px]">

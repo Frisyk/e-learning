@@ -90,10 +90,10 @@
         @endauth
         @guest
         <div class="flex gap-[10px] items-center">
-            <a href="{{route('register')}}" class="text-white font-semibold rounded-[30px] p-[16px_32px] ring-1 ring-white transition-all duration-300 hover:ring-2 hover:ring-blue-800">
+            <a href="{{route('register')}}" class="text-white font-semibold rounded-[30px] md:p-[16px_32px] p-2 text-xs  p-[16px_32px] ring-1 ring-white transition-all duration-300 hover:ring-2 hover:ring-blue-800">
                 Sign Up
             </a>
-            <a href="{{route('login')}}" class="text-white font-semibold rounded-[30px] p-[16px_32px] bg-blue-800 transition-all duration-300 hover:shadow-[0_10px_20px_0_#FF612980]">
+            <a href="{{route('login')}}" class="text-white font-semibold rounded-[30px] md:p-[16px_32px] p-2 text-xs  p-[16px_32px] bg-blue-800 transition-all duration-300 hover:shadow-[0_10px_20px_0_#FF612980]">
                 Sign In
             </a>
         </div>
@@ -398,7 +398,7 @@
                     <h2 class="font-bold text-[36px] leading-[52px]">Dapatkan Jawaban Anda</h2>
                     <p class="text-lg text-[#475466]">Saatnya meningkatkan keterampilan tanpa batas!</p>
                 </div>
-                <a href="" class="text-white font-semibold rounded-[30px] p-[16px_32px] bg-blue-800 transition-all duration-300 hover:shadow-[0_10px_20px_0_#FF612980] w-fit">Hubungi Kami</a>
+                <a href="" class="text-white font-semibold rounded-[30px] md:p-[16px_32px] p-2 text-xs  p-[16px_32px] bg-blue-800 transition-all duration-300 hover:shadow-[0_10px_20px_0_#FF612980] w-fit">Hubungi Kami</a>
             </div>
             <div class="flex flex-col gap-[30px] md:w-[552px] shrink-0">
                 <div class="flex flex-col p-5 rounded-2xl bg-[#FFF8F4] has-[.hide]:bg-transparent border-t-4 border-blue-800 has-[.hide]:border-0 w-full">

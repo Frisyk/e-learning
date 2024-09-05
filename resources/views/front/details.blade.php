@@ -71,10 +71,10 @@
         @endauth
         @guest
         <div class="flex gap-[10px] items-center">
-            <a href="{{route('register')}}" class="text-white font-semibold rounded-[30px] md:p-[16px_32px] p-2 text-xs  p-[16px_32px] ring-1 ring-white transition-all duration-300 hover:ring-2 hover:ring-blue-800">
+            <a href="{{route('register')}}" class="text-white font-semibold rounded-[30px] md:p-[16px_32px] p-2 text-xs  ring-1 ring-white transition-all duration-300 hover:ring-2 hover:ring-blue-800">
                 Sign Up
             </a>
-            <a href="{{route('login')}}" class="text-white font-semibold rounded-[30px] md:p-[16px_32px] p-2 text-xs  p-[16px_32px] bg-blue-800 transition-all duration-300 hover:shadow-[0_10px_20px_0_#FF612980]">
+            <a href="{{route('login')}}" class="text-white font-semibold rounded-[30px] md:p-[16px_32px] p-2 text-xs  bg-blue-800 transition-all duration-300 hover:shadow-[0_10px_20px_0_#FF612980]">
                 Sign In
             </a>
         </div>
@@ -154,7 +154,12 @@
     </section>
     <section id="Video-Resources" class="flex flex-col mb-20 mx-5">
         <div class="max-w-[1100px] w-full mx-auto flex flex-col gap-3">
-            <h1 class="title font-extrabold text-[30px] leading-[45px] text-center sm:text-left">{{$course->name}}</h1>
+            <div class="flex gap-3 items-center">
+                <h1 class="title font-extrabold text-[30px] leading-[45px] text-center sm:text-left">{{$course->name}}</h1>
+                <a href="{{route('front.roadmap', $course->slug)}}">
+                        <p class="font-semibold transition-all text-xl px-6 py-3 bg-[#1243A6] text-white rounded-xl duration-300">✨Buat RoadmapMu!</p>
+                </a>            
+            </div>            
             <div class="flex items-center justify-center sm:justify-start gap-5">
                 <div class="flex items-center gap-[6px]">
                     <div>

@@ -28,6 +28,8 @@ Route::middleware('auth')->group(function () {
     // must logged in to process transaction
     Route::get('/checkout', [FrontController::class, 'checkout'])->name('front.checkout')
     ->middleware('role:student');
+    Route::get('/roadmap/{occupation:slug}', [FrontController::class, 'roadmap'])->name('front.roadmap')
+    ->middleware('role:student');
 
     Route::post('/checkout/store', [FrontController::class, 'checkout_store'])->name('front.checkout.store')
     ->middleware('role:student');

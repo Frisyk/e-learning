@@ -8,6 +8,7 @@ use App\Models\Category;
 use App\Models\Course;
 use App\Models\CourseVideo;
 use App\Models\SubscribeTransaction;
+use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
@@ -29,6 +30,7 @@ class FrontController extends Controller
     public function details(Course $course){
         return view('front.details', compact('course'));
     }
+
     public function pricing(){
         $user = Auth::user();
         return view('front.pricing', compact('user'));
@@ -48,6 +50,24 @@ class FrontController extends Controller
         $courses = $category->courses()->get();
         return view('front.category', compact('courses', 'category'));
     }
+
+    public function roadmap(Course $course){
+        $user = Auth::user();
+        // $roadmap = $->courses()->get(); 
+        $roadmap = [
+            'Pengantar Biologi dan Metode Ilmiah',
+            'Struktur dan Fungsi Sel',
+            'Genetika dan Pewarisan Sifat',
+            'Evolusi dan Keanekaragaman Hayati',
+            'Kingdom Animalia',
+            'Anatomi dan Fisiologi Manusia',
+            'Ekologi dan Ilmu Lingkungan',
+            'Biologi Tumbuhan',
+            'Mikroorganisme dan Penyakit',
+        ];
+        return view('front.roadmap', compact('roadmap', 'user'));
+    }
+    
 
     public function checkout(){
         return view('front.checkout');

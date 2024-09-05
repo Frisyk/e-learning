@@ -90,10 +90,10 @@
         @endauth
         @guest
         <div class="flex gap-[10px] items-center">
-            <a href="{{route('register')}}" class="text-white font-semibold rounded-[30px] md:p-[16px_32px] p-2 text-xs  p-[16px_32px] ring-1 ring-white transition-all duration-300 hover:ring-2 hover:ring-blue-800">
+            <a href="{{route('register')}}" class="text-white font-semibold rounded-[30px] md:p-[16px_32px] p-2 text-xs  ring-1 ring-white transition-all duration-300 hover:ring-2 hover:ring-blue-800">
                 Sign Up
             </a>
-            <a href="{{route('login')}}" class="text-white font-semibold rounded-[30px] md:p-[16px_32px] p-2 text-xs  p-[16px_32px] bg-blue-800 transition-all duration-300 hover:shadow-[0_10px_20px_0_#FF612980]">
+            <a href="{{route('login')}}" class="text-white font-semibold rounded-[30px] md:p-[16px_32px] p-2 text-xs bg-blue-800 transition-all duration-300 hover:shadow-[0_10px_20px_0_#FF612980]">
                 Sign In
             </a>
         </div>
@@ -131,7 +131,7 @@
 
 <section id="hero-section" class="bg-[#011c40] flex-col md:flex-row flex w-full">
     <div class="text flex flex-col gap-10 flex-1 p-6 md:pl-20 md:py-40">
-        <h1 class="animate-text text-7xl font-bold leading-normal text-white">
+        <h1 class="animate-text md:text-7xl text-5xl font-bold leading-normal text-white">
             Temukan, Mulai, <br> dan Tekuni
         </h1>
         <p class="animate-text text-xl leading-relaxed text-slate-300">
@@ -145,7 +145,7 @@
     </div>
     <img src="assets/background/hero.png" class="md:w-1/2 bottom-0 md:mt-40" alt="hero banner">
 </section>
-<section id="categories" class=" mx-auto flex flex-col py-[70px] px-[50px] gap-[30px] ">
+<section id="categories" class=" mx-auto flex flex-col py-[70px] md:px-[50px] gap-[30px] ">
     <div class="flex flex-col gap-[30px] items-center text-center">
         
         <div class="flex flex-col">
@@ -187,7 +187,7 @@
 </section>
 
        
-    <section id="courses" class="md:w-4/5 md:p-6 p-2 mx-auto mt-20 gap-[30px] bg-[#011c40] md:rounded-[32px]">
+    <section id="courses" class="md:w-4/5 md:p-6 py-5 p-2 mx-auto mt-20 gap-[30px] bg-[#011c40] md:rounded-[32px]">
         <div class="flex gap-2 items-center justify-center">
             <img src="assets/icon/medal-star.svg" class="w-10 h-10" alt="icon">
             <h1 class="text-white font-bold text-4xl leading-relaxed">Kelas Terpopuler</h1>
@@ -257,12 +257,12 @@
             </div>
         </div>
     </section>
-<section id="Pricing" class="max-w-[1200px] mx-auto flex flex-col md:flex-row justify-between items-center p-8 md:p-[70px_100px]">
+<section id="Pricing" class="md:max-w-[1200px] mx-auto flex flex-col md:flex-row justify-between items-center p-8 mb-10 md:p-[70px_100px]">
     <div class="relative mb-8 md:mb-0">
         <div class="w-full md:w-[500px] md:h-[700px]">
             <img src="assets/background/school.png" alt="icon" class="w-full h-full object-cover">
         </div>
-        <div class="absolute transform -translate-y-1/2 top-1/2 left-1/2 md:left-[300px] bg-white z-10 rounded-2xl p-4 flex flex-col gap-4 shadow-lg w-[90%] max-w-[230px]">
+        <div class="absolute hidden md:flex transform -translate-y-1/2 top-1/2 left-1/2 md:left-[300px] bg-white z-10 rounded-2xl p-4 flex-col gap-4 shadow-lg w-[90%] max-w-[230px]">
             <p class="font-semibold text-lg">Materials</p>
             <div class="flex items-center gap-2">
                 <img src="assets/icon/video-play.svg" alt="icon" class="w-6 h-6">
@@ -390,7 +390,7 @@
             </div>
         </div>
     </section>
-    <section id="FAQ" class="md:max-w-[1200px] mx-auto flex flex-col py-[70px] md:px-[100px]">
+    <section id="FAQ" class="md:max-w-[1200px] px-5 mx-auto flex flex-col py-[70px] md:px-[100px]">
         <div class="flex flex-col md:flex-row justify-between items-center">
             <div class="flex flex-col gap-[30px]">
                 
@@ -398,7 +398,7 @@
                     <h2 class="font-bold text-[36px] leading-[52px]">Dapatkan Jawaban Anda</h2>
                     <p class="text-lg text-[#475466]">Saatnya meningkatkan keterampilan tanpa batas!</p>
                 </div>
-                <a href="" class="text-white font-semibold rounded-[30px] md:p-[16px_32px] p-2 text-xs  p-[16px_32px] bg-blue-800 transition-all duration-300 hover:shadow-[0_10px_20px_0_#FF612980] w-fit">Hubungi Kami</a>
+                <a href="" class="text-white font-semibold rounded-[30px] md:p-[16px_32px] p-2 text-xs  bg-blue-800 transition-all duration-300 hover:shadow-[0_10px_20px_0_#FF612980] w-fit">Hubungi Kami</a>
             </div>
             <div class="flex flex-col gap-[30px] md:w-[552px] shrink-0">
                 <div class="flex flex-col p-5 rounded-2xl bg-[#FFF8F4] has-[.hide]:bg-transparent border-t-4 border-blue-800 has-[.hide]:border-0 w-full">

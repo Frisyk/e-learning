@@ -15,7 +15,12 @@ class FrontController extends Controller
 {
     //
     public function index(){
-        $courses = Course::with(['category', 'teacher', 'students'])->orderByDesc('id')->get();
+// Fetch courses with the number of students, related models, and sort by student count
+        $courses = Course::withCount('students') // Add a students_count attribute
+            ->with(['category', 'teacher', 'students']) // Eager load related models
+            ->orderBy('students_count', 'desc') // Sort by number of students in descending order
+            ->get();
+
         $categories = Category::all();
     
         return view('front.index', compact('courses', 'categories'));
@@ -27,6 +32,16 @@ class FrontController extends Controller
     public function pricing(){
         $user = Auth::user();
         return view('front.pricing', compact('user'));
+    }
+    public function categories(){
+        $courses = Course::with(['category', 'teacher', 'students'])->orderByDesc('id')->get();
+        $categories = Category::all();
+        return view('front.categories', compact('courses', 'categories'));
+    }
+    public function classes(){
+        $courses = Course::with(['category', 'teacher', 'students'])->orderByDesc('id')->get();
+        $categories = Category::all();
+        return view('front.classes', compact('courses', 'categories'));
     }
     
     public function category(Category $category){

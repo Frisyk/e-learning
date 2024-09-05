@@ -13,40 +13,52 @@
 </head>
 <body class="text-black bg-[#ECF7FF] font-poppins h-screen">
     <nav class="flex justify-between border-b border-blue-900 bg-[#011C40] items-center p-6">
-        <a href="">
-            <h1 class="font-bold text-2xl text-white ml-5">BelajarIn.</h1>
+        <a href="/">
+            <h1 class="font-bold text-2xl text-white ml-2 md:ml-5 transition-transform duration-300 ease-in-out hover:scale-110">
+                BelajarIn.
+            </h1>
         </a>
         <ul class="md:flex items-center hidden gap-5 text-white">
             <li>
-                <a href="{{route('front.index')}}" class="font-semibold">Beranda</a>
+                <a href="{{route('front.index')}}" class="font-semibold transition-colors duration-300 ease-in-out hover:text-blue-400">
+                    Beranda
+                </a>
             </li>
             <li>
-                <a href="{{route('front.index')}}#categories" class="font-semibold">Kategori</a>
+                <a href="{{route('front.categories')}}" class="font-semibold transition-colors duration-300 ease-in-out hover:text-blue-400">
+                    Kategori
+                </a>
             </li>
             <li>
-                <a href="{{route('front.index')}}#courses" class="font-semibold">Kursus</a>
+                <a href="{{route('front.classes')}}" class="font-semibold transition-colors duration-300 ease-in-out hover:text-blue-400">
+                    Kursus
+                </a>
             </li>
             @role('teacher|owner')
             <li>
-                <a href="{{route('dashboard')}}" class="font-semibold">Dashboard</a>
+                <a href="{{route('dashboard')}}" class="font-semibold transition-colors duration-300 ease-in-out hover:text-blue-400">
+                    Dashboard
+                </a>
             </li>
             @endrole
             <li>
-                <a href="{{route('front.pricing')}}" class="font-semibold">Langganan</a>
+                <a href="{{route('front.pricing')}}" class="font-semibold transition-colors duration-300 ease-in-out hover:text-blue-400">
+                    Langganan
+                </a>
             </li>
         </ul>
         @auth
-            
-        <div class="flex gap-[10px] items-center mr-5">
+        <div class="flex gap-[10px] items-center mr-2 md:mr-5">
             <div class="flex flex-col items-end justify-center">
-                <p class="font-semibold text-white">Hi, {{Auth::user()->name}}</p>
+                <p class="font-semibold capitalize text-white">Hi, {{Auth::user()->name}}!</p>
                 @if (Auth::user()->hasActiveSubscription())
-                    
-                <p class="p-[2px_10px] rounded-full bg-blue-800 font-semibold text-xs text-white text-center">PRO</p>
+                <p class="p-[2px_10px] rounded-full bg-blue-800 font-semibold text-xs text-white text-center transition-transform duration-300 ease-in-out hover:scale-105">
+                    PRO
+                </p>
                 @endif
             </div>
             <a href="{{route('dashboard')}}">
-                <div class="w-[56px] h-[56px] overflow-hidden rounded-full flex shrink-0">
+                <div class="md:w-10 md:h-10 w-8 h-8 ring-2 overflow-hidden rounded-full flex shrink-0 transition-transform duration-300 ease-in-out hover:scale-110">
                     <img src="{{Storage::url(Auth::user()->avatar)}}" class="w-full h-full object-cover" alt="photo">
                 </div>
             </a>
@@ -54,28 +66,42 @@
         @endauth
         @guest
         <div class="flex gap-[10px] items-center">
-            <a href="{{route('register')}}" class="text-white font-semibold rounded-[30px] p-[16px_32px] ring-1 ring-white transition-all duration-300 hover:ring-2 hover:ring-blue-800">Sign Up</a>
-            <a href="{{route('login')}}" class="text-white font-semibold rounded-[30px] p-[16px_32px] bg-blue-800 transition-all duration-300 hover:shadow-[0_10px_20px_0_#FF612980]">Sign In</a>
+            <a href="{{route('register')}}" class="text-white font-semibold rounded-[30px] p-[16px_32px] ring-1 ring-white transition-all duration-300 hover:ring-2 hover:ring-blue-800">
+                Sign Up
+            </a>
+            <a href="{{route('login')}}" class="text-white font-semibold rounded-[30px] p-[16px_32px] bg-blue-800 transition-all duration-300 hover:shadow-[0_10px_20px_0_#FF612980]">
+                Sign In
+            </a>
         </div>
         @endguest
     </nav>
-    <ul class="flex md:hidden items-center justify-center bg-[#011C40] mx-auto py-5 text-center w-full  gap-5 text-white">
+    <ul class="flex md:hidden text-xs flex-wrap items-center justify-center bg-[#011C40] mx-auto py-5 text-center w-full gap-5 text-white">
         <li>
-            <a href="{{route('front.index')}}" class="font-semibold">Beranda</a>
+            <a href="{{route('front.index')}}" class="font-semibold transition-colors duration-300 ease-in-out hover:text-blue-400">
+                Beranda
+            </a>
         </li>
         <li>
-            <a href="{{route('front.index')}}#categories" class="font-semibold">Kategori</a>
+            <a href="{{route('front.categories')}}" class="font-semibold transition-colors duration-300 ease-in-out hover:text-blue-400">
+                Kategori
+            </a>
         </li>
         <li>
-            <a href="{{route('front.index')}}#courses" class="font-semibold">Kursus</a>
+            <a href="{{route('front.classes')}}" class="font-semibold transition-colors duration-300 ease-in-out hover:text-blue-400">
+                Kursus
+            </a>
         </li>
         @role('teacher|owner')
         <li>
-            <a href="{{route('dashboard')}}" class="font-semibold">Dashboard</a>
+            <a href="{{route('dashboard')}}" class="font-semibold transition-colors duration-300 ease-in-out hover:text-blue-400">
+                Dashboard
+            </a>
         </li>
         @endrole
         <li>
-            <a href="{{route('front.pricing')}}" class="font-semibold">Langganan</a>
+            <a href="{{route('front.pricing')}}" class="font-semibold transition-colors duration-300 ease-in-out hover:text-blue-400">
+                Langganan
+            </a>
         </li>
     </ul>
 

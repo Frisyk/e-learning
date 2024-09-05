@@ -36,25 +36,82 @@
     </style>
 </head>
 <body class="text-black bg-[#ECF7FF] font-poppins scroll-smooth">
-<nav class="flex justify-between border-b border-blue-900 bg-[#011C40] items-center p-6">
-    <a href="">
-        <h1 class="font-bold text-2xl text-white ml-5 transition-transform duration-300 ease-in-out hover:scale-110">
-            BelajarIn.
-        </h1>
-    </a>
-    <ul class="md:flex items-center hidden gap-5 text-white">
+    <nav class="flex justify-between border-b border-blue-900 bg-[#011C40] items-center p-6">
+        <a href="/">
+            <h1 class="font-bold text-2xl text-white ml-2 md:ml-5 transition-transform duration-300 ease-in-out hover:scale-110">
+                BelajarIn.
+            </h1>
+        </a>
+        <ul class="md:flex items-center hidden gap-5 text-white">
+            <li>
+                <a href="{{route('front.index')}}" class="font-semibold transition-colors duration-300 ease-in-out hover:text-blue-400">
+                    Beranda
+                </a>
+            </li>
+            <li>
+                <a href="{{route('front.categories')}}" class="font-semibold transition-colors duration-300 ease-in-out hover:text-blue-400">
+                    Kategori
+                </a>
+            </li>
+            <li>
+                <a href="{{route('front.classes')}}" class="font-semibold transition-colors duration-300 ease-in-out hover:text-blue-400">
+                    Kursus
+                </a>
+            </li>
+            @role('teacher|owner')
+            <li>
+                <a href="{{route('dashboard')}}" class="font-semibold transition-colors duration-300 ease-in-out hover:text-blue-400">
+                    Dashboard
+                </a>
+            </li>
+            @endrole
+            <li>
+                <a href="{{route('front.pricing')}}" class="font-semibold transition-colors duration-300 ease-in-out hover:text-blue-400">
+                    Langganan
+                </a>
+            </li>
+        </ul>
+        @auth
+        <div class="flex gap-[10px] items-center mr-2 md:mr-5">
+            <div class="flex flex-col items-end justify-center">
+                <p class="font-semibold capitalize text-white">Hi, {{Auth::user()->name}}!</p>
+                @if (Auth::user()->hasActiveSubscription())
+                <p class="p-[2px_10px] rounded-full bg-blue-800 font-semibold text-xs text-white text-center transition-transform duration-300 ease-in-out hover:scale-105">
+                    PRO
+                </p>
+                @endif
+            </div>
+            <a href="{{route('dashboard')}}">
+                <div class="md:w-10 md:h-10 w-8 h-8 ring-2 overflow-hidden rounded-full flex shrink-0 transition-transform duration-300 ease-in-out hover:scale-110">
+                    <img src="{{Storage::url(Auth::user()->avatar)}}" class="w-full h-full object-cover" alt="photo">
+                </div>
+            </a>
+        </div>
+        @endauth
+        @guest
+        <div class="flex gap-[10px] items-center">
+            <a href="{{route('register')}}" class="text-white font-semibold rounded-[30px] p-[16px_32px] ring-1 ring-white transition-all duration-300 hover:ring-2 hover:ring-blue-800">
+                Sign Up
+            </a>
+            <a href="{{route('login')}}" class="text-white font-semibold rounded-[30px] p-[16px_32px] bg-blue-800 transition-all duration-300 hover:shadow-[0_10px_20px_0_#FF612980]">
+                Sign In
+            </a>
+        </div>
+        @endguest
+    </nav>
+    <ul class="flex md:hidden text-xs flex-wrap items-center justify-center bg-[#011C40] mx-auto py-5 text-center w-full gap-5 text-white">
         <li>
             <a href="{{route('front.index')}}" class="font-semibold transition-colors duration-300 ease-in-out hover:text-blue-400">
                 Beranda
             </a>
         </li>
         <li>
-            <a href="{{route('front.index')}}#categories" class="font-semibold transition-colors duration-300 ease-in-out hover:text-blue-400">
+            <a href="{{route('front.categories')}}" class="font-semibold transition-colors duration-300 ease-in-out hover:text-blue-400">
                 Kategori
             </a>
         </li>
         <li>
-            <a href="{{route('front.index')}}#courses" class="font-semibold transition-colors duration-300 ease-in-out hover:text-blue-400">
+            <a href="{{route('front.classes')}}" class="font-semibold transition-colors duration-300 ease-in-out hover:text-blue-400">
                 Kursus
             </a>
         </li>
@@ -71,63 +128,6 @@
             </a>
         </li>
     </ul>
-    @auth
-    <div class="flex gap-[10px] items-center mr-5">
-        <div class="flex flex-col items-end justify-center">
-            <p class="font-semibold text-white">Hi, {{Auth::user()->name}}</p>
-            @if (Auth::user()->hasActiveSubscription())
-            <p class="p-[2px_10px] rounded-full bg-blue-800 font-semibold text-xs text-white text-center transition-transform duration-300 ease-in-out hover:scale-105">
-                PRO
-            </p>
-            @endif
-        </div>
-        <a href="{{route('dashboard')}}">
-            <div class="w-[56px] h-[56px] overflow-hidden rounded-full flex shrink-0 transition-transform duration-300 ease-in-out hover:scale-110">
-                <img src="{{Storage::url(Auth::user()->avatar)}}" class="w-full h-full object-cover" alt="photo">
-            </div>
-        </a>
-    </div>
-    @endauth
-    @guest
-    <div class="flex gap-[10px] items-center">
-        <a href="{{route('register')}}" class="text-white font-semibold rounded-[30px] p-[16px_32px] ring-1 ring-white transition-all duration-300 hover:ring-2 hover:ring-blue-800">
-            Sign Up
-        </a>
-        <a href="{{route('login')}}" class="text-white font-semibold rounded-[30px] p-[16px_32px] bg-blue-800 transition-all duration-300 hover:shadow-[0_10px_20px_0_#FF612980]">
-            Sign In
-        </a>
-    </div>
-    @endguest
-</nav>
-<ul class="flex md:hidden items-center justify-center bg-[#011C40] mx-auto py-5 text-center w-full gap-5 text-white">
-    <li>
-        <a href="{{route('front.index')}}" class="font-semibold transition-colors duration-300 ease-in-out hover:text-blue-400">
-            Beranda
-        </a>
-    </li>
-    <li>
-        <a href="{{route('front.index')}}#categories" class="font-semibold transition-colors duration-300 ease-in-out hover:text-blue-400">
-            Kategori
-        </a>
-    </li>
-    <li>
-        <a href="{{route('front.index')}}#courses" class="font-semibold transition-colors duration-300 ease-in-out hover:text-blue-400">
-            Kursus
-        </a>
-    </li>
-    @role('teacher|owner')
-    <li>
-        <a href="{{route('dashboard')}}" class="font-semibold transition-colors duration-300 ease-in-out hover:text-blue-400">
-            Dashboard
-        </a>
-    </li>
-    @endrole
-    <li>
-        <a href="{{route('front.pricing')}}" class="font-semibold transition-colors duration-300 ease-in-out hover:text-blue-400">
-            Langganan
-        </a>
-    </li>
-</ul>
 
 <section id="hero-section" class="bg-[#011c40] flex-col md:flex-row flex w-full">
     <div class="text flex flex-col gap-10 flex-1 p-6 md:pl-20 md:py-40">
@@ -188,7 +188,10 @@
 
        
     <section id="courses" class="md:w-4/5 md:p-6 p-2 mx-auto mt-20 gap-[30px] bg-[#011c40] md:rounded-[32px]">
-        <h1 class="text-white text-center mx-10 font-bold text-4xl leading-relaxed">Jelajahi Kelas</h1>
+        <div class="flex gap-2 items-center justify-center">
+            <img src="assets/icon/medal-star.svg" class="w-10 h-10" alt="icon">
+            <h1 class="text-white font-bold text-4xl leading-relaxed">Kelas Terpopuler</h1>
+        </div>
         <h1 class="mx-10 text-[#6D7786] text-center my-4 text-lg -tracking-[2%]">Tentukan Kelas Pilihanmu dan Mulai Belajar</h1>
         <div class="relative md:px-10 px-4 py-5">
             <button class="btn-prev bg-white rounded-full absolute rotate-180 md:-left-[52px] -left-2 z-10 top-[216px]">
@@ -283,14 +286,14 @@
             </div>
         </div>
     </div>
-    <div class="flex flex-col text-left gap-8">
+    <div class="flex flex-col text-left md:ml-10 gap-4 md:gap-8">
         <h2 class="font-bold text-[32px] md:text-[36px] leading-snug md:leading-[52px]">Belajar Dimana Saja,<br>Dan Kapan Saja Kamu Mau</h2>
         <p class="text-[#475466] text-base md:text-lg leading-relaxed md:leading-[34px]">Mengembangkan keterampilan baru akan lebih fleksibel tanpa kami membantu Anda untuk mengakses semua materi kursus.</p>
         {{-- <a href="" class="text-white font-semibold rounded-full py-4 px-8 bg-blue-800 transition-all duration-300 hover:shadow-lg w-fit">Check Pricing</a> --}}
     </div>
 </section>
 
-    <section id="Zero-to-Success" class="max-w-[1200px] mx-auto flex flex-col py-[70px] px-[50px] gap-[30px] bg-[#011c40] rounded-[32px]">
+    <section id="Zero-to-Success" class="max-w-[1200px] mx-auto flex flex-col py-[70px] px-5 md:px-[50px] gap-[30px] bg-[#011c40] md:rounded-[32px]">
         <div class="flex flex-col gap-[30px] items-center text-center">
             <div class="bg-blue-50 w-fit p-[8px_16px] rounded-full border border-blue-800 flex items-center gap-[6px]">
                 <div>

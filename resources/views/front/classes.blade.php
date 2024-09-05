@@ -2,14 +2,41 @@
 <html>
 <head>
   <meta charset="UTF-8">
+  <title>Kelas | BelajarIn.</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="{{asset('css/output.css')}}" rel="stylesheet">
-  @vite('resources/css/app.css')
-  <title>Kategori | BelajarIn.</title>
-
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <!-- CSS -->
+    @vite('resources/css/app.css')
+    <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+    <title>BelajarIn | Home</title>
+    <style>
+        @keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-text {
+    opacity: 0;
+    animation: fadeInUp 1s ease forwards;
+    animation-delay: 0.3s;
+}
+
+.animate-button {
+    opacity: 0;
+    animation: fadeInUp 1s ease forwards;
+    animation-delay: 0.5s;
+}
+
+    </style>
 </head>
-<body class="text-black bg-[#ECF7FF] font-poppins md:pb-[50px] scroll-smooth">
+<body class="text-black bg-[#ECF7FF] font-poppins scroll-smooth">
     <nav class="flex justify-between border-b border-blue-900 bg-[#011C40] items-center p-6">
         <a href="/">
             <h1 class="font-bold text-2xl text-white ml-2 md:ml-5 transition-transform duration-300 ease-in-out hover:scale-110">
@@ -102,46 +129,63 @@
             </a>
         </li>
     </ul>
-    <section id="Top-Categories" class="max-w-[1200px] mx-auto flex flex-col py-[70px] px-4 md:px-[100px] gap-[30px]">
-        <div class="flex flex-col gap-[30px]">
-            <div class="flex flex-col md:flex-row items-center gap-4">
-                <img src="{{Storage::url($category->icon)}}" class="w-40 h-40 object-cover" alt="icon">
-                <div class="flex flex-col">
-                    <h2 class="font-bold text-[40px] leading-[60px]">{{$category->name}}</h2>
-                    <p class="text-[#6D7786] text-lg -tracking-[2%]">Pilih Pelajaran Yang Kamu Minati di kategori {{$category->name}}</p>
-                </div>
-            </div>
-    
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-5 w-full">
-                @forelse ($courses as $course )
-                    <div class="course-card">
-                        <div class="flex flex-col rounded-t-[12px] rounded-b-[24px] gap-5 bg-white w-full pb-[10px] overflow-hidden ring-1 ring-[#DADEE4] transition-all duration-300 hover:ring-2 hover:ring-blue-800">
-                            <a href="{{route('front.details', $course->slug)}}" class="thumbnail w-full h-[200px] shrink-0 rounded-[10px] overflow-hidden">
-                                <img src="{{Storage::url($course->thumbnail)}}" class="w-full h-full object-cover" alt="thumbnail">
+       
+    <section id="courses" class="p-2 md:p-6 mx-auto mb-20 mt-10 md:mt-0  gap-[30px]">
+        <h1 class="text-[#011C40] text-center mx-10 font-bold text-4xl leading-relaxed">Jelajahi Kelas</h1>
+        <h2 class="text-[#6D7786] text-lg -tracking-[2%] text-center mb-8">Tentukan Kelas Pilihanmu dan Mulai Belajar</h2>
+        <div class="w-full h-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+            @forelse ($courses as $course)
+                <div class="course-card px-4 pb-8 mt-2">
+                    <div class="flex flex-col bg-white rounded-[16px] overflow-hidden shadow-lg transition-all duration-300 hover:shadow-xl">
+                        <a href="{{ route('front.details', $course->slug) }}" class="block relative h-[200px]">
+                            <img src="{{ Storage::url($course->thumbnail) }}" class="w-full h-full object-cover" alt="thumbnail">
+                        </a>
+                        <div class="p-4">
+                            <div class="flex items-center mb-2">
+                                <span class="text-xs font-semibold text-white bg-[#1D64F2] rounded-full px-2 py-1">{{ $course->category->name }}</span>
+                            </div>
+                            <a href="{{ route('front.details', $course->slug) }}" class="font-semibold text-lg text-gray-900 line-clamp-2 hover:line-clamp-none">
+                                {{ $course->name }}
                             </a>
-                            <div class="flex flex-col px-4 ">
-                                <div class="flex flex-col gap-[10px]">
-                                    <a href="{{route('front.details', $course->slug)}}" class="font-semibold text-lg line-clamp-2 hover:line-clamp-none py-2">{{$course->name}}</a>
+                            <div class="mt-4">
+                                <div class="h-2 bg-gray-200 rounded-full">
+                                    <div class="h-2 bg-[#F24822] rounded-full" style="width: 100%;"></div>
                                 </div>
-                                <div class="flex items-center gap-2">
-                                    <div class="w-8 h-8 flex shrink-0 rounded-full overflow-hidden">
-                                        <img src="{{Storage::url($course->teacher->user->avatar)}}" class="w-full h-full object-cover" alt="icon">
-                                    </div>
+                            </div>
+                            <div class="flex items-center mt-4">
+                                <div class="flex items-center -space-x-2">
+                                    @php
+                                        $students = $course->students->sortByDesc('created_at')->take(3);
+                                    @endphp
+    
+                                    @forelse ($students as $student)
+                                        @if ($student->avatar)
+                                            <img src="{{ Storage::url($student->avatar) }}" class="w-8 h-8 rounded-full border-2 border-white" alt="student">
+                                        @endif
+                                    @empty
+                                        <span class="text-[6px] font-medium text-gray-600 pl-2">Belum ada siswa</span>
+                                    @endforelse
+                                </div>
+    
+                                <div class="flex items-center gap-2 ml-auto">
                                     <div class="flex flex-col">
-                                        <p class="font-semibold">{{$course->teacher->user->name}}</p>
-                                        <p class="text-[#6D7786]">{{$course->teacher->user->occupation}}</p>
+                                        <p class="text-xs">Guru</p>
+                                        <p class="text-sm font-semibold capitalize">{{ $course->teacher->user->name }}</p>
                                     </div>
+                                    <img src="{{ Storage::url($course->teacher->user->avatar) }}" alt="teacher" class="rounded-full object-cover w-10 h-10">
                                 </div>
                             </div>
                         </div>
                     </div>
-                @empty
-                <p>Belum tersedia kelas pada kategory ini</p>
-                @endforelse
-            </div>
+                </div>
+            @empty
+                <p class="col-span-full text-center text-gray-500 font-medium">Belum ada data kelas terbaru</p>
+            @endforelse
         </div>
     </section>
     
+    
+
     <footer class="max-w-[1200px] mx-auto flex flex-col py-20 md:mb-10 px-10 md:px-[100px] gap-[50px] bg-[#011C40] text-white md:rounded-[32px]">
         <div class="flex flex-col gap-5 md:flex-row justify-between">
             <a href="">
@@ -208,7 +252,29 @@
     </footer>
 
     <!-- JavaScript -->
+    <script
+        src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+        crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
     <script src={{asset('js/main.js')}}></script>
-    
+    <script>
+        window.addEventListener('scroll', function() {
+    const section = document.getElementById('hero-section');
+    const sectionPosition = section.getBoundingClientRect().top;
+    const screenPosition = window.innerHeight / 1.2;
+
+    if (sectionPosition < screenPosition) {
+        const texts = section.querySelectorAll('.animate-text');
+        texts.forEach((text, index) => {
+            text.style.animationDelay = `${index * 0.2}s`;
+            text.classList.add('visible');
+        });
+        const button = section.querySelector('.animate-button');
+        button.classList.add('visible');
+    }
+});
+
+    </script>
 </body>
 </html>

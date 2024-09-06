@@ -117,8 +117,19 @@
     <section id="roadmap" class="flex md:w-4/5 flex-col md:flex-row mx-auto mb-10 items-center space-x-8 md:p-8 p-4 bg-blue-50">
         <!-- Left side: Title -->
         <div class="md:w-1/2 md:sticky top-10">
-            <h1 class="text-7xl font-bold mb-2">RoadMap</h1>
+            <h1 class="text-7xl font-bold mb-2">RoadMap Cerdas</h1>
             <h2 class="text-4xl font-extrabold text-blue-700 capitalize">Untuk {{$user->name}}🔥</h2>
+            <form action="" method="GET">
+                
+                <input id="occupation" type="text" name="occupation" placeholder="Cari Roadmap" 
+                       class="border rounded-lg px-3 py-2 text-sm w-sm outline-none dark:border-gray-500 dark:bg-gray-900" 
+                       value="{{ old('occupation') }}" required autocomplete="occupation">
+                
+                <!-- Tombol Enter -->
+                <button type="submit" class="mt-3 px-4 py-2 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700">
+                    Search
+                </button>
+            </form>
         </div>
         
         <!-- Right side: Roadmap list (scrollable) -->

@@ -30,12 +30,18 @@ class DashboardController extends Controller
             ->count('user_id');
         }
 
+        $joinedCourses = $user->courses() // Access the courses relationship
+            ->with(['category', 'teacher']) // Eager load related models if necessary
+            ->withCount('students') // Adds students_count for each course
+            ->orderBy('students_count', 'desc') // Optional: Sort by number of students
+            ->get();
+
         $courses = $coursesQuery->count();
         $categories = Category::count();
         $transactions = SubscribeTransaction::count();
         $teachers = Teacher::count();
 
-        return view('dashboard', compact( 'categories', 'courses' , 'transactions', 'students', 'teachers'));
+        return view('dashboard', compact( 'categories', 'courses' , 'transactions', 'students', 'teachers', 'joinedCourses'));
         
     }
 }

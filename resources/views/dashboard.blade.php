@@ -72,7 +72,7 @@
 
       <!-- Main Content -->
       <div class="flex-1 p-8 bg-blue-50">
-        <div class="flex justify-between items-center mb-8">
+        <div class="flex justify-between items-center ">
           <h2 class="text-2xl font-bold text-gray-800">Dashboard</h2>
         </div>
 
@@ -251,13 +251,64 @@
           </div>
           @endrole
           @role('student')
-          <h3 class="text-indigo-950 font-bold text-2xl">Upgrade Skills Today</h3>
-          <p class="text-slate-500 text-base">
-              Grow your career with experienced teachers in Alqowy Class.
-          </p>
-          <a href="{{route('front.index')}}" class="w-fit font-bold py-4 px-6 bg-indigo-700 text-white rounded-full">
-              Explore Catalog
-          </a>
+          <div class="w-full">
+            <div class="flex w-full justify-between p-6 items-center">
+              <h3 class="text-indigo-950 font-bold text-2xl">Kelas Ku</h3>
+              <a href="{{route('front.index')}}" class="w-fit font-bold py-4 px-6 bg-indigo-700 text-white rounded-full">
+                Ke Halaman Beranda
+            </a>
+            </div>
+            <div class="flex flex-wrap -mx-4">
+                @forelse ($joinedCourses as $course)
+                    <div class="course-card px-4 pb-8 mt-2">
+                        <div class="flex flex-col bg-white rounded-[16px] overflow-hidden shadow-lg transition-all duration-300 hover:shadow-xl">
+                            <a href="{{ route('front.details', $course->slug) }}" class="block relative h-[200px]">
+                                <img src="{{ Storage::url($course->thumbnail) }}" class="w-full h-full object-cover" alt="thumbnail">
+                            </a>
+                            <div class="p-4">
+                                <div class="flex items-center mb-2">
+                                    <span class="text-xs font-semibold text-white bg-[#1D64F2] rounded-full px-2 py-1">{{$course->category->name}}</span>
+                                </div>
+                                <a href="{{ route('front.details', $course->slug) }}" class="font-semibold text-lg text-gray-900 line-clamp-2 hover:line-clamp-none">
+                                    {{$course->name}}
+                                </a>
+                                <div class="mt-4">
+                                    <div class="h-2 bg-gray-200 rounded-full">
+                                        <div class="h-2 bg-[#F24822] rounded-full" style="width: 100%;"></div>
+                                    </div>
+                                </div>
+                                <div class="flex items-center mt-4">
+                                    <div class="flex items-center -space-x-2">
+                                        @php
+                                            $students = $course->students->sortByDesc('created_at')->take(3);
+                                        @endphp
+                                        
+                                        @forelse ($students as $student)
+                                            @if ($student->avatar)
+                                                <img src="{{ Storage::url($student->avatar) }}" class="w-8 h-8 rounded-full border-2 border-white" alt="student">
+                                            @endif
+                                        @empty
+                                            <span class="text-[6px] font-medium text-gray-600 pl-2">Belum ada siswa</span>
+                                        @endforelse
+                                    </div>
+                                    <div class="flex items-center gap-2 ml-auto">
+                                        <div class="flex flex-col">
+                                            <p class="text-xs">Guru</p>
+                                            <p class='text-sm font-semibold capitalize'>{{$course->teacher->user->name}}</p>
+                                        </div>
+                                        <img src="{{Storage::url($course->teacher->user->avatar)}}" alt="" class="rounded-full object-cover w-10 h-10">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                @empty
+                    <p class="text-gray-500">Anda belum mengikuti kelas apapun.</p>
+                @endforelse
+            </div>
+        </div>
+        
+          
           @endrole
         </div>
       </div>

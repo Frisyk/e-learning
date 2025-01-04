@@ -62,6 +62,11 @@ class CourseController extends Controller
         DB::transaction(function () use ($request, $teacher) {
             
             $validated = $request->validated();
+
+            if (!isset($validated['name'])) {
+                throw new \Exception('Course Name is required');
+            }
+
             if($request->hasFile('thumbnail')){
                 $thumbnailPath = $request->file('thumbnail')->store('thumbnails', 'public');
                 $validated['thumbnail'] = $thumbnailPath;

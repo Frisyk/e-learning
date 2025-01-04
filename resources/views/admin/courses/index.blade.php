@@ -85,10 +85,10 @@
               <tr>
                 <td class="border px-4 py-2">{{ $index + 1 }}</td>
                 <td class="border px-4 py-2 text-indigo-900 font-semibold">{{ $course->name }}</td>
-                <td class="border px-4 py-2">{{ $course->category->name }}</td>
+                <td class="border px-4 py-2">{{ $course->category?->name }}</td>
                 <td class="border px-4 py-2 text-center">{{ $course->students->count() }}</td>
                 <td class="border px-4 py-2 text-center">{{ $course->course_videos->count() }}</td>
-                <td class="border px-4 py-2">{{ $course->teacher->user->name }}</td>
+                <td class="border px-4 py-2">{{ $course->teacher?->user?->name ?? 'No Teacher' }}</td>
                 <td class="border px-4 py-2 flex gap-2 justify-center">
                   <a href="{{ route('admin.courses.show', $course) }}" 
                      class="py-2 px-4 bg-indigo-600 hover:bg-indigo-500 text-white rounded-full transition">

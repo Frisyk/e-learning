@@ -62,36 +62,56 @@
               + Tambah Guru
             </a>
         </div>
-      <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-          <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-10 flex flex-col gap-y-5">
-              @forelse ($teachers as $teacher)
-              <div class="item-card flex flex-row justify-between items-center">
-                  <div class="flex flex-row items-center gap-x-3">
-                      <img src="{{ Storage::url($teacher->user->avatar) }}" alt="" class="rounded-2xl object-cover w-[90px] h-[90px]">
-                      <div class="flex flex-col">
-                          <h3 class="text-indigo-950 text-xl font-bold">{{ $teacher->user->name }}</h3>
-                          <p class="text-slate-500 text-sm">{{ $teacher->user->occupation }}</p>
-                      </div>
-                  </div> 
-                  <div class="hidden md:flex flex-col">
-                      <p class="text-slate-500 text-sm">Date</p>
-                      <h3 class="text-indigo-950 text-xl font-bold">{{ $teacher->created_at }}</h3>
-                  </div>
-                  <div class="hidden md:flex flex-row items-center gap-x-3">
-                      <form action="{{ route('admin.teachers.destroy', $teacher) }}" method="POST">
-                          @csrf
-                          @method('DELETE')
-                          <button type="submit" class="font-bold py-4 px-6 bg-red-700 text-white rounded-full">
-                              Delete
-                          </button>
-                      </form>
-                  </div>
-              </div>                  
-              @empty
-              <p>Belum ada guru tersedia</p>
-              @endforelse
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+          <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-10">
+              <table class="w-full text-left table-auto">
+                  <thead>
+                      <tr class="bg-gray-200">
+                          <th class="px-4 py-2">Avatar</th>
+                          <th class="px-4 py-2">Name</th>
+                          <th class="px-4 py-2">Occupation</th>
+                          <th class="px-4 py-2">Date</th>
+                          <th class="px-4 py-2">Actions</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      @forelse ($teachers as $teacher)
+                      <tr class="bg-white border-b">
+                          <td class="px-4 py-2">
+                              <img src="{{ Storage::url($teacher->user->avatar) }}" alt="" class="rounded-2xl object-cover w-[90px] h-[90px]">
+                          </td>
+                          <td class="px-4 py-2">
+                              <h3 class="text-indigo-950 text-xl font-bold">{{ $teacher->user->name }}</h3>
+                          </td>
+                          <td class="px-4 py-2">
+                              <p class="text-slate-500 text-sm">{{ $teacher->user->occupation }}</p>
+                          </td>
+                          <td class="px-4 py-2">
+                              <p class="text-slate-500 text-sm">Date</p>
+                              <h3 class="text-indigo-950 text-xl font-bold">{{ $teacher->created_at }}</h3>
+                          </td>
+                          <td class="px-4 py-2">
+                              <form action="{{ route('admin.teachers.destroy', $teacher) }}" method="POST">
+                                  @csrf
+                                  @method('DELETE')
+                                  <button type="submit" class="font-bold py-4 px-6 bg-red-700 text-white rounded-full">
+                                      Hapus
+                                  </button>
+                              </form>
+                          </td>
+                      </tr>
+                      @empty
+                      <tr>
+                          <td colspan="5" class="text-center py-4">
+                              <p>Belum ada guru tersedia</p>
+                          </td>
+                      </tr>
+                      @endforelse
+                  </tbody>
+              </table>
           </div>
       </div>
+      
   </div>
   </body>
 </html>
